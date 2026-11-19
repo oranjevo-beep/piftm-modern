@@ -3,9 +3,32 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#1c7ed6" />
   <title>ТМ «ПІФ» – Побутова та професійна хімія від виробника (з 2005 року)</title>
   <meta name="description" content="Офіційний каталог і прайс-лист побутової та професійної хімії ТМ «ПІФ» (ТОВ «Кодимський Райпостач», м. Одеса). Фасування від 500 мл до 5 л з ПДВ." />
+  <link rel="icon" type="image/png" sizes="192x192" href="./images/favicon.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="./images/apple-touch-icon.png" />
   <link rel="manifest" href="./site.webmanifest" />
+
+  <!-- Open Graph / WhatsApp / Telegram / Facebook Preview -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="ТМ «ПІФ» · ТОВ «Кодимський Райпостач»" />
+  <meta property="og:locale" content="uk_UA" />
+  <meta property="og:url" content="https://oranjevo-beep.github.io/piftm-modern/" />
+  <meta property="og:title" content="ТМ «ПІФ» – Побутова та професійна хімія від виробника (з 2005 року)" />
+  <meta property="og:description" content="Прямі поставки мийних і чистячих засобів для HoReCa, клінінгу, торгівельних мереж та дому. Фасування від 500 мл до 5 л — офіційний прайс з ПДВ." />
+  <meta property="og:image" content="https://oranjevo-beep.github.io/piftm-modern/images/og-preview.png" />
+  <meta property="og:image:secure_url" content="https://oranjevo-beep.github.io/piftm-modern/images/og-preview.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="ТМ «ПІФ» – Побутова та професійна хімія від виробника" />
+
+  <!-- Twitter / X Preview -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="ТМ «ПІФ» – Побутова та професійна хімія від виробника" />
+  <meta name="twitter:description" content="Прямі поставки мийних і чистячих засобів від українського виробника (м. Одеса). Фасування 0.5 л – 5 л з ПДВ." />
+  <meta name="twitter:image" content="https://oranjevo-beep.github.io/piftm-modern/images/og-preview.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -41,7 +64,7 @@
   <header class="sticky top-0 z-40 border-b border-slate-200/80 bg-white/95 backdrop-blur">
     <div class="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-3 sm:px-6">
       <button id="brandLogoTrigger" type="button" class="flex shrink-0 items-center gap-2.5 text-left focus:outline-none">
-        <img src="./images/logo-slide.png" alt="ТМ ПІФ" class="h-10 w-auto object-contain" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+        <img src="./images/logo-slide@2x.png" srcset="./images/logo-slide.png 1x, ./images/logo-slide@2x.png 2x" alt="ТМ ПІФ" class="h-10 w-auto object-contain" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
         <div class="hidden h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-brand-dark to-brand-500 text-white shadow-sm"><span class="text-sm font-extrabold">ПІФ</span></div>
         <div class="leading-tight">
           <div class="text-base font-extrabold tracking-tight text-slate-900">ТМ «ПІФ»</div>
@@ -136,15 +159,26 @@
     </div>
 
     <div id="pricelist" class="mt-12">
-      <div class="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+      <div class="flex flex-col gap-3 lg:flex-row lg:items-end lg:justify-between">
         <div>
           <span class="text-xs font-bold uppercase tracking-wider text-brand-600">Оптова та роздрібна комплектація</span>
           <h2 class="mt-1 text-2xl font-extrabold tracking-tight text-slate-900">Прайс-лист продукції (з ПДВ, грн)</h2>
-          <p class="mt-0.5 text-xs text-slate-500">Ціна вказана за 1 одиницю товару з урахуванням ПДВ</p>
+          <p class="mt-0.5 text-xs text-slate-500">Ціна вказана за 1 одиницю товару з урахуванням ПДВ · завантажте прайс або специфікацію у зручному форматі</p>
         </div>
-        <button id="downloadCsvBtn" type="button" class="inline-flex items-center gap-1.5 self-start sm:self-auto rounded-xl border border-slate-200 bg-white px-3.5 py-2 text-xs font-semibold text-slate-700 shadow-sm hover:border-brand-300 hover:text-brand-700">
-          <i class="fa-solid fa-file-arrow-down text-brand-600"></i><span>Завантажити прайс (CSV)</span>
-        </button>
+        <div class="flex flex-wrap items-center gap-2">
+          <button id="downloadPdfBtn" type="button" class="inline-flex items-center gap-1.5 rounded-xl border border-rose-200 bg-rose-50/70 px-3.5 py-2 text-xs font-bold text-rose-800 shadow-sm transition hover:bg-rose-100">
+            <i class="fa-solid fa-file-pdf text-rose-600"></i><span>Прайс PDF</span>
+          </button>
+          <button id="downloadXlsxBtn" type="button" class="inline-flex items-center gap-1.5 rounded-xl border border-emerald-200 bg-emerald-50/70 px-3.5 py-2 text-xs font-bold text-emerald-800 shadow-sm transition hover:bg-emerald-100">
+            <i class="fa-solid fa-file-excel text-emerald-600"></i><span>Бланк Excel (.xlsx)</span>
+          </button>
+          <button id="downloadDocBtn" type="button" class="inline-flex items-center gap-1.5 rounded-xl border border-brand-200 bg-brand-50/70 px-3.5 py-2 text-xs font-bold text-brand-dark shadow-sm transition hover:bg-brand-100">
+            <i class="fa-solid fa-file-word text-brand-600"></i><span>Специфікація Word (.doc)</span>
+          </button>
+          <button id="downloadCsvBtn" type="button" class="inline-flex items-center gap-1.5 rounded-xl border border-slate-200 bg-white px-3 py-2 text-xs font-semibold text-slate-700 shadow-sm transition hover:border-brand-300 hover:text-brand-700">
+            <i class="fa-solid fa-file-csv text-slate-500"></i><span>CSV</span>
+          </button>
+        </div>
       </div>
       <div class="mt-4 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
         <div class="overflow-x-auto">
@@ -684,6 +718,205 @@
       document.getElementById('calcDetails').textContent = `Дрібна тара: ${sp.toFixed(2)} грн/л → Каністра 5 л: ${bp.toFixed(2)} грн/л (економія ${pct.toFixed(1)}%)`;
     }
 
+    function loadScript(src) {
+      return new Promise((resolve, reject) => {
+        if (document.querySelector(`script[src="${src}"]`)) return resolve();
+        const s = document.createElement('script');
+        s.src = src;
+        s.onload = resolve;
+        s.onerror = () => reject(new Error('Не вдалося завантажити бібліотеку'));
+        document.head.appendChild(s);
+      });
+    }
+
+    async function getLogoDataUrl() {
+      try {
+        const res = await fetch('./images/logo-slide@2x.png');
+        const blob = await res.blob();
+        return await new Promise(resolve => {
+          const r = new FileReader();
+          r.onloadend = () => resolve(r.result);
+          r.readAsDataURL(blob);
+        });
+      } catch (e) { return null; }
+    }
+
+    async function downloadPdf() {
+      try {
+        showToast('Формування PDF прайс-листа...');
+        if (!window.pdfMake) {
+          await loadScript('https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.10/pdfmake.min.js');
+          await loadScript('https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.10/vfs_fonts.min.js');
+        }
+        const logoData = await getLogoDataUrl();
+        const body = [[
+          { text: '№', bold: true, fillColor: '#e7f5ff', alignment: 'center' },
+          { text: 'Назва товару', bold: true, fillColor: '#e7f5ff' },
+          { text: 'Штрих-код', bold: true, fillColor: '#e7f5ff', alignment: 'center' },
+          { text: 'Фасування', bold: true, fillColor: '#e7f5ff', alignment: 'center' },
+          { text: 'Шт/упак', bold: true, fillColor: '#e7f5ff', alignment: 'center' },
+          { text: 'Ціна з ПДВ\n(1 шт, грн)', bold: true, fillColor: '#e7f5ff', alignment: 'right' },
+          { text: 'Упаковка\n(з ПДВ, грн)', bold: true, fillColor: '#e7f5ff', alignment: 'right' }
+        ]];
+        let idx = 1;
+        state.products.forEach(p => (p.sizes || []).forEach(s => {
+          const pr = parseFloat(s.price) || 0, pq = s.packQty || 1;
+          body.push([
+            { text: String(idx++), alignment: 'center', color: '#475569' },
+            { text: p.name, bold: true },
+            { text: s.barcode || '—', alignment: 'center', color: '#475569' },
+            { text: s.label, alignment: 'center' },
+            { text: String(pq), alignment: 'center' },
+            { text: pr.toFixed(2), bold: true, alignment: 'right', color: '#1864ab' },
+            { text: (pr * pq).toFixed(2), alignment: 'right', color: '#334155' }
+          ]);
+        }));
+
+        const headerCols = [];
+        if (logoData) headerCols.push({ image: logoData, width: 78, margin: [0, 2, 12, 0] });
+        headerCols.push({
+          stack: [
+            { text: 'ТМ «ПІФ» — СПЕЦИФІКАЦІЯ ТА ПРАЙС-ЛИСТ ПРОДУКЦІЇ', fontSize: 14, bold: true, color: '#1864ab' },
+            { text: 'ТОВ «Кодимський Райпостач» · м. Одеса, пров. Вознесенський № 3, 65007', fontSize: 9, color: '#334155', margin: [0, 2, 0, 0] },
+            { text: 'Тел./факс: (048) 701-70-29 · Моб./WhatsApp: +380 67 972 05 60 · E-mail: piftm.info@gmail.com', fontSize: 9, color: '#334155', margin: [0, 1, 0, 0] }
+          ]
+        });
+
+        const docDef = {
+          pageSize: 'A4',
+          pageMargins: [28, 28, 28, 32],
+          defaultStyle: { fontSize: 9 },
+          content: [
+            { columns: headerCols, margin: [0, 0, 0, 12] },
+            {
+              table: {
+                headerRows: 1,
+                widths: [20, '*', 78, 82, 38, 56, 60],
+                body
+              },
+              layout: {
+                hLineColor: () => '#cbd5e1',
+                vLineColor: () => '#cbd5e1',
+                paddingLeft: () => 5,
+                paddingRight: () => 5,
+                paddingTop: () => 4,
+                paddingBottom: () => 4
+              }
+            },
+            { text: 'Усі ціни вказані у гривнях за 1 одиницю товару з урахуванням ПДВ.', fontSize: 8, italics: true, color: '#64748b', margin: [0, 10, 0, 0] }
+          ]
+        };
+        window.pdfMake.createPdf(docDef).download('pif-pricelist.pdf');
+        showToast('Прайс-лист PDF завантажено');
+      } catch (err) {
+        showToast('Помилка генерації PDF');
+      }
+    }
+
+    async function downloadXlsx() {
+      try {
+        showToast('Формування Excel прайс-бланка...');
+        if (!window.XLSX) {
+          await loadScript('https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js');
+        }
+        const XLSX = window.XLSX;
+        const aoa = [
+          ['ТМ «ПІФ» — ОФІЦІЙНИЙ ПРАЙС-ЛИСТ ТА БЛАНК ЗАМОВЛЕННЯ (З ПДВ)'],
+          ['ТОВ «Кодимський Райпостач» · м. Одеса, пров. Вознесенський № 3, 65007'],
+          ['Тел./факс: (048) 701-70-29 · Моб./WhatsApp: +380 67 972 05 60 · E-mail: piftm.info@gmail.com'],
+          [],
+          ['Код', 'Найменування товару', 'Фасування', 'Штрих-код', 'Шт в упак.', 'Ціна з ПДВ за 1 шт (грн)', 'Вартість упаковки з ПДВ (грн)', 'Замовлення (упак.)', 'Сума замовлення з ПДВ (грн)']
+        ];
+        const startRow = 6;
+        let r = startRow;
+        state.products.forEach(p => (p.sizes || []).forEach((s, si) => {
+          const pr = parseFloat(s.price) || 0, pq = s.packQty || 1;
+          const cartQ = state.cart[`${p.id}::${si}`] || 0;
+          aoa.push([
+            p.id,
+            p.name,
+            s.label,
+            s.barcode || '',
+            pq,
+            pr,
+            { t: 'n', f: `E${r}*F${r}`, v: +(pr * pq).toFixed(2) },
+            cartQ > 0 ? cartQ : 0,
+            { t: 'n', f: `G${r}*H${r}`, v: +(pr * pq * cartQ).toFixed(2) }
+          ]);
+          r++;
+        }));
+        const endRow = r - 1;
+        aoa.push([
+          '', 'РАЗОМ ЗА ЗАМОВЛЕННЯМ (З ПДВ):', '', '', '', '', '',
+          { t: 'n', f: `SUM(H${startRow}:H${endRow})` },
+          { t: 'n', f: `SUM(I${startRow}:I${endRow})` }
+        ]);
+
+        const ws = XLSX.utils.aoa_to_sheet(aoa);
+        // Force barcode cells (column D) to string format so Excel never shows 4.82E+12
+        for (let rowIdx = startRow; rowIdx <= endRow; rowIdx++) {
+          const cellRef = `D${rowIdx}`;
+          if (ws[cellRef] && ws[cellRef].v) ws[cellRef].t = 's';
+        }
+        ws['!cols'] = [
+          { wch: 7 }, { wch: 46 }, { wch: 24 }, { wch: 16 },
+          { wch: 12 }, { wch: 22 }, { wch: 24 }, { wch: 18 }, { wch: 24 }
+        ];
+        const wb = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(wb, ws, 'Прайс ТМ ПІФ');
+        XLSX.writeFile(wb, 'pif-pricelist-order.xlsx');
+        showToast('Бланк Excel (.xlsx) завантажено');
+      } catch (err) {
+        showToast('Помилка генерації Excel');
+      }
+    }
+
+    function downloadDoc() {
+      const rowsHtml = state.products.map(p => {
+        const sizes = p.sizes || [];
+        const bcs = sizes.map(s => esc(s.barcode || ' ')).join('<br/>');
+        const vols = sizes.map(s => {
+          const l = parseLiters(s.label);
+          return l !== null ? String(l) : esc(s.label);
+        }).join('<br/>');
+        const packs = sizes.map(s => String(s.packQty || 1)).join('<br/>');
+        const prices = sizes.map(s => esc(String(s.price).replace('.', ','))).join('<br/>');
+        return `<tr>
+          <td style="padding:6px 8px;border:1px solid #000;">${esc(p.name)}</td>
+          <td style="padding:6px 8px;border:1px solid #000;text-align:center;">${bcs}</td>
+          <td style="padding:6px 8px;border:1px solid #000;text-align:center;">${vols}</td>
+          <td style="padding:6px 8px;border:1px solid #000;text-align:center;">${packs}</td>
+          <td style="padding:6px 8px;border:1px solid #000;text-align:right;font-weight:bold;">${prices}</td>
+        </tr>`;
+      }).join('');
+
+      const html = `<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40">
+<head><meta charset="utf-8"><title>ТМ ПІФ СПЕЦИФІКАЦІЯ</title></head>
+<body style="font-family:'Times New Roman',serif;font-size:12pt;color:#000;">
+  <h2 style="margin-bottom:4px;">ТМ «ПІФ» СПЕЦИФІКАЦІЯ</h2>
+  <p style="margin-top:0;margin-bottom:12px;font-size:10.5pt;">ТОВ «Кодимський Райпостач» · м. Одеса, пров. Вознесенський № 3, 65007 · Тел.: (048) 701-70-29, +380 67 972 05 60 · E-mail: piftm.info@gmail.com</p>
+  <table style="width:100%;border-collapse:collapse;border:1px solid #000;font-size:11pt;">
+    <thead>
+      <tr style="background:#f1f5f9;font-weight:bold;">
+        <th style="padding:6px 8px;border:1px solid #000;text-align:center;">Назва товару</th>
+        <th style="padding:6px 8px;border:1px solid #000;text-align:center;">Штрих код</th>
+        <th style="padding:6px 8px;border:1px solid #000;text-align:center;">Номінальн. об'єм, л</th>
+        <th style="padding:6px 8px;border:1px solid #000;text-align:center;">Кількість шт. в упак.</th>
+        <th style="padding:6px 8px;border:1px solid #000;text-align:center;">Ціна з ПДВ за 1шт., грн.</th>
+      </tr>
+    </thead>
+    <tbody>${rowsHtml}</tbody>
+  </table>
+</body></html>`;
+
+      const blob = new Blob(['\uFEFF', html], { type: 'application/msword;charset=utf-8' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'pif-specification.doc';
+      a.click();
+      showToast('Специфікацію Word (.doc) завантажено');
+    }
+
     function downloadCsv() {
       const rows = [['Код', 'Категорія', 'Найменування товару', 'Фасування', 'Штрих-код', 'Шт в упаковці', 'Ціна з ПДВ за 1 шт (грн)', 'Сума упаковки з ПДВ (грн)']];
       state.products.forEach(p => (p.sizes || []).forEach(s => {
@@ -743,6 +976,9 @@
     document.getElementById('resetFiltersBtn').addEventListener('click', () => { state.activeCategory = 'all'; state.searchQuery = ''; document.getElementById('searchInput').value = ''; renderAll(); });
     document.getElementById('calcProductSelect').addEventListener('change', updateCalc);
     document.getElementById('calcLitersRange').addEventListener('input', updateCalc);
+    document.getElementById('downloadPdfBtn').addEventListener('click', downloadPdf);
+    document.getElementById('downloadXlsxBtn').addEventListener('click', downloadXlsx);
+    document.getElementById('downloadDocBtn').addEventListener('click', downloadDoc);
     document.getElementById('downloadCsvBtn').addEventListener('click', downloadCsv);
 
     function composeInquiryMessage() {

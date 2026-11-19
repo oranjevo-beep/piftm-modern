@@ -1,8 +1,20 @@
 {
-  "name": "ТМ ПІФ — Побутова та професійна хімія",
-  "short_name": "ТМ ПІФ",
+  "name": "ТМ «ПІФ» — Побутова та професійна хімія від виробника",
+  "short_name": "ТМ «ПІФ»",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#f8fafc",
-  "theme_color": "#339af0"
+  "theme_color": "#1c7ed6",
+  "icons": [
+    {
+      "src": "./images/favicon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "./images/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
 }
