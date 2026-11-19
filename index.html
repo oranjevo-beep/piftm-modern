@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="uk" class="scroll-smooth" data-theme="original-blue">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ТМ «ПІФ» – Побутова та професійна хімія від виробника (з 2005 року)</title>
+  <meta name="description" content="Офіційний каталог і прайс-лист побутової та професійної хімії ТМ «ПІФ» (ТОВ «Кодимський Райпостач», м. Одеса). Фасування від 500 мл до 5 л з ПДВ." />
+  <link rel="manifest" href="./site.webmanifest" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+          colors: {
+            brand: { dark: '#1864ab', 700: '#1c7ed6', 600: '#228be6', 500: '#339af0', 300: '#74c0fc', 200: '#a5d8ff', 100: '#d0ebff', 50: '#e7f5ff' },
+            accent: { gold: '#fab005', amber: '#fd7e14' }
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    body { background: #f8fafc; color: #1c2430; font-family: 'Inter', system-ui, sans-serif; }
+    .hero-gradient { background: linear-gradient(135deg, #1864ab 0%, #1c7ed6 50%, #339af0 100%); }
+    .card-hover { transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease; }
+    .card-hover:hover { transform: translateY(-2px); box-shadow: 0 14px 28px -12px rgba(24,100,171,.18); border-color: #a5d8ff; }
+    .modal-backdrop { background: rgba(15,23,42,.58); backdrop-filter: blur(4px); }
+    .tabular-nums { font-variant-numeric: tabular-nums; }
+  </style>
+</head>
+<body class="min-h-screen antialiased">
+  <div id="toast" class="fixed bottom-5 right-5 z-50 hidden items-center gap-2.5 rounded-xl bg-slate-900 px-4 py-3 text-sm font-medium text-white shadow-xl">
+    <i class="fa-solid fa-circle-check text-emerald-400"></i><span id="toastMessage">Готово</span>
+  </div>
+
+  <header class="sticky top-0 z-40 border-b border-slate-200/80 bg-white/95 backdrop-blur">
+    <div class="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-3 sm:px-6">
+      <button id="brandLogoTrigger" type="button" class="flex shrink-0 items-center gap-2.5 text-left focus:outline-none">
+        <img src="./images/logo-slide.png" alt="ТМ ПІФ" class="h-10 w-auto object-contain" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+        <div class="hidden h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-brand-dark to-brand-500 text-white shadow-sm"><span class="text-sm font-extrabold">ПІФ</span></div>
+        <div class="leading-tight">
+          <div class="text-base font-extrabold tracking-tight text-slate-900">ТМ «ПІФ»</div>
+          <div class="text-[11px] font-medium text-slate-500">Виробник з 2005 р. · Одеса</div>
+        </div>
+      </button>
+      <nav class="hidden items-center gap-6 whitespace-nowrap text-sm font-medium text-slate-600 lg:flex">
+        <a href="#catalog" class="transition hover:text-brand-700">Каталог</a>
+        <a href="#pricelist" class="transition hover:text-brand-700">Прайс-лист</a>
+        <a href="#horeca" class="transition hover:text-brand-700">Опт / HoReCa</a>
+        <a href="#contacts" class="transition hover:text-brand-700">Контакти</a>
+      </nav>
+      <div class="flex shrink-0 items-center gap-2">
+        <button id="openCartBtn" type="button" class="inline-flex items-center gap-1.5 rounded-lg border border-slate-200 bg-white px-3 py-2 text-xs font-semibold text-slate-700 hover:bg-slate-50">
+          <i class="fa-solid fa-box-open text-brand-600"></i><span class="hidden sm:inline">Замовлення</span>
+          <span id="cartBadge" class="inline-flex h-5 min-w-[20px] items-center justify-center rounded-full bg-brand-600 px-1.5 text-[11px] font-bold text-white tabular-nums">0</span>
+        </button>
+        <a href="https://api.whatsapp.com/send?phone=380679720560" target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex items-center gap-1.5 whitespace-nowrap rounded-lg bg-emerald-600 px-3 py-2 text-xs font-bold text-white shadow-sm hover:bg-emerald-700">
+          <i class="fa-brands fa-whatsapp text-sm"></i><span class="hidden md:inline">WhatsApp</span>
+        </a>
+        <a href="tel:+380679720560" class="inline-flex items-center gap-1.5 whitespace-nowrap rounded-lg bg-brand-700 px-3.5 py-2 text-xs font-bold text-white shadow-sm hover:bg-brand-dark tabular-nums">
+          <i class="fa-solid fa-phone"></i><span class="hidden md:inline">+380 67 972 05 60</span><span class="md:hidden">Дзвінок</span>
+        </a>
+        <button id="mobileMenuBtn" type="button" aria-label="Меню" class="flex h-9 w-9 items-center justify-center rounded-lg border border-slate-200 text-slate-600 hover:bg-slate-50 lg:hidden"><i class="fa-solid fa-bars"></i></button>
+      </div>
+    </div>
+    <div id="mobileNav" class="hidden border-t border-slate-100 bg-white px-4 py-3 lg:hidden">
+      <div class="flex flex-wrap gap-3 text-sm font-semibold text-slate-700">
+        <a href="#catalog" class="rounded-lg bg-slate-50 px-3 py-1.5 hover:bg-brand-50 hover:text-brand-700">Каталог</a>
+        <a href="#pricelist" class="rounded-lg bg-slate-50 px-3 py-1.5 hover:bg-brand-50 hover:text-brand-700">Прайс-лист</a>
+        <a href="#horeca" class="rounded-lg bg-slate-50 px-3 py-1.5 hover:bg-brand-50 hover:text-brand-700">Опт / HoReCa</a>
+        <a href="#contacts" class="rounded-lg bg-slate-50 px-3 py-1.5 hover:bg-brand-50 hover:text-brand-700">Контакти</a>
+      </div>
+    </div>
+  </header>
+
+  <section id="top" class="hero-gradient text-white">
+    <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:py-16">
+      <div class="grid items-center gap-8 lg:grid-cols-12">
+        <div class="lg:col-span-7">
+          <div class="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/15 px-3.5 py-1.5 text-xs font-semibold text-white">
+            <span class="h-2 w-2 rounded-full bg-accent-gold"></span><span>ТОВ «Кодимський Райпостач» · м. Одеса · з 2005 року</span>
+          </div>
+          <h1 class="mt-4 text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-5xl">Побутова та професійна хімія <span class="text-brand-100">ТМ «ПІФ»</span></h1>
+          <p class="mt-4 max-w-2xl text-base leading-relaxed text-blue-50 sm:text-lg">Прямі поставки мийних і чистячих засобів від українського виробника для HoReCa, клінінгу, торгівельних мереж та дому. Фасування від 500 мл до каністр 5 л — усі ціни вказані з ПДВ.</p>
+          <div class="mt-7 flex flex-wrap items-center gap-3">
+            <a href="#catalog" class="inline-flex items-center gap-2 rounded-xl bg-white px-5 py-3 text-sm font-bold text-brand-dark shadow-md hover:bg-brand-50"><i class="fa-solid fa-layer-group"></i><span>Переглянути каталог</span></a>
+            <a href="#pricelist" class="inline-flex items-center gap-2 rounded-xl border border-white/35 bg-white/10 px-5 py-3 text-sm font-semibold text-white hover:bg-white/20"><i class="fa-solid fa-table-list"></i><span>Прайс-лист (з ПДВ)</span></a>
+          </div>
+        </div>
+        <div class="lg:col-span-5">
+          <div class="rounded-2xl border border-white/20 bg-white p-5 text-slate-900 shadow-xl">
+            <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+              <span class="text-xs font-bold uppercase tracking-wider text-brand-dark">Офіційний прайс виробника</span>
+              <span class="rounded-full bg-emerald-50 px-2.5 py-0.5 text-xs font-bold text-emerald-700">Ціни з ПДВ</span>
+            </div>
+            <div class="mt-4 grid grid-cols-2 gap-3">
+              <div class="rounded-xl bg-brand-50/70 p-3.5"><div class="text-2xl font-extrabold text-brand-dark tabular-nums" id="heroMinPrice">від 30.90 грн</div><div class="mt-0.5 text-xs font-medium text-slate-600">Пряма ціна заводу</div></div>
+              <div class="rounded-xl bg-brand-50/70 p-3.5"><div class="text-2xl font-extrabold text-brand-dark tabular-nums" id="heroProductCount">12</div><div class="mt-0.5 text-xs font-medium text-slate-600">Лінійок засобів</div></div>
+              <div class="rounded-xl bg-slate-50 p-3.5"><div class="text-2xl font-extrabold text-slate-900">0.5 л – 5 л</div><div class="mt-0.5 text-xs font-medium text-slate-600">Роздріб і проф. тара</div></div>
+              <div class="rounded-xl bg-slate-50 p-3.5"><div class="text-2xl font-extrabold text-slate-900">З 2005 р.</div><div class="mt-0.5 text-xs font-medium text-slate-600">Власне виробництво</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main id="catalog" class="mx-auto max-w-7xl px-4 py-10 sm:px-6">
+    <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+      <div>
+        <h2 class="text-2xl font-extrabold tracking-tight text-slate-900 sm:text-3xl">Каталог продукції</h2>
+        <p class="mt-1 text-sm text-slate-500">Оберіть потрібне фасування та додайте упаковки до замовлення</p>
+      </div>
+      <div class="flex flex-wrap items-center gap-2">
+        <div class="relative w-full sm:w-72">
+          <i class="fa-solid fa-magnifying-glass pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-sm text-slate-400"></i>
+          <input id="searchInput" type="text" placeholder="Пошук товару або штрих-коду..." class="w-full rounded-xl border border-slate-200 bg-white py-2.5 pl-10 pr-4 text-sm text-slate-800 shadow-sm outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-100" />
+        </div>
+        <div class="inline-flex rounded-xl border border-slate-200 bg-white p-1 shadow-sm">
+          <button id="viewCardsBtn" type="button" class="rounded-lg bg-brand-700 px-3 py-1.5 text-xs font-semibold text-white">Картки</button>
+          <button id="viewTableBtn" type="button" class="rounded-lg px-3 py-1.5 text-xs font-semibold text-slate-600 hover:text-brand-700">Таблиця</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="categoryBar" class="mt-5 flex flex-wrap gap-2"></div>
+    <div id="productGrid" class="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3"></div>
+    <div id="emptyState" class="mt-8 hidden rounded-2xl border border-dashed border-slate-300 bg-white p-10 text-center">
+      <p class="text-base font-semibold text-slate-700">За вашим запитом товарів не знайдено</p>
+      <button id="resetFiltersBtn" type="button" class="mt-3 rounded-lg bg-brand-700 px-4 py-2 text-xs font-semibold text-white hover:bg-brand-dark">Показати всі товари</button>
+    </div>
+
+    <div id="pricelist" class="mt-12">
+      <div class="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-brand-600">Оптова та роздрібна комплектація</span>
+          <h2 class="mt-1 text-2xl font-extrabold tracking-tight text-slate-900">Прайс-лист продукції (з ПДВ, грн)</h2>
+          <p class="mt-0.5 text-xs text-slate-500">Ціна вказана за 1 одиницю товару з урахуванням ПДВ</p>
+        </div>
+        <button id="downloadCsvBtn" type="button" class="inline-flex items-center gap-1.5 self-start sm:self-auto rounded-xl border border-slate-200 bg-white px-3.5 py-2 text-xs font-semibold text-slate-700 shadow-sm hover:border-brand-300 hover:text-brand-700">
+          <i class="fa-solid fa-file-arrow-down text-brand-600"></i><span>Завантажити прайс (CSV)</span>
+        </button>
+      </div>
+      <div class="mt-4 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+        <div class="overflow-x-auto">
+          <table class="min-w-full divide-y divide-slate-200 text-left text-sm">
+            <thead class="bg-slate-50 text-xs font-bold uppercase tracking-wider text-slate-500">
+              <tr>
+                <th class="px-4 py-3.5">Найменування товару</th>
+                <th class="px-4 py-3.5">Фасування</th>
+                <th class="px-4 py-3.5">Штрих-код</th>
+                <th class="px-4 py-3.5 text-center">Шт/упак</th>
+                <th class="px-4 py-3.5 text-right">Ціна за 1 шт, грн</th>
+                <th class="px-4 py-3.5 text-right">Сума упаковки</th>
+                <th class="px-4 py-3.5 text-right">Замовлення</th>
+              </tr>
+            </thead>
+            <tbody id="priceTableBody" class="divide-y divide-slate-100 bg-white tabular-nums"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <section id="horeca" class="mt-16 rounded-2xl bg-gradient-to-br from-brand-dark to-brand-600 p-6 text-white shadow-lg sm:p-8">
+      <div class="grid items-center gap-8 lg:grid-cols-12">
+        <div class="lg:col-span-6">
+          <span class="inline-block rounded-full bg-white/15 px-3 py-1 text-xs font-bold uppercase tracking-wider text-brand-100">Опт · HoReCa · Private Label</span>
+          <h2 class="mt-3 text-2xl font-extrabold sm:text-3xl">Економія на професійній тарі 5 л</h2>
+          <p class="mt-2 text-sm leading-relaxed text-blue-100">Перехід із дрібного фасування на каністри 5 л суттєво знижує вартість літра засобу для ресторанів, готелів, клінінгових компаній та підприємств. Також виготовляємо продукцію під власною торговою маркою замовника (СТМ / Private Label, зокрема досвід виробництва для ТМ «КОПІЙКА»).</p>
+          <div class="mt-5 space-y-4">
+            <div>
+              <label for="calcProductSelect" class="block text-xs font-semibold text-blue-100">Оберіть засіб для порівняння:</label>
+              <select id="calcProductSelect" class="mt-1.5 w-full rounded-xl border border-white/25 bg-white px-3.5 py-2.5 text-sm font-semibold text-slate-900"></select>
+            </div>
+            <div>
+              <div class="flex items-center justify-between text-xs font-semibold text-blue-100">
+                <label for="calcLitersRange">Місячна потреба закладу:</label>
+                <span id="calcLitersVal" class="rounded-md bg-white/20 px-2 py-0.5 font-bold text-white tabular-nums">50 л / міс</span>
+              </div>
+              <input id="calcLitersRange" type="range" min="10" max="300" step="5" value="50" class="mt-2 w-full accent-amber-400 cursor-pointer" />
+            </div>
+          </div>
+        </div>
+        <div class="lg:col-span-6">
+          <div class="rounded-2xl bg-white p-6 text-slate-900 shadow-xl">
+            <div class="text-xs font-bold uppercase tracking-wider text-slate-500">Ваша економія за рік (каністри 5 л)</div>
+            <div id="calcAnnualSavings" class="mt-2 text-4xl font-extrabold text-brand-dark tabular-nums">13 800 грн</div>
+            <div id="calcDetails" class="mt-2 text-xs text-slate-600 tabular-nums">Дрібна тара: 69.00 грн/л → Каністра 5 л: 46.00 грн/л (економія 33.3%)</div>
+            <div class="mt-5 flex flex-wrap gap-2.5">
+              <a href="#contacts" class="inline-flex items-center gap-2 rounded-xl bg-brand-700 px-5 py-3 text-sm font-bold text-white shadow-sm hover:bg-brand-dark"><span>Замовити оптовий прайс</span><i class="fa-solid fa-arrow-right"></i></a>
+              <a href="https://api.whatsapp.com/send?phone=380679720560" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm font-bold text-emerald-800 hover:bg-emerald-100"><i class="fa-brands fa-whatsapp text-emerald-600 text-base"></i><span>Написати у WhatsApp</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacts" class="mt-16 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+      <div class="grid gap-8 lg:grid-cols-12">
+        <div class="lg:col-span-5">
+          <span class="text-xs font-bold uppercase tracking-wider text-brand-600">Контакти виробника</span>
+          <h2 class="mt-1 text-2xl font-extrabold text-slate-900">Відділ продажу та виробництво</h2>
+          <p class="mt-2 text-sm text-slate-600">ТОВ «Кодимський Райпостач» (ТМ «ПІФ»). Відвантаження зі складу в Одесі та доставка по Україні (Нова Пошта, Делівері, самовивіз).</p>
+          <div class="mt-5 space-y-3 text-sm">
+            <div class="flex items-center gap-3 rounded-xl border border-slate-200 px-4 py-3">
+              <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-brand-50 text-brand-700"><i class="fa-solid fa-location-dot"></i></span>
+              <div>
+                <div class="text-xs text-slate-500">Адреса виробництва та складу</div>
+                <div class="font-bold text-slate-900">пров. Вознесенський № 3, м. Одеса, 65007</div>
+              </div>
+            </div>
+            <a href="tel:+380487017029" class="flex items-center gap-3 rounded-xl border border-slate-200 px-4 py-3 hover:border-brand-300">
+              <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-brand-50 text-brand-700"><i class="fa-solid fa-phone"></i></span>
+              <div>
+                <div class="text-xs text-slate-500">Тел. / факс (Одеса)</div>
+                <div class="font-bold text-slate-900 tabular-nums">(048) 701-70-29</div>
+              </div>
+            </a>
+            <a href="tel:+380679720560" class="flex items-center gap-3 rounded-xl border border-slate-200 px-4 py-3 hover:border-brand-300">
+              <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-brand-50 text-brand-700"><i class="fa-solid fa-mobile-screen-button"></i></span>
+              <div>
+                <div class="text-xs text-slate-500">Мобільний / WhatsApp</div>
+                <div class="font-bold text-slate-900 tabular-nums">+380 67 972 05 60</div>
+              </div>
+            </a>
+            <a href="mailto:piftm.info@gmail.com" class="flex items-center gap-3 rounded-xl border border-slate-200 px-4 py-3 hover:border-brand-300">
+              <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-brand-50 text-brand-700"><i class="fa-solid fa-envelope"></i></span>
+              <div>
+                <div class="text-xs text-slate-500">E-mail</div>
+                <div class="font-bold text-slate-900">piftm.info@gmail.com</div>
+              </div>
+            </a>
+          </div>
+        </div>
+        <form id="inquiryForm" class="space-y-4 rounded-2xl bg-slate-50 p-5 sm:p-6 lg:col-span-7">
+          <div>
+            <h3 class="text-base font-extrabold text-slate-900">Швидке замовлення або запит на оптовий прайс</h3>
+            <p class="mt-0.5 text-xs text-slate-500">Якщо ви вже додали товари у кошик, вони автоматично додадуться до вашого повідомлення.</p>
+          </div>
+          <div class="grid gap-3 sm:grid-cols-2">
+            <div>
+              <label for="inqName" class="block text-xs font-semibold text-slate-600">Ваше ім'я або компанія *</label>
+              <input id="inqName" type="text" required placeholder="Напр.: Олександр / ТОВ Чистий Дім" class="mt-1 w-full rounded-xl border border-slate-200 bg-white px-3.5 py-2.5 text-sm outline-none focus:border-brand-500" />
+            </div>
+            <div>
+              <label for="inqPhone" class="block text-xs font-semibold text-slate-600">Телефон для зв'язку *</label>
+              <input id="inqPhone" type="tel" required placeholder="+380 (__) ___ __ __" class="mt-1 w-full rounded-xl border border-slate-200 bg-white px-3.5 py-2.5 text-sm outline-none focus:border-brand-500" />
+            </div>
+          </div>
+          <div>
+            <label for="inqDelivery" class="block text-xs font-semibold text-slate-600">Місто, спосіб доставки або коментар</label>
+            <input id="inqDelivery" type="text" placeholder="Напр.: Одеса, Київ, Нова Пошта, Делівері, самовивіз" class="mt-1 w-full rounded-xl border border-slate-200 bg-white px-3.5 py-2.5 text-sm outline-none focus:border-brand-500" />
+          </div>
+          <div class="flex flex-wrap items-center gap-2.5 pt-1">
+            <button type="submit" class="inline-flex items-center gap-2 rounded-xl bg-emerald-600 px-5 py-2.5 text-sm font-bold text-white shadow-sm hover:bg-emerald-700">
+              <i class="fa-brands fa-whatsapp text-base"></i><span>Надіслати у WhatsApp</span>
+            </button>
+            <button id="inqEmailBtn" type="button" class="inline-flex items-center gap-2 rounded-xl bg-brand-700 px-5 py-2.5 text-sm font-bold text-white shadow-sm hover:bg-brand-dark">
+              <i class="fa-regular fa-envelope"></i><span>Надіслати на E-mail</span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="mt-12 border-t border-slate-200 bg-white py-6 text-center text-xs text-slate-500">
+    © 2005–2026 ТМ «ПІФ» · ТОВ «Кодимський Райпостач» (м. Одеса, пров. Вознесенський № 3) · Зроблено в Україні 🇺🇦
+  </footer>
+
+  <div id="productModal" class="modal-backdrop fixed inset-0 z-50 hidden items-center justify-center p-4">
+    <div class="relative max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-2xl bg-white p-6 shadow-2xl">
+      <button id="closeProductModal" type="button" class="absolute right-4 top-4 flex h-9 w-9 items-center justify-center rounded-full bg-slate-100 text-slate-500 hover:bg-slate-200"><i class="fa-solid fa-xmark"></i></button>
+      <div id="productModalContent"></div>
+    </div>
+  </div>
+
+  <div id="cartModal" class="modal-backdrop fixed inset-0 z-50 hidden items-center justify-end">
+    <div class="flex h-full w-full max-w-md flex-col bg-white shadow-2xl">
+      <div class="flex items-center justify-between border-b border-slate-200 px-5 py-4">
+        <div>
+          <h3 class="text-base font-extrabold text-slate-900">Ваше замовлення</h3>
+          <p class="text-xs text-slate-500">Розрахунок за упаковками (ціни з ПДВ)</p>
+        </div>
+        <button id="closeCartModal" type="button" class="flex h-8 w-8 items-center justify-center rounded-lg bg-slate-100 text-slate-500 hover:bg-slate-200"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div id="cartItems" class="flex-1 space-y-3 overflow-y-auto p-5"></div>
+      <div class="border-t border-slate-200 bg-slate-50 p-5">
+        <div class="flex items-center justify-between text-xs text-slate-600"><span>Всього упаковок / одиниць:</span><strong id="cartSummaryUnits" class="tabular-nums">0 упак. (0 шт.)</strong></div>
+        <div class="mt-2 flex items-center justify-between text-base font-extrabold text-slate-900"><span>Разом з ПДВ:</span><span id="cartTotalPrice" class="text-brand-dark tabular-nums">0.00 грн</span></div>
+        <div class="mt-4 grid grid-cols-2 gap-2">
+          <button id="cartWhatsappBtn" type="button" class="inline-flex items-center justify-center gap-1.5 rounded-xl bg-emerald-600 px-3 py-2.5 text-xs font-bold text-white hover:bg-emerald-700"><i class="fa-brands fa-whatsapp text-sm"></i><span>У WhatsApp</span></button>
+          <button id="cartEmailBtn" type="button" class="inline-flex items-center justify-center gap-1.5 rounded-xl bg-brand-700 px-3 py-2.5 text-xs font-bold text-white hover:bg-brand-dark"><i class="fa-regular fa-envelope"></i><span>На E-mail</span></button>
+        </div>
+        <div class="mt-2 flex gap-2">
+          <button id="clearCartBtn" type="button" class="rounded-xl border border-slate-200 bg-white px-3.5 py-2 text-xs font-semibold text-slate-600 hover:bg-slate-100">Очистити</button>
+          <button id="copyOrderBtn" type="button" class="flex-1 rounded-xl border border-slate-200 bg-white px-4 py-2 text-xs font-semibold text-slate-700 hover:bg-slate-100"><i class="fa-regular fa-copy mr-1.5"></i>Скопіювати список</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Admin Price Editor (5 clicks on logo, Ctrl+Shift+E, or #admin / ?admin=1) -->
+  <div id="editorModal" class="modal-backdrop fixed inset-0 z-50 hidden items-center justify-center p-4">
+    <div class="flex max-h-[92vh] w-full max-w-4xl flex-col overflow-hidden rounded-2xl bg-white shadow-2xl">
+      <div class="flex items-center justify-between gap-3 bg-slate-900 px-6 py-4 text-white">
+        <div>
+          <div class="flex items-center gap-2"><span class="rounded bg-amber-400 px-2 py-0.5 text-[10px] font-extrabold uppercase text-slate-900">Admin</span><h3 class="text-base font-extrabold">Редактор цін каталогу · products.json</h3></div>
+          <p class="mt-0.5 text-xs text-slate-300">Завантаження оновленого файлу або пряма публікація на GitHub</p>
+        </div>
+        <button id="closeEditorModal" type="button" class="flex h-8 w-8 items-center justify-center rounded-lg bg-white/10 text-white hover:bg-white/20"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-200 bg-slate-50 px-6 py-3">
+        <div class="flex flex-wrap items-center gap-1.5">
+          <span class="mr-1 text-xs font-semibold text-slate-500">Індексація:</span>
+          <button type="button" data-bulk-pct="-5" class="rounded-lg border border-slate-200 bg-white px-2.5 py-1 text-xs font-bold">-5%</button>
+          <button type="button" data-bulk-pct="5" class="rounded-lg border border-slate-200 bg-white px-2.5 py-1 text-xs font-bold">+5%</button>
+          <button type="button" data-bulk-pct="10" class="rounded-lg border border-slate-200 bg-white px-2.5 py-1 text-xs font-bold">+10%</button>
+          <button id="resetPricesBtn" type="button" class="ml-1 rounded-lg border border-slate-200 bg-white px-2.5 py-1 text-xs font-semibold text-slate-600"><i class="fa-solid fa-rotate-left mr-1"></i>Перезавантажити з сервера</button>
+        </div>
+        <div class="flex flex-wrap items-center gap-2">
+          <button id="editorCopyJsonBtn" type="button" class="rounded-lg border border-brand-200 bg-brand-50 px-3 py-1.5 text-xs font-semibold text-brand-dark">Копіювати JSON</button>
+          <button id="editorDownloadJsonBtn" type="button" class="rounded-lg bg-brand-700 px-3 py-1.5 text-xs font-semibold text-white">Завантажити products.json</button>
+        </div>
+      </div>
+      <div id="editorList" class="flex-1 space-y-3 overflow-y-auto p-6"></div>
+      <div class="border-t border-slate-200 bg-slate-50 px-6 py-3.5">
+        <div class="flex flex-wrap items-center gap-2">
+          <input id="ghTokenInput" type="password" placeholder="GitHub Fine-Grained Token (зберігається лише у вашому браузері)" class="min-w-[240px] flex-1 rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-xs" />
+          <button id="ghPublishBtn" type="button" class="rounded-lg bg-emerald-600 px-3.5 py-1.5 text-xs font-bold text-white hover:bg-emerald-700"><i class="fa-brands fa-github mr-1"></i>Опублікувати на сайт (GitHub)</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const DEFAULT_OWNER = 'oranjevo-beep', DEFAULT_REPO = 'piftm-modern', FILE_PATH = 'products.json';
+    const TOKEN_KEY = 'pif-gh-pat-v1';
+    const CATEGORIES = [
+      { key: 'all', label: 'Усі засоби', icon: 'fa-layer-group' },
+      { key: 'degreaser', label: 'Антижир', icon: 'fa-fire-flame-curved' },
+      { key: 'bath', label: 'Ванна і туалет', icon: 'fa-bath' },
+      { key: 'pipes', label: 'Труби', icon: 'fa-faucet-drip' },
+      { key: 'floors', label: 'Підлога', icon: 'fa-broom' },
+      { key: 'glass', label: 'Скло', icon: 'fa-sparkles' },
+      { key: 'dishes', label: 'Посуд', icon: 'fa-plate-wheat' },
+      { key: 'soap', label: 'Рідке мило', icon: 'fa-pump-soap' }
+    ];
+
+    const FALLBACK_PRODUCTS = [
+      {
+        "id": "p01",
+        "name": "Засіб для видалення жиру, нагару та кіптяви",
+        "image": "./images/product-3.webp",
+        "sizes": [
+          { "label": "500 мл", "price": "34.50", "packQty": 8, "barcode": "4820110620341" },
+          { "label": "5 л", "price": "230.00", "packQty": 1, "barcode": "4820110620570" }
+        ],
+        "description": "Видаляє застарілий жир, кіптяву та нагар з кухонних плит, духовок, грилів, витяжок, фритюрниць та кухонного начиння. Не застосовувати для алюмінієвих, емальованих, скляних та лакофарбових поверхонь.",
+        "categoryKey": "degreaser",
+        "shortCategory": "Антижир"
+      },
+      {
+        "id": "p02",
+        "name": "Засіб для ванних кімнат, душових кабін та кранів",
+        "image": "./images/product-2.webp",
+        "sizes": [
+          { "label": "500 мл (з розпилювачем)", "price": "35.90", "packQty": 18, "barcode": "" },
+          { "label": "5 л", "price": "210.00", "packQty": 1, "barcode": "" }
+        ],
+        "description": "Очищає від вапняного та мильного нальоту, іржі й водного каменю акрилові, емальовані, керамічні, хромовані та скляні поверхні.",
+        "categoryKey": "bath",
+        "shortCategory": "Ванна і туалет"
+      },
+      {
+        "id": "p03",
+        "name": "Гель для миття унітазів «Каченя»",
+        "image": "./images/product-1.webp",
+        "sizes": [
+          { "label": "750 мл", "price": "48.80", "packQty": 16, "barcode": "4820110620426" },
+          { "label": "5 л", "price": "239.00", "packQty": 1, "barcode": "" }
+        ],
+        "description": "Гелеподібний засіб для очищення унітазів, раковин та керамічних поверхонь. Ефективно усуває іржу, вапняний наліт і неприємний запах.",
+        "categoryKey": "bath",
+        "shortCategory": "Ванна і туалет"
+      },
+      {
+        "id": "p04",
+        "name": "Засіб для очищення труб та сифонів",
+        "image": "./images/product-15.webp",
+        "sizes": [
+          { "label": "1 л", "price": "54.40", "packQty": 10, "barcode": "4820110620334" },
+          { "label": "5 л", "price": "230.00", "packQty": 1, "barcode": "4820110620563" }
+        ],
+        "description": "Ефективно розчиняє жирові й білкові відкладення, волосся та залишки їжі в каналізаційних трубах і сифонах, усуває стійкі запахи.",
+        "categoryKey": "pipes",
+        "shortCategory": "Труби"
+      },
+      {
+        "id": "p05",
+        "name": "Засіб для миття підлоги та водостійких поверхонь",
+        "image": "./images/product-16.webp",
+        "sizes": [
+          { "label": "1 л", "price": "61.50", "packQty": 10, "barcode": "4820110620365" },
+          { "label": "5 л", "price": "166.00", "packQty": 1, "barcode": "4820110620556" }
+        ],
+        "description": "Для щоденного та генерального миття лінолеуму, мармуру, наливної підлоги, керамічної плитки та інших поверхонь у побуті й професійному клінінгу.",
+        "categoryKey": "floors",
+        "shortCategory": "Підлога"
+      },
+      {
+        "id": "p06",
+        "name": "Засіб для миття скла та дзеркал",
+        "image": "./images/product-7.webp",
+        "sizes": [
+          { "label": "500 мл (з розпилювачем)", "price": "35.90", "packQty": 18, "barcode": "" },
+          { "label": "500 мл (без розпилювача)", "price": "30.90", "packQty": 18, "barcode": "" },
+          { "label": "5 л", "price": "162.00", "packQty": 1, "barcode": "" }
+        ],
+        "description": "Очищає віконне, вітринне та автомобільне скло, дзеркала, кахель, хромовані та нержавіючі поверхні без смуг і розводів.",
+        "categoryKey": "glass",
+        "shortCategory": "Скло"
+      },
+      {
+        "id": "p07",
+        "name": "Засіб для миття посуду «Лимон»",
+        "image": "./images/product-8.webp",
+        "sizes": [
+          { "label": "1 л", "price": "43.00", "packQty": 10, "barcode": "4820110620198" },
+          { "label": "5 л", "price": "196.00", "packQty": 1, "barcode": "" }
+        ],
+        "description": "Густий засіб з ароматом лимона для миття всіх видів посуду, кухонного інвентарю та робочих поверхонь у закладах громадського харчування й побуті.",
+        "categoryKey": "dishes",
+        "shortCategory": "Посуд"
+      },
+      {
+        "id": "p08",
+        "name": "Засіб для миття посуду «Яблуко»",
+        "image": "./images/product-4.webp",
+        "sizes": [
+          { "label": "1 л", "price": "43.00", "packQty": 10, "barcode": "4820110620204" },
+          { "label": "5 л", "price": "196.00", "packQty": 1, "barcode": "" }
+        ],
+        "description": "Густий засіб із ароматом яблука для миття посуду й кухонного обладнання в побуті, кафе, ресторанах, їдальнях та харчовій галузі.",
+        "categoryKey": "dishes",
+        "shortCategory": "Посуд"
+      },
+      {
+        "id": "p09",
+        "name": "Засіб для миття посуду «Економ»",
+        "image": "./images/product-12.webp",
+        "sizes": [
+          { "label": "5 л (економ)", "price": "80.00", "packQty": 1, "barcode": "" }
+        ],
+        "description": "Економічна серія у каністрі 5 л для закладів громадського харчування, виробничих кухонь та господарських потреб із великим обсягом миття.",
+        "categoryKey": "dishes",
+        "shortCategory": "Посуд"
+      },
+      {
+        "id": "p10",
+        "name": "Рідке мило м'яке «Жожоба і гліцерин» (рожеве)",
+        "image": "./images/product-14.webp",
+        "sizes": [
+          { "label": "5 л", "price": "196.00", "packQty": 1, "barcode": "4820110620600" }
+        ],
+        "description": "М'яке рідке мило з маслом жожоба та гліцерином у каністрі 5 л для наливних диспенсерів і дозаторів. Дбайливо очищає шкіру рук та зменшує сухість.",
+        "categoryKey": "soap",
+        "shortCategory": "Рідке мило"
+      },
+      {
+        "id": "p11",
+        "name": "Рідке мило «Алое віра і гліцерин» (блакитне)",
+        "image": "./images/product-13.webp",
+        "sizes": [
+          { "label": "5 л", "price": "196.00", "packQty": 1, "barcode": "4820110620594" }
+        ],
+        "description": "Рідке мило з екстрактом алое віра та гліцерином для щоденного гігієнічного миття рук в офісах, закладах HoReCa, установах та вдома.",
+        "categoryKey": "soap",
+        "shortCategory": "Рідке мило"
+      },
+      {
+        "id": "p12",
+        "name": "Рідке мило для рук (з дозатором / Економ)",
+        "image": "./images/product-6.webp",
+        "sizes": [
+          { "label": "500 мл (4 види, з дозатором)", "price": "35.00", "packQty": 6, "barcode": "" },
+          { "label": "5 л (економ)", "price": "80.00", "packQty": 1, "barcode": "" }
+        ],
+        "description": "Рідке мило для щоденного використання у флаконах 0.5 л зі зручним дозатором (4 аромати в асортименті) або в економічній каністрі 5 л.",
+        "categoryKey": "soap",
+        "shortCategory": "Рідке мило"
+      }
+    ];
+
+    const state = { products: [], activeCategory: 'all', searchQuery: '', viewMode: 'cards', cart: {} };
+
+    function detectGitHubRepo() {
+      const host = location.hostname || '';
+      if (host.endsWith('.github.io')) {
+        const owner = host.replace('.github.io', '');
+        const seg = (location.pathname || '').split('/').filter(Boolean)[0];
+        if (owner && seg) return { owner, repo: seg };
+      }
+      return { owner: DEFAULT_OWNER, repo: DEFAULT_REPO };
+    }
+
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      document.getElementById('toastMessage').textContent = msg;
+      t.classList.remove('hidden'); t.classList.add('flex');
+      clearTimeout(window.__t); window.__t = setTimeout(() => { t.classList.add('hidden'); t.classList.remove('flex'); }, 3000);
+    }
+    const esc = s => String(s ?? '').replace(/[&<>"']/g, m => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[m]));
+    const catIcon = k => (CATEGORIES.find(c => c.key === k) || {}).icon || 'fa-flask';
+    const exportJson = () => JSON.stringify(state.products, null, 2);
+
+    function parseLiters(label) {
+      const s = String(label || '').toLowerCase().replace(',', '.');
+      const ml = s.match(/(\d+(?:\.\d+)?)\s*мл/);
+      if (ml) return parseFloat(ml[1]) / 1000;
+      const l = s.match(/(\d+(?:\.\d+)?)\s*л/);
+      if (l) return parseFloat(l[1]);
+      return null;
+    }
+
+    function copyText(text, msg) {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(() => showToast(msg)).catch(() => fallbackCopy(text, msg));
+      } else fallbackCopy(text, msg);
+    }
+    function fallbackCopy(text, msg) {
+      const ta = document.createElement('textarea'); ta.value = text; ta.style.cssText = 'position:fixed;opacity:0';
+      document.body.appendChild(ta); ta.select();
+      try { document.execCommand('copy'); showToast(msg); } catch (e) {}
+      document.body.removeChild(ta);
+    }
+
+    async function loadProductsFromServer() {
+      try {
+        const res = await fetch('./products.json?t=' + Date.now());
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        state.products = await res.json();
+      } catch (e) {
+        state.products = JSON.parse(JSON.stringify(FALLBACK_PRODUCTS));
+      }
+      populateCalcOptions();
+      renderAll();
+    }
+
+    function filtered() {
+      const q = state.searchQuery.trim().toLowerCase();
+      return state.products.filter(p => {
+        if (state.activeCategory !== 'all' && p.categoryKey !== state.activeCategory) return false;
+        if (!q) return true;
+        const bc = (p.sizes || []).map(s => s.barcode || '').join(' ');
+        return p.name.toLowerCase().includes(q) || (p.description || '').toLowerCase().includes(q) || (p.shortCategory || '').toLowerCase().includes(q) || bc.includes(q);
+      });
+    }
+
+    function renderAll() {
+      let minP = Infinity;
+      state.products.forEach(p => (p.sizes || []).forEach(s => { const v = parseFloat(s.price); if (!isNaN(v) && v < minP) minP = v; }));
+      document.getElementById('heroMinPrice').textContent = isFinite(minP) ? `від ${minP.toFixed(2)} грн` : '—';
+      document.getElementById('heroProductCount').textContent = state.products.length;
+
+      document.getElementById('categoryBar').innerHTML = CATEGORIES.map(c => {
+        const cnt = c.key === 'all' ? state.products.length : state.products.filter(p => p.categoryKey === c.key).length;
+        const a = state.activeCategory === c.key;
+        return `<button type="button" data-cat="${c.key}" class="inline-flex items-center gap-1.5 rounded-full px-3.5 py-2 text-xs font-semibold transition ${a ? 'bg-brand-700 text-white shadow-sm' : 'border border-slate-200 bg-white text-slate-600 hover:border-brand-300 hover:text-brand-700'}"><i class="fa-solid ${c.icon}"></i><span>${esc(c.label)}</span><span class="rounded-full px-1.5 py-0.5 text-[10px] ${a ? 'bg-white/20 text-white' : 'bg-slate-100 text-slate-500'}">${cnt}</span></button>`;
+      }).join('');
+
+      const items = filtered();
+      const grid = document.getElementById('productGrid'), empty = document.getElementById('emptyState');
+      grid.classList.toggle('hidden', state.viewMode === 'table');
+      empty.classList.toggle('hidden', items.length > 0);
+
+      grid.innerHTML = items.map(p => `
+        <article class="card-hover flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white">
+          <div class="relative flex h-48 cursor-pointer items-center justify-center bg-white p-4" data-open-product="${p.id}">
+            <img src="${esc(p.image)}" alt="${esc(p.name)}" class="max-h-40 w-auto max-w-full object-contain" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+            <div class="hidden h-24 w-24 items-center justify-center rounded-2xl bg-brand-50 text-brand-dark"><i class="fa-solid ${catIcon(p.categoryKey)} text-3xl"></i></div>
+            <span class="absolute left-3 top-3 rounded-full border border-brand-100 bg-brand-50 px-2.5 py-1 text-[11px] font-bold text-brand-dark">${esc(p.shortCategory)}</span>
+          </div>
+          <div class="flex flex-1 flex-col border-t border-slate-100 p-4">
+            <h3 class="cursor-pointer text-sm font-bold leading-snug text-slate-900 hover:text-brand-700" data-open-product="${p.id}">${esc(p.name)}</h3>
+            <p class="mt-1.5 line-clamp-2 text-xs leading-relaxed text-slate-500">${esc(p.description)}</p>
+            <div class="mt-4 space-y-2">${(p.sizes || []).map((s, i) => {
+              const k = `${p.id}::${i}`, q = state.cart[k] || 0;
+              return `<div class="flex items-center justify-between gap-2 rounded-xl bg-slate-50 px-3 py-2"><div class="min-w-0"><div class="text-xs font-semibold text-slate-800">${esc(s.label)}</div><div class="text-[11px] text-slate-500">${s.packQty || 1} шт/упак${s.barcode ? ' · ' + esc(s.barcode) : ''}</div></div><div class="flex shrink-0 items-center gap-2"><span class="text-sm font-extrabold text-brand-dark tabular-nums">${esc(s.price)} грн</span><button type="button" data-add-cart="${k}" title="Додати упаковку" class="flex h-7 w-7 items-center justify-center rounded-lg border ${q > 0 ? 'border-brand-600 bg-brand-600 text-white' : 'border-slate-200 bg-white text-brand-700 hover:bg-brand-50'} text-xs font-bold">${q > 0 ? q : '<i class="fa-solid fa-plus"></i>'}</button></div></div>`;
+            }).join('')}</div>
+          </div>
+        </article>`).join('');
+
+      const rows = [];
+      items.forEach(p => (p.sizes || []).forEach((s, i) => {
+        const k = `${p.id}::${i}`, q = state.cart[k] || 0, packTotal = ((parseFloat(s.price) || 0) * (s.packQty || 1)).toFixed(2);
+        rows.push(`<tr class="hover:bg-slate-50/80"><td class="px-4 py-3 font-medium text-slate-900">${esc(p.name)}</td><td class="whitespace-nowrap px-4 py-3 text-slate-600">${esc(s.label)}</td><td class="whitespace-nowrap px-4 py-3 font-mono text-xs text-slate-500">${s.barcode ? esc(s.barcode) : '—'}</td><td class="whitespace-nowrap px-4 py-3 text-center text-slate-600">${s.packQty || 1}</td><td class="whitespace-nowrap px-4 py-3 text-right font-extrabold text-brand-dark">${esc(s.price)}</td><td class="whitespace-nowrap px-4 py-3 text-right text-xs text-slate-500">${packTotal} грн</td><td class="whitespace-nowrap px-4 py-3 text-right"><button type="button" data-add-cart="${k}" class="rounded-lg border ${q > 0 ? 'border-brand-600 bg-brand-600 text-white' : 'border-slate-200 bg-white text-brand-700 hover:bg-brand-50'} px-2.5 py-1 text-xs font-bold">${q > 0 ? q + ' упак.' : '+ Упак.'}</button></td></tr>`);
+      }));
+      document.getElementById('priceTableBody').innerHTML = rows.join('');
+      renderCart();
+      populateCalcOptions();
+      updateCalc();
+    }
+
+    function buildCartOrderText() {
+      const entries = Object.entries(state.cart).filter(([, q]) => q > 0);
+      if (!entries.length) return '';
+      let lines = ['Замовлення ТМ «ПІФ» (з ПДВ):'], total = 0;
+      entries.forEach(([k, q]) => {
+        const [pid, idx] = k.split('::'), p = state.products.find(x => x.id === pid), s = p && p.sizes[Number(idx)];
+        if (!p || !s) return;
+        const u = q * (s.packQty || 1), ls = u * (parseFloat(s.price) || 0); total += ls;
+        lines.push(`• ${p.name} (${s.label}): ${q} упак. (${u} шт.) × ${s.price} грн = ${ls.toFixed(2)} грн`);
+      });
+      lines.push(`Разом з ПДВ: ${total.toFixed(2)} грн`);
+      return lines.join('\n');
+    }
+
+    function renderCart() {
+      const el = document.getElementById('cartItems'), entries = Object.entries(state.cart).filter(([, q]) => q > 0);
+      let packs = 0, units = 0, sum = 0;
+      el.innerHTML = entries.length === 0 ? '<div class="rounded-xl border border-dashed border-slate-200 p-8 text-center text-sm text-slate-500">Додайте потрібні позиції з каталогу або прайс-листа.</div>' : entries.map(([k, q]) => {
+        const [pid, idx] = k.split('::'), p = state.products.find(x => x.id === pid), s = p && p.sizes[Number(idx)];
+        if (!p || !s) return '';
+        const u = q * (s.packQty || 1), ls = u * (parseFloat(s.price) || 0);
+        packs += q; units += u; sum += ls;
+        return `<div class="rounded-xl border border-slate-200 p-3.5"><div class="flex justify-between gap-2"><div><div class="text-xs font-bold text-slate-900">${esc(p.name)}</div><div class="text-[11px] text-slate-500">${esc(s.label)} · ${s.price} грн/шт · ${s.packQty || 1} шт/упак</div></div><div class="text-xs font-extrabold text-brand-dark tabular-nums">${ls.toFixed(2)} грн</div></div><div class="mt-2 flex items-center justify-between"><span class="text-[11px] text-slate-500 tabular-nums">${u} шт.</span><div class="flex items-center gap-1.5"><button type="button" data-cart-dec="${k}" class="h-7 w-7 rounded-lg border border-slate-200 text-xs font-bold">−</button><span class="min-w-[24px] text-center text-xs font-bold tabular-nums">${q}</span><button type="button" data-cart-inc="${k}" class="h-7 w-7 rounded-lg border border-slate-200 text-xs font-bold">+</button></div></div></div>`;
+      }).join('');
+      document.getElementById('cartBadge').textContent = packs;
+      document.getElementById('cartSummaryUnits').textContent = `${packs} упак. (${units} шт.)`;
+      document.getElementById('cartTotalPrice').textContent = `${sum.toFixed(2)} грн`;
+    }
+
+    function getComparableProducts() {
+      const list = [];
+      state.products.forEach(p => {
+        const sizes = p.sizes || [];
+        if (sizes.length < 2) return;
+        const small = sizes.find(s => { const l = parseLiters(s.label); return l && l <= 1.5; });
+        const big = sizes.find(s => { const l = parseLiters(s.label); return l && l >= 4.5; });
+        if (small && big) {
+          list.push({
+            id: p.id,
+            name: p.name,
+            smallL: parseLiters(small.label) || 0.5,
+            smallP: parseFloat(small.price) || 0,
+            smallLabel: small.label,
+            bigL: parseLiters(big.label) || 5,
+            bigP: parseFloat(big.price) || 0,
+            bigLabel: big.label
+          });
+        }
+      });
+      return list;
+    }
+
+    function populateCalcOptions() {
+      const sel = document.getElementById('calcProductSelect');
+      if (!sel) return;
+      const cur = sel.value;
+      const items = getComparableProducts();
+      sel.innerHTML = items.map(it =>
+        `<option value="${esc(it.id)}">${esc(it.name)} (${esc(it.smallLabel)}: ${it.smallP.toFixed(2)} грн → ${esc(it.bigLabel)}: ${it.bigP.toFixed(2)} грн)</option>`
+      ).join('');
+      if (cur && items.some(x => x.id === cur)) sel.value = cur;
+    }
+
+    function updateCalc() {
+      const items = getComparableProducts();
+      if (!items.length) return;
+      const selId = document.getElementById('calcProductSelect').value;
+      const c = items.find(x => x.id === selId) || items[0];
+      const l = Number(document.getElementById('calcLitersRange').value) || 50;
+      const sp = c.smallP / c.smallL, bp = c.bigP / c.bigL;
+      const save = Math.max(0, (sp - bp) * l * 12);
+      const pct = sp > 0 ? Math.max(0, ((sp - bp) / sp) * 100) : 0;
+      document.getElementById('calcLitersVal').textContent = `${l} л / міс`;
+      document.getElementById('calcAnnualSavings').textContent = `${Math.round(save).toLocaleString('uk-UA')} грн`;
+      document.getElementById('calcDetails').textContent = `Дрібна тара: ${sp.toFixed(2)} грн/л → Каністра 5 л: ${bp.toFixed(2)} грн/л (економія ${pct.toFixed(1)}%)`;
+    }
+
+    function downloadCsv() {
+      const rows = [['Код', 'Категорія', 'Найменування товару', 'Фасування', 'Штрих-код', 'Шт в упаковці', 'Ціна з ПДВ за 1 шт (грн)', 'Сума упаковки з ПДВ (грн)']];
+      state.products.forEach(p => (p.sizes || []).forEach(s => {
+        const pr = parseFloat(s.price) || 0, pq = s.packQty || 1;
+        rows.push([
+          p.id,
+          p.shortCategory || '',
+          `"${String(p.name).replace(/"/g, '""')}"`,
+          `"${String(s.label).replace(/"/g, '""')}"`,
+          s.barcode || '',
+          pq,
+          pr.toFixed(2),
+          (pr * pq).toFixed(2)
+        ]);
+      }));
+      const csv = '\uFEFF' + rows.map(r => r.join(';')).join('\n');
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(new Blob([csv], { type: 'text/csv;charset=utf-8;' }));
+      a.download = 'pif-pricelist.csv';
+      a.click();
+      showToast('Прайс-лист CSV завантажено');
+    }
+
+    function renderEditor() {
+      try { document.getElementById('ghTokenInput').value = localStorage.getItem(TOKEN_KEY) || ''; } catch (e) {}
+      document.getElementById('editorList').innerHTML = state.products.map((p, pi) => `
+        <div class="rounded-xl border border-slate-200 bg-slate-50/70 p-4">
+          <div class="text-sm font-bold text-slate-900"><span class="mr-2 rounded bg-brand-100 px-1.5 py-0.5 font-mono text-xs text-brand-dark">${esc(p.id)}</span>${esc(p.name)}</div>
+          <div class="mt-3 grid gap-2 sm:grid-cols-2">${(p.sizes || []).map((s, si) => `
+            <div class="flex items-center gap-2 rounded-lg border border-slate-200 bg-white p-2">
+              <input type="text" value="${esc(s.label)}" data-edit-label="${pi}:${si}" class="min-w-0 flex-1 rounded border border-slate-200 px-2 py-1 text-xs font-medium" />
+              <input type="number" step="0.10" min="0" value="${esc(s.price)}" data-edit-price="${pi}:${si}" class="w-24 rounded border border-slate-200 px-2 py-1 text-right text-xs font-bold text-brand-dark" />
+              <span class="text-xs text-slate-400">грн</span>
+            </div>`).join('')}</div>
+        </div>`).join('');
+    }
+
+    function openHiddenEditor() {
+      renderEditor();
+      const m = document.getElementById('editorModal'); m.classList.remove('hidden'); m.classList.add('flex');
+    }
+
+    let clicks = 0, ct = null;
+    document.getElementById('brandLogoTrigger').addEventListener('click', () => {
+      clicks++; clearTimeout(ct);
+      if (clicks >= 5) { clicks = 0; openHiddenEditor(); showToast('Редактор цін відкрито'); }
+      else ct = setTimeout(() => { clicks = 0; }, 1600);
+    });
+    document.addEventListener('keydown', e => { if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'e') { e.preventDefault(); openHiddenEditor(); } });
+    if (location.hash === '#admin' || location.search.includes('admin=1')) setTimeout(openHiddenEditor, 300);
+
+    document.getElementById('mobileMenuBtn').addEventListener('click', () => document.getElementById('mobileNav').classList.toggle('hidden'));
+    document.getElementById('categoryBar').addEventListener('click', e => { const b = e.target.closest('[data-cat]'); if (b) { state.activeCategory = b.dataset.cat; renderAll(); } });
+    document.getElementById('searchInput').addEventListener('input', e => { state.searchQuery = e.target.value; renderAll(); });
+    document.getElementById('viewCardsBtn').addEventListener('click', () => { state.viewMode = 'cards'; document.getElementById('viewCardsBtn').className = 'rounded-lg bg-brand-700 px-3 py-1.5 text-xs font-semibold text-white'; document.getElementById('viewTableBtn').className = 'rounded-lg px-3 py-1.5 text-xs font-semibold text-slate-600'; renderAll(); });
+    document.getElementById('viewTableBtn').addEventListener('click', () => { state.viewMode = 'table'; document.getElementById('viewTableBtn').className = 'rounded-lg bg-brand-700 px-3 py-1.5 text-xs font-semibold text-white'; document.getElementById('viewCardsBtn').className = 'rounded-lg px-3 py-1.5 text-xs font-semibold text-slate-600'; renderAll(); document.getElementById('pricelist').scrollIntoView({ behavior: 'smooth' }); });
+    document.getElementById('resetFiltersBtn').addEventListener('click', () => { state.activeCategory = 'all'; state.searchQuery = ''; document.getElementById('searchInput').value = ''; renderAll(); });
+    document.getElementById('calcProductSelect').addEventListener('change', updateCalc);
+    document.getElementById('calcLitersRange').addEventListener('input', updateCalc);
+    document.getElementById('downloadCsvBtn').addEventListener('click', downloadCsv);
+
+    function composeInquiryMessage() {
+      const name = document.getElementById('inqName').value.trim();
+      const phone = document.getElementById('inqPhone').value.trim();
+      const delivery = document.getElementById('inqDelivery').value.trim();
+      let msg = `Заявка з сайту ТМ «ПІФ»\nІм'я / Компанія: ${name || 'Клієнт'}\nТелефон: ${phone || '—'}`;
+      if (delivery) msg += `\nМісто / Доставка: ${delivery}`;
+      const cartText = buildCartOrderText();
+      if (cartText) msg += `\n\n${cartText}`;
+      return msg;
+    }
+
+    document.getElementById('inquiryForm').addEventListener('submit', e => {
+      e.preventDefault();
+      const msg = composeInquiryMessage();
+      window.open(`https://api.whatsapp.com/send?phone=380679720560&text=${encodeURIComponent(msg)}`, '_blank');
+      showToast('Відкрито WhatsApp із сформованим запитом');
+    });
+
+    document.getElementById('inqEmailBtn').addEventListener('click', () => {
+      const form = document.getElementById('inquiryForm');
+      if (!form.reportValidity()) return;
+      const msg = composeInquiryMessage();
+      window.location.href = `mailto:piftm.info@gmail.com?subject=${encodeURIComponent('Замовлення / Запит прайсу ТМ «ПІФ»')}&body=${encodeURIComponent(msg)}`;
+    });
+
+    document.addEventListener('click', e => {
+      const add = e.target.closest('[data-add-cart]');
+      if (add) { const k = add.dataset.addCart; state.cart[k] = (state.cart[k] || 0) + 1; renderAll(); showToast('Упаковку додано до замовлення'); return; }
+      const op = e.target.closest('[data-open-product]');
+      if (op) {
+        const p = state.products.find(x => x.id === op.dataset.openProduct); if (!p) return;
+        document.getElementById('productModalContent').innerHTML = `<div class="flex flex-col gap-5 sm:flex-row"><div class="flex h-44 w-full shrink-0 items-center justify-center rounded-xl border border-slate-100 bg-white p-4 sm:w-44"><img src="${esc(p.image)}" alt="${esc(p.name)}" class="max-h-36 max-w-full object-contain" /></div><div><span class="rounded-full bg-brand-50 px-2.5 py-1 text-xs font-bold text-brand-dark">${esc(p.shortCategory)}</span><h3 class="mt-2 text-xl font-extrabold text-slate-900">${esc(p.name)}</h3><p class="mt-2 text-sm text-slate-600">${esc(p.description)}</p></div></div><div class="mt-5 space-y-2.5">${(p.sizes || []).map((s, i) => `<div class="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-slate-200 bg-slate-50 p-3.5"><div><div class="text-sm font-bold">${esc(s.label)}</div><div class="text-xs text-slate-500">Упаковка: ${s.packQty || 1} шт.${s.barcode ? ' · Штрих-код: ' + esc(s.barcode) : ''}</div></div><div class="flex items-center gap-3"><span class="text-lg font-extrabold text-brand-dark tabular-nums">${esc(s.price)} грн</span><button type="button" data-add-cart="${p.id}::${i}" class="rounded-lg bg-brand-700 px-3 py-2 text-xs font-bold text-white hover:bg-brand-dark">+ Упаковка</button></div></div>`).join('')}</div>`;
+        const m = document.getElementById('productModal'); m.classList.remove('hidden'); m.classList.add('flex'); return;
+      }
+      const inc = e.target.closest('[data-cart-inc]');
+      if (inc) { state.cart[inc.dataset.cartInc] = (state.cart[inc.dataset.cartInc] || 0) + 1; renderAll(); return; }
+      const dec = e.target.closest('[data-cart-dec]');
+      if (dec) { const k = dec.dataset.cartDec; state.cart[k] = Math.max(0, (state.cart[k] || 0) - 1); if (!state.cart[k]) delete state.cart[k]; renderAll(); return; }
+      const bp = e.target.closest('[data-bulk-pct]');
+      if (bp) {
+        const mult = 1 + (parseFloat(bp.dataset.bulkPct) || 0) / 100;
+        state.products.forEach(p => (p.sizes || []).forEach(s => { s.price = (Math.round((parseFloat(s.price) || 0) * mult * 10) / 10).toFixed(2); }));
+        renderEditor(); renderAll(); showToast('Ціни проіндексовано');
+      }
+    });
+
+    ['productModal', 'cartModal', 'editorModal'].forEach(id => {
+      document.getElementById(id).addEventListener('click', e => { if (e.target.id === id) { e.currentTarget.classList.add('hidden'); e.currentTarget.classList.remove('flex'); } });
+    });
+    document.getElementById('closeProductModal').addEventListener('click', () => { document.getElementById('productModal').classList.add('hidden'); document.getElementById('productModal').classList.remove('flex'); });
+    document.getElementById('openCartBtn').addEventListener('click', () => { renderCart(); document.getElementById('cartModal').classList.remove('hidden'); document.getElementById('cartModal').classList.add('flex'); });
+    document.getElementById('closeCartModal').addEventListener('click', () => { document.getElementById('cartModal').classList.add('hidden'); document.getElementById('cartModal').classList.remove('flex'); });
+    document.getElementById('clearCartBtn').addEventListener('click', () => { state.cart = {}; renderAll(); showToast('Замовлення очищено'); });
+
+    document.getElementById('copyOrderBtn').addEventListener('click', () => {
+      const txt = buildCartOrderText();
+      if (!txt) { showToast('Додайте товари до замовлення'); return; }
+      copyText(txt, 'Замовлення скопійовано');
+    });
+
+    document.getElementById('cartWhatsappBtn').addEventListener('click', () => {
+      const txt = buildCartOrderText();
+      if (!txt) { showToast('Додайте товари до замовлення'); return; }
+      window.open(`https://api.whatsapp.com/send?phone=380679720560&text=${encodeURIComponent(txt)}`, '_blank');
+    });
+
+    document.getElementById('cartEmailBtn').addEventListener('click', () => {
+      const txt = buildCartOrderText();
+      if (!txt) { showToast('Додайте товари до замовлення'); return; }
+      window.location.href = `mailto:piftm.info@gmail.com?subject=${encodeURIComponent('Замовлення продукції ТМ «ПІФ»')}&body=${encodeURIComponent(txt)}`;
+    });
+
+    document.getElementById('closeEditorModal').addEventListener('click', () => { document.getElementById('editorModal').classList.add('hidden'); document.getElementById('editorModal').classList.remove('flex'); });
+    document.getElementById('editorList').addEventListener('input', e => {
+      if (e.target.dataset.editPrice) {
+        const [pi, si] = e.target.dataset.editPrice.split(':').map(Number), v = parseFloat(e.target.value);
+        state.products[pi].sizes[si].price = isNaN(v) ? '0.00' : v.toFixed(2); renderAll();
+      } else if (e.target.dataset.editLabel) {
+        const [pi, si] = e.target.dataset.editLabel.split(':').map(Number);
+        state.products[pi].sizes[si].label = e.target.value; renderAll();
+      }
+    });
+    document.getElementById('resetPricesBtn').addEventListener('click', async () => { await loadProductsFromServer(); renderEditor(); showToast('Завантажено з сервера'); });
+    document.getElementById('editorCopyJsonBtn').addEventListener('click', () => copyText(exportJson(), 'products.json скопійовано'));
+    document.getElementById('editorDownloadJsonBtn').addEventListener('click', () => {
+      const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([exportJson()], { type: 'application/json' })); a.download = 'products.json'; a.click(); showToast('Файл завантажено');
+    });
+    document.getElementById('ghPublishBtn').addEventListener('click', async () => {
+      const token = document.getElementById('ghTokenInput').value.trim();
+      if (!token) { showToast('Введіть GitHub Fine-Grained Token'); return; }
+      try { localStorage.setItem(TOKEN_KEY, token); } catch (e) {}
+      try {
+        const { owner, repo } = detectGitHubRepo();
+        const api = `https://api.github.com/repos/${owner}/${repo}/contents/${FILE_PATH}`;
+        const cur = await fetch(api, { headers: { Authorization: 'Bearer ' + token, Accept: 'application/vnd.github+json' } });
+        if (!cur.ok) throw new Error('Невірний токен або немає прав доступу');
+        const { sha } = await cur.json();
+        const content = btoa(unescape(encodeURIComponent(exportJson() + '\n')));
+        const put = await fetch(api, {
+          method: 'PUT',
+          headers: { Authorization: 'Bearer ' + token, Accept: 'application/vnd.github+json', 'Content-Type': 'application/json' },
+          body: JSON.stringify({ message: 'Update products.json via admin editor', content, sha })
+        });
+        if (!put.ok) throw new Error('Помилка збереження у GitHub');
+        showToast('Опубліковано! Сайт оновиться за ~30 сек');
+      } catch (err) { showToast(err.message || 'Помилка публікації'); }
+    });
+
+    loadProductsFromServer();
+  </script>
+</body>
+</html>
