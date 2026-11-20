@@ -291,13 +291,14 @@
             <input id="inqDelivery" type="text" placeholder="Напр.: Одеса, Київ, Нова Пошта, Делівері, самовивіз" class="mt-1 w-full rounded-xl border border-slate-200 bg-white px-3.5 py-2.5 text-sm outline-none focus:border-brand-500" />
           </div>
           <div class="flex flex-wrap items-center gap-2.5 pt-1">
-            <button type="submit" class="inline-flex items-center gap-2 rounded-xl bg-emerald-600 px-5 py-2.5 text-sm font-bold text-white shadow-sm hover:bg-emerald-700">
+            <button id="inqAutoSubmitBtn" type="submit" class="inline-flex items-center gap-2 rounded-xl bg-brand-700 px-5 py-2.5 text-sm font-bold text-white shadow-sm hover:bg-brand-dark">
+              <i class="fa-solid fa-paper-plane"></i><span>Відправити заявку</span>
+            </button>
+            <button id="inqWhatsappBtn" type="button" class="inline-flex items-center gap-2 rounded-xl bg-emerald-600 px-5 py-2.5 text-sm font-bold text-white shadow-sm hover:bg-emerald-700">
               <i class="fa-brands fa-whatsapp text-base"></i><span>Надіслати у WhatsApp</span>
             </button>
-            <button id="inqEmailBtn" type="button" class="inline-flex items-center gap-2 rounded-xl bg-brand-700 px-5 py-2.5 text-sm font-bold text-white shadow-sm hover:bg-brand-dark">
-              <i class="fa-regular fa-envelope"></i><span>Надіслати на E-mail</span>
-            </button>
           </div>
+          <div id="inqSuccessBox" class="hidden rounded-xl border border-emerald-200 bg-emerald-50 p-3.5 text-xs font-medium text-emerald-900"></div>
         </form>
       </div>
     </section>
@@ -316,24 +317,42 @@
 
   <div id="cartModal" class="modal-backdrop fixed inset-0 z-50 hidden items-center justify-end">
     <div class="flex h-full w-full max-w-md flex-col bg-white shadow-2xl">
-      <div class="flex items-center justify-between border-b border-slate-200 px-5 py-4">
+      <div class="flex items-center justify-between border-b border-slate-200 px-5 py-3.5">
         <div>
           <h3 class="text-base font-extrabold text-slate-900">Ваше замовлення</h3>
           <p class="text-xs text-slate-500">Розрахунок за упаковками (ціни з ПДВ)</p>
         </div>
         <button id="closeCartModal" type="button" class="flex h-8 w-8 items-center justify-center rounded-lg bg-slate-100 text-slate-500 hover:bg-slate-200"><i class="fa-solid fa-xmark"></i></button>
       </div>
-      <div id="cartItems" class="flex-1 space-y-3 overflow-y-auto p-5"></div>
-      <div class="border-t border-slate-200 bg-slate-50 p-5">
-        <div class="flex items-center justify-between text-xs text-slate-600"><span>Всього упаковок / одиниць:</span><strong id="cartSummaryUnits" class="tabular-nums">0 упак. (0 шт.)</strong></div>
-        <div class="mt-2 flex items-center justify-between text-base font-extrabold text-slate-900"><span>Разом з ПДВ:</span><span id="cartTotalPrice" class="text-brand-dark tabular-nums">0.00 грн</span></div>
-        <div class="mt-4 grid grid-cols-2 gap-2">
-          <button id="cartWhatsappBtn" type="button" class="inline-flex items-center justify-center gap-1.5 rounded-xl bg-emerald-600 px-3 py-2.5 text-xs font-bold text-white hover:bg-emerald-700"><i class="fa-brands fa-whatsapp text-sm"></i><span>У WhatsApp</span></button>
-          <button id="cartEmailBtn" type="button" class="inline-flex items-center justify-center gap-1.5 rounded-xl bg-brand-700 px-3 py-2.5 text-xs font-bold text-white hover:bg-brand-dark"><i class="fa-regular fa-envelope"></i><span>На E-mail</span></button>
+      <div id="cartItems" class="flex-1 space-y-2.5 overflow-y-auto p-4"></div>
+      <div class="border-t border-slate-200 bg-slate-50 p-4">
+        <div class="space-y-2 pb-3 border-b border-slate-200/80">
+          <div class="grid grid-cols-2 gap-2">
+            <input id="cartCustName" type="text" placeholder="Ваше ім'я / Компанія *" class="w-full rounded-lg border border-slate-200 bg-white px-2.5 py-2 text-xs text-slate-800 outline-none focus:border-brand-500" />
+            <input id="cartCustPhone" type="tel" placeholder="Телефон *" class="w-full rounded-lg border border-slate-200 bg-white px-2.5 py-2 text-xs text-slate-800 outline-none focus:border-brand-500" />
+          </div>
+          <input id="cartCustCity" type="text" placeholder="Місто та доставка (напр.: Одеса, Нова Пошта, самовивіз)" class="w-full rounded-lg border border-slate-200 bg-white px-2.5 py-2 text-xs text-slate-800 outline-none focus:border-brand-500" />
         </div>
+        <div class="mt-2.5 flex items-center justify-between text-xs text-slate-600"><span>Всього упаковок / одиниць:</span><strong id="cartSummaryUnits" class="tabular-nums">0 упак. (0 шт.)</strong></div>
+        <div class="mt-1 flex items-center justify-between text-base font-extrabold text-slate-900"><span>Разом з ПДВ:</span><span id="cartTotalPrice" class="text-brand-dark tabular-nums">0.00 грн</span></div>
+
+        <div id="cartOrderStatusBox" class="mt-2.5 hidden rounded-xl border border-emerald-200 bg-emerald-50 p-3 text-xs text-emerald-900"></div>
+
+        <div class="mt-3 grid grid-cols-1 gap-2">
+          <button id="cartAutoOrderBtn" type="button" class="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-brand-700 px-4 py-2.5 text-xs font-extrabold text-white shadow-sm transition hover:bg-brand-dark">
+            <i class="fa-solid fa-paper-plane"></i><span>Оформити замовлення (авто-відправка)</span>
+          </button>
+        </div>
+
+        <div class="mt-2 grid grid-cols-3 gap-1.5">
+          <button id="cartWhatsappBtn" type="button" class="inline-flex items-center justify-center gap-1 rounded-xl bg-emerald-600 px-2.5 py-2 text-[11px] font-bold text-white hover:bg-emerald-700"><i class="fa-brands fa-whatsapp text-xs"></i><span>У WhatsApp</span></button>
+          <button id="cartDownloadPdfBtn" type="button" class="inline-flex items-center justify-center gap-1 rounded-xl border border-rose-200 bg-rose-50 px-2.5 py-2 text-[11px] font-bold text-rose-800 hover:bg-rose-100"><i class="fa-solid fa-file-pdf text-rose-600"></i><span>Заявка PDF</span></button>
+          <button id="cartDownloadDocBtn" type="button" class="inline-flex items-center justify-center gap-1 rounded-xl border border-brand-200 bg-brand-50 px-2.5 py-2 text-[11px] font-bold text-brand-dark hover:bg-brand-100"><i class="fa-solid fa-file-word text-brand-600"></i><span>Заявка .doc</span></button>
+        </div>
+
         <div class="mt-2 flex gap-2">
-          <button id="clearCartBtn" type="button" class="rounded-xl border border-slate-200 bg-white px-3.5 py-2 text-xs font-semibold text-slate-600 hover:bg-slate-100">Очистити</button>
-          <button id="copyOrderBtn" type="button" class="flex-1 rounded-xl border border-slate-200 bg-white px-4 py-2 text-xs font-semibold text-slate-700 hover:bg-slate-100"><i class="fa-regular fa-copy mr-1.5"></i>Скопіювати список</button>
+          <button id="clearCartBtn" type="button" class="rounded-xl border border-slate-200 bg-white px-3 py-1.5 text-[11px] font-semibold text-slate-600 hover:bg-slate-100">Очистити</button>
+          <button id="copyOrderBtn" type="button" class="flex-1 rounded-xl border border-slate-200 bg-white px-3 py-1.5 text-[11px] font-semibold text-slate-700 hover:bg-slate-100"><i class="fa-regular fa-copy mr-1"></i>Скопіювати текст</button>
         </div>
       </div>
     </div>
@@ -981,12 +1000,292 @@
     document.getElementById('downloadDocBtn').addEventListener('click', downloadDoc);
     document.getElementById('downloadCsvBtn').addEventListener('click', downloadCsv);
 
+    const CUST_STORAGE_KEY = 'pif-cust-info-v1';
+
+    function getCartCustomerInfo() {
+      const name = (document.getElementById('cartCustName')?.value || document.getElementById('inqName')?.value || '').trim();
+      const phone = (document.getElementById('cartCustPhone')?.value || document.getElementById('inqPhone')?.value || '').trim();
+      const city = (document.getElementById('cartCustCity')?.value || document.getElementById('inqDelivery')?.value || '').trim();
+      return { name, phone, city };
+    }
+
+    function saveCartCustomerInfo() {
+      try {
+        localStorage.setItem(CUST_STORAGE_KEY, JSON.stringify(getCartCustomerInfo()));
+      } catch (e) {}
+    }
+
+    function restoreCartCustomerInfo() {
+      try {
+        const raw = localStorage.getItem(CUST_STORAGE_KEY);
+        if (!raw) return;
+        const info = JSON.parse(raw);
+        if (info.name && document.getElementById('cartCustName')) document.getElementById('cartCustName').value = info.name;
+        if (info.phone && document.getElementById('cartCustPhone')) document.getElementById('cartCustPhone').value = info.phone;
+        if (info.city && document.getElementById('cartCustCity')) document.getElementById('cartCustCity').value = info.city;
+      } catch (e) {}
+    }
+
+    ['cartCustName', 'cartCustPhone', 'cartCustCity'].forEach(id => {
+      document.getElementById(id)?.addEventListener('input', saveCartCustomerInfo);
+    });
+    restoreCartCustomerInfo();
+
+    function getCartDetailed() {
+      const entries = Object.entries(state.cart).filter(([, q]) => q > 0);
+      const items = [];
+      let totalPacks = 0, totalUnits = 0, totalSum = 0;
+      entries.forEach(([k, q]) => {
+        const [pid, idx] = k.split('::'), p = state.products.find(x => x.id === pid), s = p && p.sizes[Number(idx)];
+        if (!p || !s) return;
+        const packQty = s.packQty || 1;
+        const unitPrice = parseFloat(s.price) || 0;
+        const units = q * packQty;
+        const lineTotal = units * unitPrice;
+        totalPacks += q;
+        totalUnits += units;
+        totalSum += lineTotal;
+        items.push({
+          id: p.id,
+          name: p.name,
+          label: s.label,
+          barcode: s.barcode || '',
+          packQty,
+          packs: q,
+          units,
+          unitPrice,
+          lineTotal
+        });
+      });
+      return { items, totalPacks, totalUnits, totalSum };
+    }
+
+    function generateOrderId() {
+      const d = new Date();
+      const pad = n => String(n).padStart(2, '0');
+      return `PIF-${d.getFullYear()}${pad(d.getMonth() + 1)}${pad(d.getDate())}-${String(Math.floor(100 + Math.random() * 900))}`;
+    }
+
+    async function downloadCartOrderPdf(customOrderId) {
+      const { items, totalPacks, totalUnits, totalSum } = getCartDetailed();
+      if (!items.length) { showToast('Додайте товари до замовлення'); return; }
+      try {
+        showToast('Формування PDF заявки...');
+        if (!window.pdfMake) {
+          await loadScript('https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.10/pdfmake.min.js');
+          await loadScript('https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.10/vfs_fonts.min.js');
+        }
+        const orderId = customOrderId || generateOrderId();
+        const cust = getCartCustomerInfo();
+        const dateStr = new Date().toLocaleDateString('uk-UA');
+        const logoData = await getLogoDataUrl();
+
+        const body = [[
+          { text: '№', bold: true, fillColor: '#e7f5ff', alignment: 'center' },
+          { text: 'Найменування товару', bold: true, fillColor: '#e7f5ff' },
+          { text: 'Фасування', bold: true, fillColor: '#e7f5ff', alignment: 'center' },
+          { text: 'Штрих-код', bold: true, fillColor: '#e7f5ff', alignment: 'center' },
+          { text: 'Упак.', bold: true, fillColor: '#e7f5ff', alignment: 'center' },
+          { text: 'Всього шт.', bold: true, fillColor: '#e7f5ff', alignment: 'center' },
+          { text: 'Ціна з ПДВ\n(грн/шт)', bold: true, fillColor: '#e7f5ff', alignment: 'right' },
+          { text: 'Сума з ПДВ\n(грн)', bold: true, fillColor: '#e7f5ff', alignment: 'right' }
+        ]];
+
+        items.forEach((it, i) => {
+          body.push([
+            { text: String(i + 1), alignment: 'center', color: '#475569' },
+            { text: it.name, bold: true },
+            { text: it.label, alignment: 'center' },
+            { text: it.barcode || '—', alignment: 'center', color: '#475569' },
+            { text: `${it.packs} (${it.packQty} шт/уп)`, alignment: 'center', bold: true },
+            { text: String(it.units), alignment: 'center' },
+            { text: it.unitPrice.toFixed(2), alignment: 'right' },
+            { text: it.lineTotal.toFixed(2), bold: true, alignment: 'right', color: '#1864ab' }
+          ]);
+        });
+
+        body.push([
+          { text: 'РАЗОМ ДО СПЛАТИ З ПДВ:', colSpan: 4, bold: true, alignment: 'right', fillColor: '#f8fafc' }, {}, {}, {},
+          { text: `${totalPacks} упак.`, bold: true, alignment: 'center', fillColor: '#f8fafc' },
+          { text: `${totalUnits} шт.`, bold: true, alignment: 'center', fillColor: '#f8fafc' },
+          { text: '', fillColor: '#f8fafc' },
+          { text: `${totalSum.toFixed(2)} грн`, bold: true, alignment: 'right', color: '#1864ab', fillColor: '#f8fafc' }
+        ]);
+
+        const headerCols = [];
+        if (logoData) headerCols.push({ image: logoData, width: 78, margin: [0, 2, 12, 0] });
+        headerCols.push({
+          stack: [
+            { text: `ЗАЯВКА НА ЗАМОВЛЕННЯ № ${orderId} від ${dateStr}`, fontSize: 13, bold: true, color: '#1864ab' },
+            { text: 'Постачальник: ТМ «ПІФ» · ТОВ «Кодимський Райпостач» (м. Одеса, пров. Вознесенський № 3, 65007)', fontSize: 9, color: '#334155', margin: [0, 2, 0, 0] },
+            { text: 'Тел./факс: (048) 701-70-29 · Моб./WhatsApp: +380 67 972 05 60 · E-mail: piftm.info@gmail.com', fontSize: 9, color: '#334155', margin: [0, 1, 0, 0] },
+            cust.name || cust.phone || cust.city ? {
+              text: `Замовник: ${cust.name || '—'} · Тел.: ${cust.phone || '—'}${cust.city ? ' · Доставка: ' + cust.city : ''}`,
+              fontSize: 9.5, bold: true, color: '#0f172a', margin: [0, 5, 0, 0]
+            } : {}
+          ]
+        });
+
+        const docDef = {
+          pageSize: 'A4',
+          pageMargins: [26, 26, 26, 30],
+          defaultStyle: { fontSize: 8.5 },
+          content: [
+            { columns: headerCols, margin: [0, 0, 0, 12] },
+            {
+              table: {
+                headerRows: 1,
+                widths: [18, '*', 64, 68, 52, 40, 48, 56],
+                body
+              },
+              layout: {
+                hLineColor: () => '#cbd5e1',
+                vLineColor: () => '#cbd5e1',
+                paddingLeft: () => 4,
+                paddingRight: () => 4,
+                paddingTop: () => 4,
+                paddingBottom: () => 4
+              }
+            }
+          ]
+        };
+        window.pdfMake.createPdf(docDef).download(`${orderId}.pdf`);
+        showToast('Заявку PDF завантажено');
+      } catch (err) {
+        showToast('Помилка формування PDF заявки');
+      }
+    }
+
+    function downloadCartOrderDoc(customOrderId) {
+      const { items, totalPacks, totalUnits, totalSum } = getCartDetailed();
+      if (!items.length) { showToast('Додайте товари до замовлення'); return; }
+      const orderId = customOrderId || generateOrderId();
+      const cust = getCartCustomerInfo();
+      const dateStr = new Date().toLocaleDateString('uk-UA');
+
+      const rowsHtml = items.map((it, i) => `
+        <tr>
+          <td style="padding:6px 8px;border:1px solid #000;text-align:center;">${i + 1}</td>
+          <td style="padding:6px 8px;border:1px solid #000;">${esc(it.name)}</td>
+          <td style="padding:6px 8px;border:1px solid #000;text-align:center;">${esc(it.barcode || '—')}</td>
+          <td style="padding:6px 8px;border:1px solid #000;text-align:center;">${esc(it.label)}</td>
+          <td style="padding:6px 8px;border:1px solid #000;text-align:center;">${it.packs} упак. (${it.units} шт.)</td>
+          <td style="padding:6px 8px;border:1px solid #000;text-align:right;">${it.unitPrice.toFixed(2)}</td>
+          <td style="padding:6px 8px;border:1px solid #000;text-align:right;font-weight:bold;">${it.lineTotal.toFixed(2)}</td>
+        </tr>`).join('');
+
+      const html = `<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40">
+<head><meta charset="utf-8"><title>Заявка ${orderId}</title></head>
+<body style="font-family:'Times New Roman',serif;font-size:11.5pt;color:#000;">
+  <h2 style="margin-bottom:4px;">ЗАЯВКА НА ЗАМОВЛЕННЯ № ${esc(orderId)} від ${esc(dateStr)}</h2>
+  <p style="margin:0 0 4px 0;font-size:10.5pt;"><strong>Постачальник:</strong> ТМ «ПІФ» · ТОВ «Кодимський Райпостач» (м. Одеса, пров. Вознесенський № 3, 65007 · Тел.: (048) 701-70-29, +380 67 972 05 60)</p>
+  <p style="margin:0 0 12px 0;font-size:10.5pt;"><strong>Замовник:</strong> ${esc(cust.name || '—')} · <strong>Тел.:</strong> ${esc(cust.phone || '—')}${cust.city ? ' · <strong>Доставка:</strong> ' + esc(cust.city) : ''}</p>
+  <table style="width:100%;border-collapse:collapse;border:1px solid #000;font-size:10.5pt;">
+    <thead>
+      <tr style="background:#f1f5f9;font-weight:bold;">
+        <th style="padding:6px;border:1px solid #000;">№</th>
+        <th style="padding:6px;border:1px solid #000;">Назва товару</th>
+        <th style="padding:6px;border:1px solid #000;">Штрих-код</th>
+        <th style="padding:6px;border:1px solid #000;">Фасування</th>
+        <th style="padding:6px;border:1px solid #000;">Кількість</th>
+        <th style="padding:6px;border:1px solid #000;">Ціна з ПДВ, грн</th>
+        <th style="padding:6px;border:1px solid #000;">Сума з ПДВ, грн</th>
+      </tr>
+    </thead>
+    <tbody>
+      ${rowsHtml}
+      <tr style="font-weight:bold;background:#f8fafc;">
+        <td colspan="4" style="padding:6px 8px;border:1px solid #000;text-align:right;">РАЗОМ З ПДВ:</td>
+        <td style="padding:6px 8px;border:1px solid #000;text-align:center;">${totalPacks} упак. (${totalUnits} шт.)</td>
+        <td style="padding:6px 8px;border:1px solid #000;"></td>
+        <td style="padding:6px 8px;border:1px solid #000;text-align:right;">${totalSum.toFixed(2)} грн</td>
+      </tr>
+    </tbody>
+  </table>
+</body></html>`;
+
+      const blob = new Blob(['\uFEFF', html], { type: 'application/msword;charset=utf-8' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = `${orderId}.doc`;
+      a.click();
+      showToast('Заявку Word (.doc) завантажено');
+    }
+
+    async function submitAutomaticOrder(opts) {
+      const fromCart = opts && opts.fromCart;
+      const { items, totalPacks, totalUnits, totalSum } = getCartDetailed();
+      if (fromCart && !items.length) {
+        showToast('Додайте товари до замовлення');
+        return;
+      }
+      const name = (fromCart ? document.getElementById('cartCustName').value : document.getElementById('inqName').value).trim();
+      const phone = (fromCart ? document.getElementById('cartCustPhone').value : document.getElementById('inqPhone').value).trim();
+      const city = (fromCart ? document.getElementById('cartCustCity').value : document.getElementById('inqDelivery').value).trim();
+
+      if (!name || !phone) {
+        showToast('Вкажіть ваше ім’я та телефон для зв’язку');
+        if (fromCart) {
+          (!name ? document.getElementById('cartCustName') : document.getElementById('cartCustPhone')).focus();
+        }
+        return;
+      }
+      saveCartCustomerInfo();
+
+      const orderId = generateOrderId();
+      const btn = document.getElementById(fromCart ? 'cartAutoOrderBtn' : 'inqAutoSubmitBtn');
+      const statusBox = document.getElementById(fromCart ? 'cartOrderStatusBox' : 'inqSuccessBox');
+      const origHtml = btn.innerHTML;
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i><span>Відправка замовлення...</span>';
+
+      const payload = {
+        _subject: `Замовлення ${orderId} — ${name} (${phone}) — ТМ «ПІФ»`,
+        _template: 'table',
+        _captcha: 'false',
+        'Номер замовлення': orderId,
+        'Клієнт / Компанія': name,
+        'Телефон': phone,
+        'Місто / Доставка': city || 'Не вказано'
+      };
+
+      if (items.length > 0) {
+        items.forEach((it, idx) => {
+          payload[`Позиція ${idx + 1}`] = `${it.name} (${it.label}${it.barcode ? ', ш/к ' + it.barcode : ''}) — ${it.packs} упак. (${it.units} шт.) × ${it.unitPrice.toFixed(2)} грн = ${it.lineTotal.toFixed(2)} грн`;
+        });
+        payload['Всього упаковок / одиниць'] = `${totalPacks} упак. (${totalUnits} шт.)`;
+        payload['РАЗОМ З ПДВ'] = `${totalSum.toFixed(2)} грн`;
+      } else {
+        payload['Тип звернення'] = 'Запит на оптовий прайс-лист / співпрацю';
+      }
+
+      try {
+        const res = await fetch('https://formsubmit.co/ajax/piftm.info@gmail.com', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        statusBox.classList.remove('hidden');
+        statusBox.innerHTML = `<div class="font-bold text-emerald-950"><i class="fa-solid fa-circle-check text-emerald-600 mr-1"></i>Замовлення № ${esc(orderId)} автоматично відправлено!</div><div class="mt-0.5 text-[11px] text-emerald-800">Копію надіслано у відділ продажу (piftm.info@gmail.com). Наш менеджер зв'яжеться з вами за номером <strong>${esc(phone)}</strong>.</div>`;
+        showToast(`Замовлення ${orderId} відправлено!`);
+        if (fromCart && items.length > 0) {
+          downloadCartOrderDoc(orderId);
+        }
+      } catch (err) {
+        statusBox.classList.remove('hidden');
+        statusBox.innerHTML = `<div class="font-bold text-amber-900">Сформовано заявку № ${esc(orderId)}</div><div class="mt-0.5 text-[11px] text-amber-800">Завантажено файл заявки. Ви також можете надіслати її в 1 клік через WhatsApp нижче.</div>`;
+        if (items.length > 0) downloadCartOrderDoc(orderId);
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = origHtml;
+      }
+    }
+
     function composeInquiryMessage() {
-      const name = document.getElementById('inqName').value.trim();
-      const phone = document.getElementById('inqPhone').value.trim();
-      const delivery = document.getElementById('inqDelivery').value.trim();
-      let msg = `Заявка з сайту ТМ «ПІФ»\nІм'я / Компанія: ${name || 'Клієнт'}\nТелефон: ${phone || '—'}`;
-      if (delivery) msg += `\nМісто / Доставка: ${delivery}`;
+      const cust = getCartCustomerInfo();
+      let msg = `Замовлення / Запит ТМ «ПІФ»\nІм'я / Компанія: ${cust.name || 'Клієнт'}\nТелефон: ${cust.phone || '—'}`;
+      if (cust.city) msg += `\nМісто / Доставка: ${cust.city}`;
       const cartText = buildCartOrderText();
       if (cartText) msg += `\n\n${cartText}`;
       return msg;
@@ -994,16 +1293,13 @@
 
     document.getElementById('inquiryForm').addEventListener('submit', e => {
       e.preventDefault();
+      submitAutomaticOrder({ fromCart: false });
+    });
+
+    document.getElementById('inqWhatsappBtn').addEventListener('click', () => {
       const msg = composeInquiryMessage();
       window.open(`https://api.whatsapp.com/send?phone=380679720560&text=${encodeURIComponent(msg)}`, '_blank');
       showToast('Відкрито WhatsApp із сформованим запитом');
-    });
-
-    document.getElementById('inqEmailBtn').addEventListener('click', () => {
-      const form = document.getElementById('inquiryForm');
-      if (!form.reportValidity()) return;
-      const msg = composeInquiryMessage();
-      window.location.href = `mailto:piftm.info@gmail.com?subject=${encodeURIComponent('Замовлення / Запит прайсу ТМ «ПІФ»')}&body=${encodeURIComponent(msg)}`;
     });
 
     document.addEventListener('click', e => {
@@ -1036,22 +1332,23 @@
     document.getElementById('clearCartBtn').addEventListener('click', () => { state.cart = {}; renderAll(); showToast('Замовлення очищено'); });
 
     document.getElementById('copyOrderBtn').addEventListener('click', () => {
-      const txt = buildCartOrderText();
-      if (!txt) { showToast('Додайте товари до замовлення'); return; }
+      const txt = composeInquiryMessage();
+      if (!getCartDetailed().items.length) { showToast('Додайте товари до замовлення'); return; }
       copyText(txt, 'Замовлення скопійовано');
     });
 
+    document.getElementById('cartAutoOrderBtn').addEventListener('click', () => {
+      submitAutomaticOrder({ fromCart: true });
+    });
+
     document.getElementById('cartWhatsappBtn').addEventListener('click', () => {
-      const txt = buildCartOrderText();
-      if (!txt) { showToast('Додайте товари до замовлення'); return; }
+      if (!getCartDetailed().items.length) { showToast('Додайте товари до замовлення'); return; }
+      const txt = composeInquiryMessage();
       window.open(`https://api.whatsapp.com/send?phone=380679720560&text=${encodeURIComponent(txt)}`, '_blank');
     });
 
-    document.getElementById('cartEmailBtn').addEventListener('click', () => {
-      const txt = buildCartOrderText();
-      if (!txt) { showToast('Додайте товари до замовлення'); return; }
-      window.location.href = `mailto:piftm.info@gmail.com?subject=${encodeURIComponent('Замовлення продукції ТМ «ПІФ»')}&body=${encodeURIComponent(txt)}`;
-    });
+    document.getElementById('cartDownloadPdfBtn').addEventListener('click', () => downloadCartOrderPdf());
+    document.getElementById('cartDownloadDocBtn').addEventListener('click', () => downloadCartOrderDoc());
 
     document.getElementById('closeEditorModal').addEventListener('click', () => { document.getElementById('editorModal').classList.add('hidden'); document.getElementById('editorModal').classList.remove('flex'); });
     document.getElementById('editorList').addEventListener('input', e => {
