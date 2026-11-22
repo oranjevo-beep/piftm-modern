@@ -287,11 +287,14 @@
             <input id="inqDelivery" type="text" placeholder="Напр.: Одеса, Київ, Нова Пошта, Делівері, самовивіз" class="mt-1 w-full rounded-xl border border-slate-200 bg-white px-3.5 py-2.5 text-base outline-none focus:border-brand-500 sm:text-sm" />
           </div>
           <div class="flex flex-col gap-2.5 pt-1 sm:flex-row sm:flex-wrap sm:items-center">
-            <button id="inqAutoSubmitBtn" type="submit" class="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-brand-700 px-5 py-3 text-sm font-bold text-white shadow-sm hover:bg-brand-dark sm:w-auto sm:py-2.5">
-              <i class="fa-solid fa-paper-plane"></i><span>Відправити заявку</span>
+            <button id="inqWhatsappBtn" type="button" class="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-emerald-600 px-4 py-3 text-sm font-bold text-white shadow-sm hover:bg-emerald-700 sm:w-auto sm:py-2.5">
+              <i class="fa-brands fa-whatsapp text-base"></i><span>WhatsApp</span>
             </button>
-            <button id="inqWhatsappBtn" type="button" class="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-emerald-600 px-5 py-3 text-sm font-bold text-white shadow-sm hover:bg-emerald-700 sm:w-auto sm:py-2.5">
-              <i class="fa-brands fa-whatsapp text-base"></i><span>Надіслати у WhatsApp</span>
+            <button id="inqViberBtn" type="button" class="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#7360f2] px-4 py-3 text-sm font-bold text-white shadow-sm hover:bg-[#5f4dee] sm:w-auto sm:py-2.5">
+              <i class="fa-brands fa-viber text-base"></i><span>Viber</span>
+            </button>
+            <button id="inqAutoSubmitBtn" type="submit" class="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-brand-700 px-4 py-3 text-sm font-bold text-white shadow-sm hover:bg-brand-dark sm:w-auto sm:py-2.5">
+              <i class="fa-solid fa-envelope"></i><span>Надіслати на E-mail</span>
             </button>
           </div>
           <div id="inqSuccessBox" class="hidden rounded-xl border border-emerald-200 bg-emerald-50 p-3.5 text-xs font-medium text-emerald-900"></div>
@@ -334,21 +337,24 @@
 
         <div id="cartOrderStatusBox" class="mt-2 hidden rounded-xl border border-emerald-200 bg-emerald-50 p-2.5 text-xs text-emerald-900"></div>
 
-        <div class="mt-2.5 grid grid-cols-1 gap-2">
-          <button id="cartAutoOrderBtn" type="button" class="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-brand-700 px-4 py-2.5 text-xs font-extrabold text-white shadow-sm transition hover:bg-brand-dark">
-            <i class="fa-solid fa-paper-plane"></i><span>Оформити замовлення (авто-відправка)</span>
+        <div class="mt-2.5">
+          <button id="cartDownloadPdfBtn" type="button" class="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-rose-600 px-4 py-2.5 text-xs font-extrabold text-white shadow-sm transition hover:bg-rose-700">
+            <i class="fa-solid fa-file-pdf text-sm"></i><span>1. Сформувати та завантажити заявку PDF</span>
           </button>
         </div>
 
-        <div class="mt-2 grid grid-cols-3 gap-1.5">
-          <button id="cartWhatsappBtn" type="button" class="inline-flex items-center justify-center gap-1 whitespace-nowrap rounded-xl bg-emerald-600 px-2 py-2 text-[11px] font-bold text-white hover:bg-emerald-700"><i class="fa-brands fa-whatsapp text-xs"></i><span>WhatsApp</span></button>
-          <button id="cartDownloadPdfBtn" type="button" class="inline-flex items-center justify-center gap-1 whitespace-nowrap rounded-xl border border-rose-200 bg-rose-50 px-2 py-2 text-[11px] font-bold text-rose-800 hover:bg-rose-100"><i class="fa-solid fa-file-pdf text-rose-600"></i><span>PDF</span></button>
-          <button id="cartDownloadDocBtn" type="button" class="inline-flex items-center justify-center gap-1 whitespace-nowrap rounded-xl border border-brand-200 bg-brand-50 px-2 py-2 text-[11px] font-bold text-brand-dark hover:bg-brand-100"><i class="fa-solid fa-file-word text-brand-600"></i><span>Word .doc</span></button>
+        <div class="mt-2.5">
+          <div class="mb-1.5 text-[11px] font-bold uppercase tracking-wider text-slate-500">2. Надіслати замовлення одразу у відділ продажу:</div>
+          <div class="grid grid-cols-3 gap-1.5">
+            <button id="cartWhatsappBtn" type="button" class="inline-flex items-center justify-center gap-1.5 whitespace-nowrap rounded-xl bg-emerald-600 px-2.5 py-2.5 text-xs font-bold text-white shadow-sm hover:bg-emerald-700"><i class="fa-brands fa-whatsapp text-sm"></i><span>WhatsApp</span></button>
+            <button id="cartViberBtn" type="button" class="inline-flex items-center justify-center gap-1.5 whitespace-nowrap rounded-xl bg-[#7360f2] px-2.5 py-2.5 text-xs font-bold text-white shadow-sm hover:bg-[#5f4dee]"><i class="fa-brands fa-viber text-sm"></i><span>Viber</span></button>
+            <button id="cartAutoOrderBtn" type="button" class="inline-flex items-center justify-center gap-1.5 whitespace-nowrap rounded-xl bg-brand-700 px-2.5 py-2.5 text-xs font-bold text-white shadow-sm hover:bg-brand-dark"><i class="fa-solid fa-envelope text-xs"></i><span>E-mail</span></button>
+          </div>
         </div>
 
         <div class="mt-2 flex gap-2">
           <button id="clearCartBtn" type="button" class="rounded-xl border border-slate-200 bg-white px-3 py-1.5 text-[11px] font-semibold text-slate-600 hover:bg-slate-100">Очистити</button>
-          <button id="copyOrderBtn" type="button" class="flex-1 rounded-xl border border-slate-200 bg-white px-3 py-1.5 text-[11px] font-semibold text-slate-700 hover:bg-slate-100"><i class="fa-regular fa-copy mr-1"></i>Скопіювати текст</button>
+          <button id="copyOrderBtn" type="button" class="flex-1 rounded-xl border border-slate-200 bg-white px-3 py-1.5 text-[11px] font-semibold text-slate-700 hover:bg-slate-100"><i class="fa-regular fa-copy mr-1"></i>Скопіювати текст замовлення</button>
         </div>
       </div>
     </div>
@@ -1249,12 +1255,14 @@
         statusBox.innerHTML = `<div class="font-bold text-emerald-950"><i class="fa-solid fa-circle-check text-emerald-600 mr-1"></i>Замовлення № ${esc(orderId)} автоматично відправлено!</div><div class="mt-0.5 text-[11px] text-emerald-800">Копію надіслано у відділ продажу (piftm.info@gmail.com). Наш менеджер зв'яжеться з вами за номером <strong>${esc(phone)}</strong>.</div>`;
         showToast(`Замовлення ${orderId} відправлено!`);
         if (fromCart && items.length > 0) {
-          downloadCartOrderDoc(orderId);
+          downloadCartOrderPdf(orderId);
         }
       } catch (err) {
         statusBox.classList.remove('hidden');
-        statusBox.innerHTML = `<div class="font-bold text-amber-900">Сформовано заявку № ${esc(orderId)}</div><div class="mt-0.5 text-[11px] text-amber-800">Завантажено файл заявки. Ви також можете надіслати її в 1 клік через WhatsApp нижче.</div>`;
-        if (items.length > 0) downloadCartOrderDoc(orderId);
+        statusBox.innerHTML = `<div class="font-bold text-amber-900">Сформовано заявку № ${esc(orderId)}</div><div class="mt-0.5 text-[11px] text-amber-800">Завантажено PDF-файл заявки та відкрито поштовий клієнт для відправки на piftm.info@gmail.com.</div>`;
+        if (items.length > 0) downloadCartOrderPdf(orderId);
+        const mailMsg = composeInquiryMessage();
+        window.location.href = `mailto:piftm.info@gmail.com?subject=${encodeURIComponent('Замовлення ' + orderId + ' — ТМ «ПІФ»')}&body=${encodeURIComponent(mailMsg)}`;
       } finally {
         btn.disabled = false;
         btn.innerHTML = origHtml;
@@ -1275,10 +1283,37 @@
       submitAutomaticOrder({ fromCart: false });
     });
 
+    function sendOrderViaViber(fromCart) {
+      if (fromCart && !getCartDetailed().items.length) {
+        showToast('Додайте товари до замовлення');
+        return;
+      }
+      saveCartCustomerInfo();
+      const orderId = generateOrderId();
+      const msg = composeInquiryMessage();
+      copyText(msg, 'Текст замовлення скопійовано для Viber');
+      if (fromCart) {
+        downloadCartOrderPdf(orderId);
+        const statusBox = document.getElementById('cartOrderStatusBox');
+        if (statusBox) {
+          statusBox.classList.remove('hidden');
+          statusBox.innerHTML = `<div class="font-bold text-emerald-950"><i class="fa-brands fa-viber text-[#7360f2] mr-1"></i>Заявку PDF завантажено + текст скопійовано!</div><div class="mt-0.5 text-[11px] text-emerald-800">У вікні Viber (+380 67 972 05 60) натисніть <strong>Вставити (Ctrl+V)</strong> або прикріпіть завантажений PDF-файл.</div>`;
+        }
+      }
+      setTimeout(() => {
+        window.location.href = 'viber://chat?number=%2B380679720560';
+      }, 250);
+    }
+
     document.getElementById('inqWhatsappBtn').addEventListener('click', () => {
+      saveCartCustomerInfo();
       const msg = composeInquiryMessage();
       window.open(`https://api.whatsapp.com/send?phone=380679720560&text=${encodeURIComponent(msg)}`, '_blank');
       showToast('Відкрито WhatsApp із сформованим запитом');
+    });
+
+    document.getElementById('inqViberBtn').addEventListener('click', () => {
+      sendOrderViaViber(false);
     });
 
     document.addEventListener('click', e => {
@@ -1322,12 +1357,18 @@
 
     document.getElementById('cartWhatsappBtn').addEventListener('click', () => {
       if (!getCartDetailed().items.length) { showToast('Додайте товари до замовлення'); return; }
+      saveCartCustomerInfo();
+      const orderId = generateOrderId();
+      downloadCartOrderPdf(orderId);
       const txt = composeInquiryMessage();
       window.open(`https://api.whatsapp.com/send?phone=380679720560&text=${encodeURIComponent(txt)}`, '_blank');
     });
 
+    document.getElementById('cartViberBtn').addEventListener('click', () => {
+      sendOrderViaViber(true);
+    });
+
     document.getElementById('cartDownloadPdfBtn').addEventListener('click', () => downloadCartOrderPdf());
-    document.getElementById('cartDownloadDocBtn').addEventListener('click', () => downloadCartOrderDoc());
 
     document.getElementById('closeEditorModal').addEventListener('click', () => { document.getElementById('editorModal').classList.add('hidden'); document.getElementById('editorModal').classList.remove('flex'); });
     document.getElementById('editorList').addEventListener('input', e => {
