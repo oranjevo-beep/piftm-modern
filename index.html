@@ -242,69 +242,146 @@
         <div class="min-w-0 lg:col-span-5">
           <span class="text-xs font-bold uppercase tracking-wider text-brand-600">Контакти виробника</span>
           <h2 class="mt-1 text-xl font-extrabold text-slate-900 sm:text-2xl">Відділ продажу та виробництво</h2>
-          <p class="mt-2 text-sm text-slate-600">ТОВ «Кодимський Райпостач» (ТМ «ПІФ»). Відвантаження зі складу в Одесі та доставка по Україні (Нова Пошта, Делівері, самовивіз).</p>
+          <p class="mt-2 text-sm text-slate-600">ТОВ «Кодимський Райпостач» (ТМ «ПІФ»). Прямі поставки побутової та професійної хімії зі складу виробника в Одесі.</p>
           <div class="mt-5 space-y-2.5 text-sm sm:space-y-3">
-            <div class="flex items-center gap-3 rounded-xl border border-slate-200 px-3.5 py-3 sm:px-4">
-              <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-brand-50 text-brand-700"><i class="fa-solid fa-location-dot"></i></span>
-              <div class="min-w-0">
-                <div class="text-xs text-slate-500">Адреса виробництва та складу</div>
-                <div class="font-bold text-slate-900">пров. Вознесенський № 3, м. Одеса, 65007</div>
+            <a href="https://maps.google.com/?q=провулок+Вознесенський+3,+Одеса,+65007" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between gap-3 rounded-xl border border-slate-200 px-3.5 py-3 transition hover:border-brand-300 hover:bg-brand-50/30 sm:px-4">
+              <div class="flex min-w-0 items-center gap-3">
+                <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-brand-50 text-brand-700"><i class="fa-solid fa-location-dot"></i></span>
+                <div class="min-w-0">
+                  <div class="text-xs text-slate-500">Адреса виробництва та складу (район Привозу)</div>
+                  <div class="font-bold text-slate-900">пров. Вознесенський № 3, м. Одеса, 65007</div>
+                </div>
               </div>
-            </div>
-            <a href="tel:+380679720560" class="flex items-center gap-3 rounded-xl border border-slate-200 px-3.5 py-3 hover:border-brand-300 sm:px-4">
+              <i class="fa-solid fa-arrow-up-right-from-square shrink-0 text-xs text-slate-400"></i>
+            </a>
+            <a href="tel:+380679720560" class="flex items-center gap-3 rounded-xl border border-slate-200 px-3.5 py-3 transition hover:border-brand-300 hover:bg-brand-50/30 sm:px-4">
               <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-brand-50 text-brand-700"><i class="fa-solid fa-mobile-screen-button"></i></span>
               <div class="min-w-0">
-                <div class="text-xs text-slate-500">Мобільний / WhatsApp</div>
+                <div class="text-xs text-slate-500">Телефон / WhatsApp / Viber</div>
                 <div class="font-bold text-slate-900 tabular-nums">+380 67 972 05 60</div>
               </div>
             </a>
-            <a href="mailto:piftm.info@gmail.com" class="flex items-center gap-3 rounded-xl border border-slate-200 px-3.5 py-3 hover:border-brand-300 sm:px-4">
+            <a href="mailto:piftm.info@gmail.com" class="flex items-center gap-3 rounded-xl border border-slate-200 px-3.5 py-3 transition hover:border-brand-300 hover:bg-brand-50/30 sm:px-4">
               <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-brand-50 text-brand-700"><i class="fa-solid fa-envelope"></i></span>
               <div class="min-w-0">
-                <div class="text-xs text-slate-500">E-mail</div>
+                <div class="text-xs text-slate-500">E-mail відділу продажу</div>
                 <div class="break-all font-bold text-slate-900">piftm.info@gmail.com</div>
               </div>
             </a>
           </div>
+          <div class="mt-4 grid grid-cols-2 gap-2 sm:grid-cols-3">
+            <a href="https://api.whatsapp.com/send?phone=380679720560" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-1.5 rounded-xl bg-emerald-600 px-3 py-2.5 text-xs font-bold text-white shadow-sm transition hover:bg-emerald-700">
+              <i class="fa-brands fa-whatsapp text-sm"></i><span>WhatsApp</span>
+            </a>
+            <a href="viber://chat?number=%2B380679720560" class="inline-flex items-center justify-center gap-1.5 rounded-xl bg-[#7360f2] px-3 py-2.5 text-xs font-bold text-white shadow-sm transition hover:bg-[#5f4dee]">
+              <i class="fa-brands fa-viber text-sm"></i><span>Viber</span>
+            </a>
+            <a href="tel:+380679720560" class="col-span-2 inline-flex items-center justify-center gap-1.5 rounded-xl bg-brand-700 px-3 py-2.5 text-xs font-bold text-white shadow-sm transition hover:bg-brand-dark sm:col-span-1">
+              <i class="fa-solid fa-phone text-xs"></i><span>Подзвонити</span>
+            </a>
+          </div>
         </div>
-        <form id="inquiryForm" class="min-w-0 space-y-4 rounded-2xl bg-slate-50 p-4 sm:p-6 lg:col-span-7">
-          <div>
-            <h3 class="text-base font-extrabold text-slate-900">Швидке замовлення або запит на оптовий прайс</h3>
-            <p class="mt-0.5 text-xs text-slate-500">Якщо ви вже додали товари у кошик, вони автоматично додадуться до вашого повідомлення.</p>
-          </div>
-          <div class="grid gap-3 sm:grid-cols-2">
+
+        <div class="min-w-0 rounded-2xl bg-slate-50 p-4 sm:p-6 lg:col-span-7">
+          <div class="flex flex-wrap items-center justify-between gap-2">
             <div>
-              <label for="inqName" class="block text-xs font-semibold text-slate-600">Ваше ім'я або компанія *</label>
-              <input id="inqName" type="text" required placeholder="Напр.: Олександр / ТОВ Чистий Дім" class="mt-1 w-full rounded-xl border border-slate-200 bg-white px-3.5 py-2.5 text-base outline-none focus:border-brand-500 sm:text-sm" />
+              <h3 class="text-base font-extrabold text-slate-900 sm:text-lg">Умови співпраці для опту, HoReCa та мереж</h3>
+              <p class="mt-0.5 text-xs text-slate-500">Працюємо з торговельними мережами, ресторанами, готелями, клінінговими компаніями та підприємствами</p>
             </div>
-            <div>
-              <label for="inqPhone" class="block text-xs font-semibold text-slate-600">Телефон для зв'язку *</label>
-              <input id="inqPhone" type="tel" required placeholder="+380 (__) ___ __ __" class="mt-1 w-full rounded-xl border border-slate-200 bg-white px-3.5 py-2.5 text-base outline-none focus:border-brand-500 sm:text-sm" />
+            <span class="rounded-full bg-emerald-100 px-3 py-1 text-xs font-extrabold text-emerald-800">Платник ПДВ</span>
+          </div>
+
+          <div class="mt-4 grid gap-3 sm:grid-cols-2">
+            <div class="rounded-xl border border-slate-200/80 bg-white p-3.5 shadow-sm">
+              <div class="flex items-center gap-2 text-xs font-extrabold text-brand-dark">
+                <i class="fa-solid fa-file-invoice-dollar text-brand-600"></i>
+                <span>Офіційний розрахунок з ПДВ</span>
+              </div>
+              <p class="mt-1.5 text-xs leading-relaxed text-slate-600">Повний пакет бухгалтерських документів від ТОВ «Кодимський Райпостач», реєстрація податкових накладних, висновки СЕС та паспорти якості.</p>
+            </div>
+
+            <div class="rounded-xl border border-slate-200/80 bg-white p-3.5 shadow-sm">
+              <div class="flex items-center gap-2 text-xs font-extrabold text-brand-dark">
+                <i class="fa-solid fa-truck-fast text-brand-600"></i>
+                <span>Склад в Одесі та доставка</span>
+              </div>
+              <p class="mt-1.5 text-xs leading-relaxed text-slate-600">Самовивіз у центрі Одеси (пров. Вознесенський, 3 — біля Привозу) від 1 упаковки або доставка по Одесі й Україні (Нова Пошта, Делівері).</p>
+            </div>
+
+            <div class="rounded-xl border border-slate-200/80 bg-white p-3.5 shadow-sm">
+              <div class="flex items-center gap-2 text-xs font-extrabold text-brand-dark">
+                <i class="fa-solid fa-industry text-brand-600"></i>
+                <span>Виробництво СТМ (Private Label)</span>
+              </div>
+              <p class="mt-1.5 text-xs leading-relaxed text-slate-600">Контрактне виробництво побутової та професійної хімії (0.5 л – 5 л) під вашою власною торговою маркою (досвід СТМ для мережі «КОПІЙКА»).</p>
+            </div>
+
+            <div class="rounded-xl border border-slate-200/80 bg-white p-3.5 shadow-sm">
+              <div class="flex items-center gap-2 text-xs font-extrabold text-brand-dark">
+                <i class="fa-solid fa-cart-Flatbed text-brand-600"></i>
+                <span>Як оформити замовлення на сайті</span>
+              </div>
+              <p class="mt-1.5 text-xs leading-relaxed text-slate-600">Додайте потрібні упаковки у <strong>Кошик</strong>, натисніть <strong>Завантажити PDF</strong> або <strong>Поділитися PDF</strong> та надішліть заявку у зручний месенджер.</p>
             </div>
           </div>
-          <div>
-            <label for="inqDelivery" class="block text-xs font-semibold text-slate-600">Місто, спосіб доставки або коментар</label>
-            <input id="inqDelivery" type="text" placeholder="Напр.: Одеса, Київ, Нова Пошта, Делівері, самовивіз" class="mt-1 w-full rounded-xl border border-slate-200 bg-white px-3.5 py-2.5 text-base outline-none focus:border-brand-500 sm:text-sm" />
-          </div>
-          <div class="flex flex-col gap-2.5 pt-1 sm:flex-row sm:flex-wrap sm:items-center">
-            <button id="inqWhatsappBtn" type="button" class="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-emerald-600 px-4 py-3 text-sm font-bold text-white shadow-sm hover:bg-emerald-700 sm:w-auto sm:py-2.5">
-              <i class="fa-brands fa-whatsapp text-base"></i><span>WhatsApp</span>
-            </button>
-            <button id="inqViberBtn" type="button" class="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#7360f2] px-4 py-3 text-sm font-bold text-white shadow-sm hover:bg-[#5f4dee] sm:w-auto sm:py-2.5">
-              <i class="fa-brands fa-viber text-base"></i><span>Viber</span>
-            </button>
-            <button id="inqAutoSubmitBtn" type="submit" class="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-brand-700 px-4 py-3 text-sm font-bold text-white shadow-sm hover:bg-brand-dark sm:w-auto sm:py-2.5">
-              <i class="fa-solid fa-envelope"></i><span>Надіслати на E-mail</span>
-            </button>
-          </div>
-          <div id="inqSuccessBox" class="hidden rounded-xl border border-emerald-200 bg-emerald-50 p-3.5 text-xs font-medium text-emerald-900"></div>
-        </form>
+        </div>
       </div>
     </section>
   </main>
 
-  <footer class="mt-12 border-t border-slate-200 bg-white px-4 py-6 pb-24 text-center text-xs text-slate-500">
-    © 2005–2026 ТМ «ПІФ» · ТОВ «Кодимський Райпостач» (м. Одеса, пров. Вознесенський № 3) · Зроблено в Україні 🇺🇦
+  <footer class="mt-14 border-t border-slate-200 bg-slate-900 pb-24 pt-10 text-slate-300">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6">
+      <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-12">
+        <div class="lg:col-span-5">
+          <div class="flex items-center gap-3">
+            <div class="rounded-xl bg-white px-2.5 py-1.5 shadow-sm">
+              <img src="./images/logo-slide@2x.png" alt="ТМ ПІФ" class="h-7 w-auto object-contain" />
+            </div>
+            <div>
+              <div class="text-base font-extrabold text-white">ТМ «ПІФ»</div>
+              <div class="text-xs text-slate-400">ТОВ «Кодимський Райпостач» · з 2005 року</div>
+            </div>
+          </div>
+          <p class="mt-3 max-w-md text-xs leading-relaxed text-slate-400">
+            Український виробник мийних та чистячих засобів для дому, HoReCa, професійного клінінгу та торговельних мереж. Фасування від 500 мл до каністр 5 л — усі ціни з ПДВ.
+          </p>
+        </div>
+
+        <div class="lg:col-span-3">
+          <div class="text-xs font-extrabold uppercase tracking-wider text-white">Розділи сайту</div>
+          <ul class="mt-3 space-y-2 text-xs font-medium text-slate-400">
+            <li><a href="#catalog" class="transition hover:text-white">Каталог продукції</a></li>
+            <li><a href="#pricelist" class="transition hover:text-white">Прайс-лист (з ПДВ)</a></li>
+            <li><a href="#horeca" class="transition hover:text-white">Калькулятор економії 5 л (HoReCa)</a></li>
+            <li><a href="#contacts" class="transition hover:text-white">Умови співпраці та контакти</a></li>
+          </ul>
+        </div>
+
+        <div class="lg:col-span-4">
+          <div class="text-xs font-extrabold uppercase tracking-wider text-white">Виробництво та склад в Одесі</div>
+          <ul class="mt-3 space-y-2 text-xs text-slate-400">
+            <li class="flex items-start gap-2">
+              <i class="fa-solid fa-location-dot mt-0.5 text-brand-300"></i>
+              <span>65007, м. Одеса, пров. Вознесенський № 3</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <i class="fa-solid fa-phone text-brand-300"></i>
+              <a href="tel:+380679720560" class="font-bold text-white transition hover:text-brand-200">+380 67 972 05 60</a>
+              <span class="text-[11px] text-slate-500">(WhatsApp / Viber)</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <i class="fa-solid fa-envelope text-brand-300"></i>
+              <a href="mailto:piftm.info@gmail.com" class="transition hover:text-white">piftm.info@gmail.com</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="mt-8 flex flex-col items-center justify-between gap-2 border-t border-slate-800 pt-6 text-center text-xs text-slate-500 sm:flex-row">
+        <div>© 2005–2026 ТМ «ПІФ» · ТОВ «Кодимський Райпостач». Усі права захищено.</div>
+        <div>Вироблено в Одесі, Україна 🇺🇦 · Усі ціни вказані з ПДВ</div>
+      </div>
+    </div>
   </footer>
 
   <!-- Sticky Bottom Cart Bar (appears automatically when cart has items) -->
@@ -345,14 +422,7 @@
       </div>
       <div id="cartItems" class="min-h-0 flex-1 space-y-2.5 overflow-y-auto p-3.5 sm:p-4"></div>
       <div class="shrink-0 border-t border-slate-200 bg-slate-50 p-3.5 sm:p-4">
-        <div class="space-y-2 border-b border-slate-200/80 pb-2.5">
-          <div class="grid grid-cols-1 gap-2 sm:grid-cols-2">
-            <input id="cartCustName" type="text" placeholder="Ваше ім'я / Компанія *" class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-base text-slate-800 outline-none focus:border-brand-500 sm:px-2.5 sm:text-xs" />
-            <input id="cartCustPhone" type="tel" placeholder="Телефон *" class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-base text-slate-800 outline-none focus:border-brand-500 sm:px-2.5 sm:text-xs" />
-          </div>
-          <input id="cartCustCity" type="text" placeholder="Місто та доставка (Одеса, Нова Пошта...)" class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-base text-slate-800 outline-none focus:border-brand-500 sm:px-2.5 sm:text-xs" />
-        </div>
-        <div class="mt-2 flex items-center justify-between text-xs text-slate-600"><span>Всього упаковок / одиниць:</span><strong id="cartSummaryUnits" class="tabular-nums">0 упак. (0 шт.)</strong></div>
+        <div class="flex items-center justify-between text-xs text-slate-600"><span>Всього упаковок / одиниць:</span><strong id="cartSummaryUnits" class="tabular-nums">0 упак. (0 шт.)</strong></div>
         <div class="mt-0.5 flex items-center justify-between text-base font-extrabold text-slate-900"><span>Разом з ПДВ:</span><span id="cartTotalPrice" class="text-brand-dark tabular-nums">0.00 грн</span></div>
 
         <div id="cartOrderStatusBox" class="mt-2 hidden rounded-xl border border-emerald-200 bg-emerald-50 p-2.5 text-xs text-emerald-900"></div>
@@ -1682,10 +1752,7 @@
       return composePdfLinkMessage();
     }
 
-    document.getElementById('inquiryForm').addEventListener('submit', e => {
-      e.preventDefault();
-      submitAutomaticOrder({ fromCart: false });
-    });
+
 
     async function preparePdfAndOpenMessenger(channel) {
       if (!getCartDetailed().items.length) {
@@ -1728,16 +1795,7 @@
       window.location.href = 'viber://chat?number=%2B380679720560';
     }
 
-    document.getElementById('inqWhatsappBtn').addEventListener('click', () => {
-      saveCartCustomerInfo();
-      const msg = composeInquiryMessage();
-      window.open(`https://api.whatsapp.com/send?phone=380679720560&text=${encodeURIComponent(msg)}`, '_blank');
-      showToast('Відкрито WhatsApp із сформованим запитом');
-    });
 
-    document.getElementById('inqViberBtn').addEventListener('click', () => {
-      sendOrderViaViber(false);
-    });
 
     document.addEventListener('click', e => {
       const add = e.target.closest('[data-add-cart]');
