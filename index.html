@@ -252,13 +252,6 @@
                 <div class="font-bold text-slate-900">пров. Вознесенський № 3, м. Одеса, 65007</div>
               </div>
             </div>
-            <a href="tel:+380487017029" class="flex items-center gap-3 rounded-xl border border-slate-200 px-3.5 py-3 hover:border-brand-300 sm:px-4">
-              <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-brand-50 text-brand-700"><i class="fa-solid fa-phone"></i></span>
-              <div class="min-w-0">
-                <div class="text-xs text-slate-500">Тел. / факс (Одеса)</div>
-                <div class="font-bold text-slate-900 tabular-nums">(048) 701-70-29</div>
-              </div>
-            </a>
             <a href="tel:+380679720560" class="flex items-center gap-3 rounded-xl border border-slate-200 px-3.5 py-3 hover:border-brand-300 sm:px-4">
               <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-brand-50 text-brand-700"><i class="fa-solid fa-mobile-screen-button"></i></span>
               <div class="min-w-0">
@@ -510,17 +503,17 @@
       {
         "id": "p09",
         "name": "Засіб для миття посуду «Економ»",
-        "image": "./images/product-12.webp",
+        "image": "",
         "sizes": [
           { "label": "5 л (економ)", "price": "80.00", "packQty": 1, "barcode": "" }
         ],
-        "description": "Економічна серія у каністрі 5 л для закладів громадського харчування, виробничих кухонь та господарських потреб із великим обсягом миття.",
+        "description": "Серія у каністрі 5 л для закладів громадського харчування, виробничих кухонь та господарських потреб із великим обсягом миття.",
         "categoryKey": "dishes",
         "shortCategory": "Посуд"
       },
       {
         "id": "p10",
-        "name": "Рідке мило м'яке «Жожоба і гліцерин» (рожеве)",
+        "name": "Рідке мило м'яке «Жожоба і гліцерин»",
         "image": "./images/product-14.webp",
         "sizes": [
           { "label": "5 л", "price": "196.00", "packQty": 1, "barcode": "4820110620600" }
@@ -531,7 +524,7 @@
       },
       {
         "id": "p11",
-        "name": "Рідке мило «Алое віра і гліцерин» (блакитне)",
+        "name": "Рідке мило «Алое віра і гліцерин»",
         "image": "./images/product-13.webp",
         "sizes": [
           { "label": "5 л", "price": "196.00", "packQty": 1, "barcode": "4820110620594" }
@@ -543,12 +536,12 @@
       {
         "id": "p12",
         "name": "Рідке мило для рук (з дозатором / Економ)",
-        "image": "./images/product-6.webp",
+        "image": "",
         "sizes": [
           { "label": "500 мл (4 види, з дозатором)", "price": "35.00", "packQty": 6, "barcode": "" },
           { "label": "5 л (економ)", "price": "80.00", "packQty": 1, "barcode": "" }
         ],
-        "description": "Рідке мило для щоденного використання у флаконах 0.5 л зі зручним дозатором (4 аромати в асортименті) або в економічній каністрі 5 л.",
+        "description": "Рідке мило для щоденного використання у флаконах 0.5 л зі зручним дозатором (4 аромати в асортименті) або у каністрі 5 л.",
         "categoryKey": "soap",
         "shortCategory": "Рідке мило"
       }
@@ -639,8 +632,8 @@
       grid.innerHTML = items.map(p => `
         <article class="card-hover flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white">
           <div class="relative flex h-44 cursor-pointer items-center justify-center bg-white p-4 sm:h-48" data-open-product="${p.id}">
-            <img src="${esc(p.image)}" alt="${esc(p.name)}" class="max-h-36 w-auto max-w-full object-contain sm:max-h-40" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
-            <div class="hidden h-24 w-24 items-center justify-center rounded-2xl bg-brand-50 text-brand-dark"><i class="fa-solid ${catIcon(p.categoryKey)} text-3xl"></i></div>
+            ${p.image ? `<img src="${esc(p.image)}" alt="${esc(p.name)}" class="max-h-36 w-auto max-w-full object-contain sm:max-h-40" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />` : ''}
+            <div class="${p.image ? 'hidden' : 'flex'} h-24 w-24 items-center justify-center rounded-2xl bg-brand-50 text-brand-dark"><i class="fa-solid ${catIcon(p.categoryKey)} text-3xl"></i></div>
             <span class="absolute left-3 top-3 rounded-full border border-brand-100 bg-brand-50 px-2.5 py-1 text-[11px] font-bold text-brand-dark">${esc(p.shortCategory)}</span>
           </div>
           <div class="flex flex-1 flex-col border-t border-slate-100 p-3.5 sm:p-4">
@@ -801,7 +794,7 @@
           stack: [
             { text: 'ТМ «ПІФ» — СПЕЦИФІКАЦІЯ ТА ПРАЙС-ЛИСТ ПРОДУКЦІЇ', fontSize: 14, bold: true, color: '#1864ab' },
             { text: 'ТОВ «Кодимський Райпостач» · м. Одеса, пров. Вознесенський № 3, 65007', fontSize: 9, color: '#334155', margin: [0, 2, 0, 0] },
-            { text: 'Тел./факс: (048) 701-70-29 · Моб./WhatsApp: +380 67 972 05 60 · E-mail: piftm.info@gmail.com', fontSize: 9, color: '#334155', margin: [0, 1, 0, 0] }
+            { text: 'Моб./WhatsApp: +380 67 972 05 60 · E-mail: piftm.info@gmail.com', fontSize: 9, color: '#334155', margin: [0, 1, 0, 0] }
           ]
         });
 
@@ -846,7 +839,7 @@
         const aoa = [
           ['ТМ «ПІФ» — ОФІЦІЙНИЙ ПРАЙС-ЛИСТ ТА БЛАНК ЗАМОВЛЕННЯ (З ПДВ)'],
           ['ТОВ «Кодимський Райпостач» · м. Одеса, пров. Вознесенський № 3, 65007'],
-          ['Тел./факс: (048) 701-70-29 · Моб./WhatsApp: +380 67 972 05 60 · E-mail: piftm.info@gmail.com'],
+          ['Моб./WhatsApp: +380 67 972 05 60 · E-mail: piftm.info@gmail.com'],
           [],
           ['Код', 'Найменування товару', 'Фасування', 'Штрих-код', 'Шт в упак.', 'Ціна з ПДВ за 1 шт (грн)', 'Вартість упаковки з ПДВ (грн)', 'Замовлення (упак.)', 'Сума замовлення з ПДВ (грн)']
         ];
@@ -917,7 +910,7 @@
 <head><meta charset="utf-8"><title>ТМ ПІФ СПЕЦИФІКАЦІЯ</title></head>
 <body style="font-family:'Times New Roman',serif;font-size:12pt;color:#000;">
   <h2 style="margin-bottom:4px;">ТМ «ПІФ» СПЕЦИФІКАЦІЯ</h2>
-  <p style="margin-top:0;margin-bottom:12px;font-size:10.5pt;">ТОВ «Кодимський Райпостач» · м. Одеса, пров. Вознесенський № 3, 65007 · Тел.: (048) 701-70-29, +380 67 972 05 60 · E-mail: piftm.info@gmail.com</p>
+  <p style="margin-top:0;margin-bottom:12px;font-size:10.5pt;">ТОВ «Кодимський Райпостач» · м. Одеса, пров. Вознесенський № 3, 65007 · Тел.: +380 67 972 05 60 · E-mail: piftm.info@gmail.com</p>
   <table style="width:100%;border-collapse:collapse;border:1px solid #000;font-size:11pt;">
     <thead>
       <tr style="background:#f1f5f9;font-weight:bold;">
@@ -1123,7 +1116,7 @@
           stack: [
             { text: `ЗАЯВКА НА ЗАМОВЛЕННЯ № ${orderId} від ${dateStr}`, fontSize: 13, bold: true, color: '#1864ab' },
             { text: 'Постачальник: ТМ «ПІФ» · ТОВ «Кодимський Райпостач» (м. Одеса, пров. Вознесенський № 3, 65007)', fontSize: 9, color: '#334155', margin: [0, 2, 0, 0] },
-            { text: 'Тел./факс: (048) 701-70-29 · Моб./WhatsApp: +380 67 972 05 60 · E-mail: piftm.info@gmail.com', fontSize: 9, color: '#334155', margin: [0, 1, 0, 0] },
+            { text: 'Моб./WhatsApp: +380 67 972 05 60 · E-mail: piftm.info@gmail.com', fontSize: 9, color: '#334155', margin: [0, 1, 0, 0] },
             cust.name || cust.phone || cust.city ? {
               text: `Замовник: ${cust.name || '—'} · Тел.: ${cust.phone || '—'}${cust.city ? ' · Доставка: ' + cust.city : ''}`,
               fontSize: 9.5, bold: true, color: '#0f172a', margin: [0, 5, 0, 0]
@@ -1183,7 +1176,7 @@
 <head><meta charset="utf-8"><title>Заявка ${orderId}</title></head>
 <body style="font-family:'Times New Roman',serif;font-size:11.5pt;color:#000;">
   <h2 style="margin-bottom:4px;">ЗАЯВКА НА ЗАМОВЛЕННЯ № ${esc(orderId)} від ${esc(dateStr)}</h2>
-  <p style="margin:0 0 4px 0;font-size:10.5pt;"><strong>Постачальник:</strong> ТМ «ПІФ» · ТОВ «Кодимський Райпостач» (м. Одеса, пров. Вознесенський № 3, 65007 · Тел.: (048) 701-70-29, +380 67 972 05 60)</p>
+  <p style="margin:0 0 4px 0;font-size:10.5pt;"><strong>Постачальник:</strong> ТМ «ПІФ» · ТОВ «Кодимський Райпостач» (м. Одеса, пров. Вознесенський № 3, 65007 · Тел.: +380 67 972 05 60)</p>
   <p style="margin:0 0 12px 0;font-size:10.5pt;"><strong>Замовник:</strong> ${esc(cust.name || '—')} · <strong>Тел.:</strong> ${esc(cust.phone || '—')}${cust.city ? ' · <strong>Доставка:</strong> ' + esc(cust.city) : ''}</p>
   <table style="width:100%;border-collapse:collapse;border:1px solid #000;font-size:10.5pt;">
     <thead>
@@ -1313,7 +1306,7 @@
       const op = e.target.closest('[data-open-product]');
       if (op) {
         const p = state.products.find(x => x.id === op.dataset.openProduct); if (!p) return;
-        document.getElementById('productModalContent').innerHTML = `<div class="flex flex-col gap-5 sm:flex-row"><div class="flex h-44 w-full shrink-0 items-center justify-center rounded-xl border border-slate-100 bg-white p-4 sm:w-44"><img src="${esc(p.image)}" alt="${esc(p.name)}" class="max-h-36 max-w-full object-contain" /></div><div><span class="rounded-full bg-brand-50 px-2.5 py-1 text-xs font-bold text-brand-dark">${esc(p.shortCategory)}</span><h3 class="mt-2 text-xl font-extrabold text-slate-900">${esc(p.name)}</h3><p class="mt-2 text-sm text-slate-600">${esc(p.description)}</p></div></div><div class="mt-5 space-y-2.5">${(p.sizes || []).map((s, i) => `<div class="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-slate-200 bg-slate-50 p-3.5"><div><div class="text-sm font-bold">${esc(s.label)}</div><div class="text-xs text-slate-500">Упаковка: ${s.packQty || 1} шт.${s.barcode ? ' · Штрих-код: ' + esc(s.barcode) : ''}</div></div><div class="flex items-center gap-3"><span class="text-lg font-extrabold text-brand-dark tabular-nums">${esc(s.price)} грн</span><button type="button" data-add-cart="${p.id}::${i}" class="rounded-lg bg-brand-700 px-3 py-2 text-xs font-bold text-white hover:bg-brand-dark">+ Упаковка</button></div></div>`).join('')}</div>`;
+        document.getElementById('productModalContent').innerHTML = `<div class="flex flex-col gap-5 sm:flex-row"><div class="flex h-44 w-full shrink-0 items-center justify-center rounded-xl border border-slate-100 bg-white p-4 sm:w-44">${p.image ? `<img src="${esc(p.image)}" alt="${esc(p.name)}" class="max-h-36 max-w-full object-contain" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />` : ''}<div class="${p.image ? 'hidden' : 'flex'} h-24 w-24 items-center justify-center rounded-2xl bg-brand-50 text-brand-dark"><i class="fa-solid ${catIcon(p.categoryKey)} text-3xl"></i></div></div><div><span class="rounded-full bg-brand-50 px-2.5 py-1 text-xs font-bold text-brand-dark">${esc(p.shortCategory)}</span><h3 class="mt-2 text-xl font-extrabold text-slate-900">${esc(p.name)}</h3><p class="mt-2 text-sm text-slate-600">${esc(p.description)}</p></div></div><div class="mt-5 space-y-2.5">${(p.sizes || []).map((s, i) => `<div class="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-slate-200 bg-slate-50 p-3.5"><div><div class="text-sm font-bold">${esc(s.label)}</div><div class="text-xs text-slate-500">Упаковка: ${s.packQty || 1} шт.${s.barcode ? ' · Штрих-код: ' + esc(s.barcode) : ''}</div></div><div class="flex items-center gap-3"><span class="text-lg font-extrabold text-brand-dark tabular-nums">${esc(s.price)} грн</span><button type="button" data-add-cart="${p.id}::${i}" class="rounded-lg bg-brand-700 px-3 py-2 text-xs font-bold text-white hover:bg-brand-dark">+ Упаковка</button></div></div>`).join('')}</div>`;
         const m = document.getElementById('productModal'); m.classList.remove('hidden'); m.classList.add('flex'); return;
       }
       const inc = e.target.closest('[data-cart-inc]');
