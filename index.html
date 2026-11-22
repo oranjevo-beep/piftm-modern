@@ -170,8 +170,8 @@
           <p class="mt-0.5 text-xs text-slate-500">Ціна вказана за 1 одиницю товару з урахуванням ПДВ · завантажте прайс або специфікацію у зручному форматі</p>
         </div>
         <div class="grid grid-cols-2 gap-2 sm:flex sm:flex-wrap sm:items-center">
-          <button id="downloadPdfBtn" type="button" class="inline-flex items-center justify-center gap-1.5 rounded-xl border border-rose-200 bg-rose-50/70 px-3 py-2 text-xs font-bold text-rose-800 shadow-sm transition hover:bg-rose-100 sm:px-3.5">
-            <i class="fa-solid fa-file-pdf text-rose-600"></i><span>Прайс PDF</span>
+          <button id="downloadPdfBtn" type="button" class="inline-flex items-center justify-center gap-1.5 rounded-xl border border-brand-200 bg-brand-50/80 px-3 py-2 text-xs font-bold text-brand-dark shadow-sm transition hover:bg-brand-100 sm:px-3.5">
+            <i class="fa-solid fa-file-pdf text-brand-700"></i><span>Прайс PDF</span>
           </button>
           <button id="downloadXlsxBtn" type="button" class="inline-flex items-center justify-center gap-1.5 rounded-xl border border-emerald-200 bg-emerald-50/70 px-3 py-2 text-xs font-bold text-emerald-800 shadow-sm transition hover:bg-emerald-100 sm:px-3.5">
             <i class="fa-solid fa-file-excel text-emerald-600"></i><span>Бланк Excel</span>
@@ -337,24 +337,27 @@
 
         <div id="cartOrderStatusBox" class="mt-2 hidden rounded-xl border border-emerald-200 bg-emerald-50 p-2.5 text-xs text-emerald-900"></div>
 
-        <div class="mt-2.5">
-          <button id="cartDownloadPdfBtn" type="button" class="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-rose-600 px-4 py-2.5 text-xs font-extrabold text-white shadow-sm transition hover:bg-rose-700">
-            <i class="fa-solid fa-file-pdf text-sm"></i><span>1. Сформувати та завантажити заявку PDF</span>
+        <div class="mt-2.5 grid grid-cols-1 gap-1.5 sm:grid-cols-2">
+          <button id="cartDownloadPdfBtn" type="button" class="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-brand-700 px-3.5 py-2.5 text-xs font-extrabold text-white shadow-sm transition hover:bg-brand-dark">
+            <i class="fa-solid fa-file-arrow-down text-sm"></i><span>Завантажити PDF</span>
+          </button>
+          <button id="cartSharePdfBtn" type="button" class="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-emerald-300 bg-emerald-50 px-3.5 py-2.5 text-xs font-extrabold text-emerald-900 shadow-sm transition hover:bg-emerald-100">
+            <i class="fa-solid fa-share-nodes text-emerald-700 text-sm"></i><span>Поділитися PDF-файлом</span>
           </button>
         </div>
 
         <div class="mt-2.5">
-          <div class="mb-1.5 text-[11px] font-bold uppercase tracking-wider text-slate-500">2. Надіслати замовлення одразу у відділ продажу:</div>
+          <div class="mb-1.5 text-[11px] font-bold uppercase tracking-wider text-slate-500">Надіслати PDF-посилання у відділ продажу:</div>
           <div class="grid grid-cols-3 gap-1.5">
             <button id="cartWhatsappBtn" type="button" class="inline-flex items-center justify-center gap-1.5 whitespace-nowrap rounded-xl bg-emerald-600 px-2.5 py-2.5 text-xs font-bold text-white shadow-sm hover:bg-emerald-700"><i class="fa-brands fa-whatsapp text-sm"></i><span>WhatsApp</span></button>
             <button id="cartViberBtn" type="button" class="inline-flex items-center justify-center gap-1.5 whitespace-nowrap rounded-xl bg-[#7360f2] px-2.5 py-2.5 text-xs font-bold text-white shadow-sm hover:bg-[#5f4dee]"><i class="fa-brands fa-viber text-sm"></i><span>Viber</span></button>
-            <button id="cartAutoOrderBtn" type="button" class="inline-flex items-center justify-center gap-1.5 whitespace-nowrap rounded-xl bg-brand-700 px-2.5 py-2.5 text-xs font-bold text-white shadow-sm hover:bg-brand-dark"><i class="fa-solid fa-envelope text-xs"></i><span>E-mail</span></button>
+            <button id="cartAutoOrderBtn" type="button" class="inline-flex items-center justify-center gap-1.5 whitespace-nowrap rounded-xl bg-brand-600 px-2.5 py-2.5 text-xs font-bold text-white shadow-sm hover:bg-brand-700"><i class="fa-solid fa-envelope text-xs"></i><span>E-mail</span></button>
           </div>
         </div>
 
         <div class="mt-2 flex gap-2">
           <button id="clearCartBtn" type="button" class="rounded-xl border border-slate-200 bg-white px-3 py-1.5 text-[11px] font-semibold text-slate-600 hover:bg-slate-100">Очистити</button>
-          <button id="copyOrderBtn" type="button" class="flex-1 rounded-xl border border-slate-200 bg-white px-3 py-1.5 text-[11px] font-semibold text-slate-700 hover:bg-slate-100"><i class="fa-regular fa-copy mr-1"></i>Скопіювати текст замовлення</button>
+          <button id="copyOrderBtn" type="button" class="flex-1 rounded-xl border border-slate-200 bg-white px-3 py-1.5 text-[11px] font-semibold text-slate-700 hover:bg-slate-100"><i class="fa-solid fa-link mr-1"></i>Скопіювати посилання на PDF</button>
         </div>
       </div>
     </div>
@@ -605,6 +608,7 @@
       }
       populateCalcOptions();
       renderAll();
+      checkSharedPdfOrder();
     }
 
     function filtered() {
@@ -1049,71 +1053,101 @@
       return { items, totalPacks, totalUnits, totalSum };
     }
 
-    function generateOrderId() {
-      const d = new Date();
-      const pad = n => String(n).padStart(2, '0');
-      return `PIF-${d.getFullYear()}${pad(d.getMonth() + 1)}${pad(d.getDate())}-${String(Math.floor(100 + Math.random() * 900))}`;
+    let currentCartOrderId = '';
+    let lastCartSignature = '';
+
+    function getCartOrderId() {
+      const sig = JSON.stringify(state.cart) + JSON.stringify(getCartCustomerInfo());
+      if (!currentCartOrderId || sig !== lastCartSignature) {
+        const d = new Date();
+        const pad = n => String(n).padStart(2, '0');
+        currentCartOrderId = `PIF-${d.getFullYear()}${pad(d.getMonth() + 1)}${pad(d.getDate())}-${String(Math.floor(100 + Math.random() * 900))}`;
+        lastCartSignature = sig;
+      }
+      return currentCartOrderId;
     }
 
-    async function downloadCartOrderPdf(customOrderId) {
-      const { items, totalPacks, totalUnits, totalSum } = getCartDetailed();
-      if (!items.length) { showToast('Додайте товари до замовлення'); return; }
-      try {
-        showToast('Формування PDF заявки...');
-        if (!window.pdfMake) {
-          await loadScript('https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.10/pdfmake.min.js');
-          await loadScript('https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.10/vfs_fonts.min.js');
-        }
-        const orderId = customOrderId || generateOrderId();
-        const cust = getCartCustomerInfo();
-        const dateStr = new Date().toLocaleDateString('uk-UA');
-        const logoData = await getLogoDataUrl();
+    function generateOrderId() {
+      return getCartOrderId();
+    }
 
-        const body = [[
-          { text: '№', bold: true, fillColor: '#e7f5ff', alignment: 'center' },
-          { text: 'Найменування товару', bold: true, fillColor: '#e7f5ff' },
-          { text: 'Фасування', bold: true, fillColor: '#e7f5ff', alignment: 'center' },
-          { text: 'Упак.', bold: true, fillColor: '#e7f5ff', alignment: 'center' },
-          { text: 'Всього шт.', bold: true, fillColor: '#e7f5ff', alignment: 'center' },
-          { text: 'Ціна з ПДВ\n(грн/шт)', bold: true, fillColor: '#e7f5ff', alignment: 'right' },
-          { text: 'Сума з ПДВ\n(грн)', bold: true, fillColor: '#e7f5ff', alignment: 'right' }
-        ]];
+    function buildPdfShareUrl(customOrderId) {
+      const entries = Object.entries(state.cart).filter(([, q]) => q > 0);
+      if (!entries.length) return 'https://piftm.com.ua/';
+      const orderId = customOrderId || getCartOrderId();
+      const cust = getCartCustomerInfo();
+      const dateStr = new Date().toLocaleDateString('uk-UA');
+      const compactItems = entries.map(([k, q]) => {
+        const [pid, idx] = k.split('::');
+        return `${pid}.${idx}.${q}`;
+      }).join('~');
+      const data = [orderId, dateStr, cust.name || '', cust.phone || '', cust.city || '', compactItems];
+      const b64 = btoa(unescape(encodeURIComponent(JSON.stringify(data))))
+        .replace(/\+/g, '-')
+        .replace(/\//g, '_')
+        .replace(/=+$/, '');
+      return `https://piftm.com.ua/?pdf=${b64}`;
+    }
 
-        items.forEach((it, i) => {
-          body.push([
-            { text: String(i + 1), alignment: 'center', color: '#475569' },
-            { text: it.name, bold: true },
-            { text: it.label, alignment: 'center' },
-            { text: `${it.packs} (${it.packQty} шт/уп)`, alignment: 'center', bold: true },
-            { text: String(it.units), alignment: 'center' },
-            { text: it.unitPrice.toFixed(2), alignment: 'right' },
-            { text: it.lineTotal.toFixed(2), bold: true, alignment: 'right', color: '#1864ab' }
-          ]);
-        });
+    async function buildCartOrderDocDef(opts = {}) {
+      if (!window.pdfMake) {
+        await loadScript('https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.10/pdfmake.min.js');
+        await loadScript('https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.10/vfs_fonts.min.js');
+      }
+      const detail = opts.detail || getCartDetailed();
+      const { items, totalPacks, totalUnits, totalSum } = detail;
+      const orderId = opts.orderId || getCartOrderId();
+      const cust = opts.cust || getCartCustomerInfo();
+      const dateStr = opts.dateStr || new Date().toLocaleDateString('uk-UA');
+      const logoData = await getLogoDataUrl();
 
+      const body = [[
+        { text: '№', bold: true, fillColor: '#e7f5ff', alignment: 'center' },
+        { text: 'Найменування товару', bold: true, fillColor: '#e7f5ff' },
+        { text: 'Фасування', bold: true, fillColor: '#e7f5ff', alignment: 'center' },
+        { text: 'Упак.', bold: true, fillColor: '#e7f5ff', alignment: 'center' },
+        { text: 'Всього шт.', bold: true, fillColor: '#e7f5ff', alignment: 'center' },
+        { text: 'Ціна з ПДВ\n(грн/шт)', bold: true, fillColor: '#e7f5ff', alignment: 'right' },
+        { text: 'Сума з ПДВ\n(грн)', bold: true, fillColor: '#e7f5ff', alignment: 'right' }
+      ]];
+
+      items.forEach((it, i) => {
         body.push([
-          { text: 'РАЗОМ ДО СПЛАТИ З ПДВ:', colSpan: 3, bold: true, alignment: 'right', fillColor: '#f8fafc' }, {}, {},
-          { text: `${totalPacks} упак.`, bold: true, alignment: 'center', fillColor: '#f8fafc' },
-          { text: `${totalUnits} шт.`, bold: true, alignment: 'center', fillColor: '#f8fafc' },
-          { text: '', fillColor: '#f8fafc' },
-          { text: `${totalSum.toFixed(2)} грн`, bold: true, alignment: 'right', color: '#1864ab', fillColor: '#f8fafc' }
+          { text: String(i + 1), alignment: 'center', color: '#475569' },
+          { text: it.name, bold: true },
+          { text: it.label, alignment: 'center' },
+          { text: `${it.packs} (${it.packQty} шт/уп)`, alignment: 'center', bold: true },
+          { text: String(it.units), alignment: 'center' },
+          { text: it.unitPrice.toFixed(2), alignment: 'right' },
+          { text: it.lineTotal.toFixed(2), bold: true, alignment: 'right', color: '#1864ab' }
         ]);
+      });
 
-        const headerCols = [];
-        if (logoData) headerCols.push({ image: logoData, width: 78, margin: [0, 2, 12, 0] });
-        headerCols.push({
-          stack: [
-            { text: `ЗАЯВКА НА ЗАМОВЛЕННЯ № ${orderId} від ${dateStr}`, fontSize: 13, bold: true, color: '#1864ab' },
-            { text: 'Постачальник: ТМ «ПІФ» · ТОВ «Кодимський Райпостач» (м. Одеса, пров. Вознесенський № 3, 65007)', fontSize: 9, color: '#334155', margin: [0, 2, 0, 0] },
-            { text: 'Моб./WhatsApp: +380 67 972 05 60 · E-mail: piftm.info@gmail.com', fontSize: 9, color: '#334155', margin: [0, 1, 0, 0] },
-            cust.name || cust.phone || cust.city ? {
-              text: `Замовник: ${cust.name || '—'} · Тел.: ${cust.phone || '—'}${cust.city ? ' · Доставка: ' + cust.city : ''}`,
-              fontSize: 9.5, bold: true, color: '#0f172a', margin: [0, 5, 0, 0]
-            } : {}
-          ]
-        });
+      body.push([
+        { text: 'РАЗОМ ДО СПЛАТИ З ПДВ:', colSpan: 3, bold: true, alignment: 'right', fillColor: '#f8fafc' }, {}, {},
+        { text: `${totalPacks} упак.`, bold: true, alignment: 'center', fillColor: '#f8fafc' },
+        { text: `${totalUnits} шт.`, bold: true, alignment: 'center', fillColor: '#f8fafc' },
+        { text: '', fillColor: '#f8fafc' },
+        { text: `${totalSum.toFixed(2)} грн`, bold: true, alignment: 'right', color: '#1864ab', fillColor: '#f8fafc' }
+      ]);
 
-        const docDef = {
+      const headerCols = [];
+      if (logoData) headerCols.push({ image: logoData, width: 78, margin: [0, 2, 12, 0] });
+      headerCols.push({
+        stack: [
+          { text: `ЗАЯВКА НА ЗАМОВЛЕННЯ № ${orderId} від ${dateStr}`, fontSize: 13, bold: true, color: '#1864ab' },
+          { text: 'Постачальник: ТМ «ПІФ» · ТОВ «Кодимський Райпостач» (м. Одеса, пров. Вознесенський № 3, 65007)', fontSize: 9, color: '#334155', margin: [0, 2, 0, 0] },
+          { text: 'Моб./WhatsApp: +380 67 972 05 60 · E-mail: piftm.info@gmail.com', fontSize: 9, color: '#334155', margin: [0, 1, 0, 0] },
+          cust.name || cust.phone || cust.city ? {
+            text: `Замовник: ${cust.name || '—'} · Тел.: ${cust.phone || '—'}${cust.city ? ' · Доставка: ' + cust.city : ''}`,
+            fontSize: 9.5, bold: true, color: '#0f172a', margin: [0, 5, 0, 0]
+          } : {}
+        ]
+      });
+
+      return {
+        orderId,
+        docDef: {
           pageSize: 'A4',
           pageMargins: [26, 26, 26, 30],
           defaultStyle: { fontSize: 8.5 },
@@ -1135,12 +1169,114 @@
               }
             }
           ]
-        };
+        }
+      };
+    }
+
+    async function downloadCartOrderPdf(customOrderId, customOpts) {
+      const detail = (customOpts && customOpts.detail) || getCartDetailed();
+      if (!detail.items.length) { showToast('Додайте товари до замовлення'); return; }
+      try {
+        showToast('Формування PDF заявки...');
+        saveCartCustomerInfo();
+        const { orderId, docDef } = await buildCartOrderDocDef({
+          orderId: customOrderId,
+          detail,
+          cust: customOpts && customOpts.cust,
+          dateStr: customOpts && customOpts.dateStr
+        });
         window.pdfMake.createPdf(docDef).download(`${orderId}.pdf`);
-        showToast('Заявку PDF завантажено');
+        const statusBox = document.getElementById('cartOrderStatusBox');
+        if (statusBox) {
+          statusBox.classList.remove('hidden');
+          statusBox.innerHTML = `<div class="font-bold text-emerald-950"><i class="fa-solid fa-circle-check text-emerald-600 mr-1"></i>Файл ${esc(orderId)}.pdf завантажено!</div><div class="mt-0.5 text-[11px] text-emerald-800">Тепер ви можете надіслати PDF-посилання в 1 клік через <strong>WhatsApp, Viber або E-mail</strong> нижче (або перетягнути файл у чат).</div>`;
+        }
+        showToast(`Заявку ${orderId}.pdf завантажено`);
       } catch (err) {
         showToast('Помилка формування PDF заявки');
       }
+    }
+
+    async function shareCartOrderPdfFile() {
+      const detail = getCartDetailed();
+      if (!detail.items.length) { showToast('Додайте товари до замовлення'); return; }
+      try {
+        showToast('Підготовка PDF-файлу для відправки...');
+        saveCartCustomerInfo();
+        const { orderId, docDef } = await buildCartOrderDocDef({ detail });
+        const pdfBlob = await new Promise(resolve => {
+          window.pdfMake.createPdf(docDef).getBlob(blob => resolve(blob));
+        });
+        const pdfFile = new File([pdfBlob], `${orderId}.pdf`, { type: 'application/pdf' });
+        if (navigator.canShare && navigator.canShare({ files: [pdfFile] })) {
+          await navigator.share({
+            files: [pdfFile],
+            title: `Заявка № ${orderId} — ТМ «ПІФ»`,
+            text: `Заявка на замовлення № ${orderId} для ТМ «ПІФ» (+380 67 972 05 60)`
+          });
+          showToast('PDF-файл передано у меню відправки');
+        } else {
+          // Desktop fallback: download the PDF and explain how to attach or use the 1-click WhatsApp/Viber buttons
+          window.pdfMake.createPdf(docDef).download(`${orderId}.pdf`);
+          const statusBox = document.getElementById('cartOrderStatusBox');
+          if (statusBox) {
+            statusBox.classList.remove('hidden');
+            statusBox.innerHTML = `<div class="font-bold text-emerald-950"><i class="fa-solid fa-file-pdf text-brand-700 mr-1"></i>Файл ${esc(orderId)}.pdf збережено на комп'ютер</div><div class="mt-0.5 text-[11px] text-emerald-800">Натисніть <strong>WhatsApp</strong> або <strong>Viber</strong> нижче — у повідомлення автоматично додасться пряме посилання на цей PDF-файл (або перетягніть завантажений файл у чат).</div>`;
+          }
+          showToast(`Файл ${orderId}.pdf завантажено`);
+        }
+      } catch (err) {
+        if (err && err.name === 'AbortError') return;
+        showToast('Помилка підготовки PDF');
+      }
+    }
+
+    async function checkSharedPdfOrder() {
+      try {
+        const params = new URLSearchParams(location.search);
+        const raw = params.get('pdf');
+        if (!raw) return;
+        const b64 = raw.replace(/-/g, '+').replace(/_/g, '/');
+        const padded = b64 + '==='.slice((b64.length + 3) % 4);
+        const data = JSON.parse(decodeURIComponent(escape(atob(padded))));
+        const [orderId, dateStr, cName, cPhone, cCity, compactItems] = data;
+        if (!compactItems) return;
+
+        const items = [];
+        let totalPacks = 0, totalUnits = 0, totalSum = 0;
+        state.cart = {};
+        compactItems.split('~').forEach(tok => {
+          const [pid, idxStr, qStr] = tok.split('.');
+          const idx = Number(idxStr), q = Number(qStr);
+          const p = state.products.find(x => x.id === pid);
+          const s = p && p.sizes[idx];
+          if (!p || !s || !q) return;
+          state.cart[`${pid}::${idx}`] = q;
+          const packQty = s.packQty || 1;
+          const unitPrice = parseFloat(s.price) || 0;
+          const units = q * packQty;
+          const lineTotal = units * unitPrice;
+          totalPacks += q;
+          totalUnits += units;
+          totalSum += lineTotal;
+          items.push({ id: p.id, name: p.name, label: s.label, packQty, packs: q, units, unitPrice, lineTotal });
+        });
+
+        if (!items.length) return;
+        if (cName && document.getElementById('cartCustName')) document.getElementById('cartCustName').value = cName;
+        if (cPhone && document.getElementById('cartCustPhone')) document.getElementById('cartCustPhone').value = cPhone;
+        if (cCity && document.getElementById('cartCustCity')) document.getElementById('cartCustCity').value = cCity;
+        renderAll();
+        document.getElementById('cartModal').classList.remove('hidden');
+        document.getElementById('cartModal').classList.add('flex');
+        history.replaceState(null, '', location.pathname);
+
+        await downloadCartOrderPdf(orderId, {
+          detail: { items, totalPacks, totalUnits, totalSum },
+          cust: { name: cName, phone: cPhone, city: cCity },
+          dateStr
+        });
+      } catch (e) {}
     }
 
     function downloadCartOrderDoc(customOrderId) {
@@ -1240,6 +1376,7 @@
         });
         payload['Всього упаковок / одиниць'] = `${totalPacks} упак. (${totalUnits} шт.)`;
         payload['РАЗОМ З ПДВ'] = `${totalSum.toFixed(2)} грн`;
+        payload['Завантажити PDF-заявку'] = buildPdfShareUrl(orderId);
       } else {
         payload['Тип звернення'] = 'Запит на оптовий прайс-лист / співпрацю';
       }
@@ -1254,28 +1391,36 @@
         statusBox.classList.remove('hidden');
         statusBox.innerHTML = `<div class="font-bold text-emerald-950"><i class="fa-solid fa-circle-check text-emerald-600 mr-1"></i>Замовлення № ${esc(orderId)} автоматично відправлено!</div><div class="mt-0.5 text-[11px] text-emerald-800">Копію надіслано у відділ продажу (piftm.info@gmail.com). Наш менеджер зв'яжеться з вами за номером <strong>${esc(phone)}</strong>.</div>`;
         showToast(`Замовлення ${orderId} відправлено!`);
-        if (fromCart && items.length > 0) {
-          downloadCartOrderPdf(orderId);
-        }
       } catch (err) {
         statusBox.classList.remove('hidden');
-        statusBox.innerHTML = `<div class="font-bold text-amber-900">Сформовано заявку № ${esc(orderId)}</div><div class="mt-0.5 text-[11px] text-amber-800">Завантажено PDF-файл заявки та відкрито поштовий клієнт для відправки на piftm.info@gmail.com.</div>`;
-        if (items.length > 0) downloadCartOrderPdf(orderId);
-        const mailMsg = composeInquiryMessage();
-        window.location.href = `mailto:piftm.info@gmail.com?subject=${encodeURIComponent('Замовлення ' + orderId + ' — ТМ «ПІФ»')}&body=${encodeURIComponent(mailMsg)}`;
+        statusBox.innerHTML = `<div class="font-bold text-amber-900">Відкрито поштовий клієнт для замовлення № ${esc(orderId)}</div><div class="mt-0.5 text-[11px] text-amber-800">Лист із прямим посиланням на завантаження PDF-заявки готовий до відправки на piftm.info@gmail.com.</div>`;
+        const mailMsg = composePdfLinkMessage(orderId);
+        window.location.href = `mailto:piftm.info@gmail.com?subject=${encodeURIComponent('Заявка ' + orderId + ' — ТМ «ПІФ»')}&body=${encodeURIComponent(mailMsg)}`;
       } finally {
         btn.disabled = false;
         btn.innerHTML = origHtml;
       }
     }
 
-    function composeInquiryMessage() {
+    function composePdfLinkMessage(customOrderId) {
       const cust = getCartCustomerInfo();
-      let msg = `Замовлення / Запит ТМ «ПІФ»\nІм'я / Компанія: ${cust.name || 'Клієнт'}\nТелефон: ${cust.phone || '—'}`;
-      if (cust.city) msg += `\nМісто / Доставка: ${cust.city}`;
-      const cartText = buildCartOrderText();
-      if (cartText) msg += `\n\n${cartText}`;
+      const { items, totalPacks, totalUnits, totalSum } = getCartDetailed();
+      if (!items.length) {
+        let m = `Запит ТМ «ПІФ»\nІм'я / Компанія: ${cust.name || 'Клієнт'}\nТелефон: ${cust.phone || '—'}`;
+        if (cust.city) m += `\nМісто / Доставка: ${cust.city}`;
+        return m;
+      }
+      const orderId = customOrderId || getCartOrderId();
+      const pdfUrl = buildPdfShareUrl(orderId);
+      let msg = `📄 ЗАЯВКА № ${orderId} — ТМ «ПІФ»`;
+      msg += `\nЗамовник: ${cust.name || 'Клієнт'} (${cust.phone || '—'}${cust.city ? ', ' + cust.city : ''})`;
+      msg += `\nРазом: ${totalPacks} упак. (${totalUnits} шт.) на суму ${totalSum.toFixed(2)} грн з ПДВ`;
+      msg += `\n\n👉 Завантажити PDF-заявку в 1 клік:\n${pdfUrl}`;
       return msg;
+    }
+
+    function composeInquiryMessage() {
+      return composePdfLinkMessage();
     }
 
     document.getElementById('inquiryForm').addEventListener('submit', e => {
@@ -1289,15 +1434,14 @@
         return;
       }
       saveCartCustomerInfo();
-      const orderId = generateOrderId();
-      const msg = composeInquiryMessage();
-      copyText(msg, 'Текст замовлення скопійовано для Viber');
+      const orderId = getCartOrderId();
+      const msg = composePdfLinkMessage(orderId);
+      copyText(msg, 'Посилання на PDF-заявку скопійовано для Viber');
       if (fromCart) {
-        downloadCartOrderPdf(orderId);
         const statusBox = document.getElementById('cartOrderStatusBox');
         if (statusBox) {
           statusBox.classList.remove('hidden');
-          statusBox.innerHTML = `<div class="font-bold text-emerald-950"><i class="fa-brands fa-viber text-[#7360f2] mr-1"></i>Заявку PDF завантажено + текст скопійовано!</div><div class="mt-0.5 text-[11px] text-emerald-800">У вікні Viber (+380 67 972 05 60) натисніть <strong>Вставити (Ctrl+V)</strong> або прикріпіть завантажений PDF-файл.</div>`;
+          statusBox.innerHTML = `<div class="font-bold text-emerald-950"><i class="fa-brands fa-viber text-[#7360f2] mr-1"></i>Посилання на PDF-заявку № ${esc(orderId)} скопійовано!</div><div class="mt-0.5 text-[11px] text-emerald-800">У чаті Viber (+380 67 972 05 60) просто натисніть <strong>Вставити (Ctrl+V)</strong> — отримувач завантажить PDF в 1 клік.</div>`;
         }
       }
       setTimeout(() => {
@@ -1346,9 +1490,9 @@
     document.getElementById('clearCartBtn').addEventListener('click', () => { state.cart = {}; renderAll(); showToast('Замовлення очищено'); });
 
     document.getElementById('copyOrderBtn').addEventListener('click', () => {
-      const txt = composeInquiryMessage();
       if (!getCartDetailed().items.length) { showToast('Додайте товари до замовлення'); return; }
-      copyText(txt, 'Замовлення скопійовано');
+      const txt = composePdfLinkMessage();
+      copyText(txt, 'Посилання на PDF-заявку скопійовано');
     });
 
     document.getElementById('cartAutoOrderBtn').addEventListener('click', () => {
@@ -1358,9 +1502,8 @@
     document.getElementById('cartWhatsappBtn').addEventListener('click', () => {
       if (!getCartDetailed().items.length) { showToast('Додайте товари до замовлення'); return; }
       saveCartCustomerInfo();
-      const orderId = generateOrderId();
-      downloadCartOrderPdf(orderId);
-      const txt = composeInquiryMessage();
+      const orderId = getCartOrderId();
+      const txt = composePdfLinkMessage(orderId);
       window.open(`https://api.whatsapp.com/send?phone=380679720560&text=${encodeURIComponent(txt)}`, '_blank');
     });
 
@@ -1369,6 +1512,7 @@
     });
 
     document.getElementById('cartDownloadPdfBtn').addEventListener('click', () => downloadCartOrderPdf());
+    document.getElementById('cartSharePdfBtn').addEventListener('click', () => shareCartOrderPdfFile());
 
     document.getElementById('closeEditorModal').addEventListener('click', () => { document.getElementById('editorModal').classList.add('hidden'); document.getElementById('editorModal').classList.remove('flex'); });
     document.getElementById('editorList').addEventListener('input', e => {
