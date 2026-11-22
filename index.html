@@ -146,7 +146,7 @@
       <div class="flex flex-wrap items-center gap-2">
         <div class="relative min-w-0 flex-1 sm:w-72 sm:flex-none">
           <i class="fa-solid fa-magnifying-glass pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-sm text-slate-400"></i>
-          <input id="searchInput" type="text" placeholder="Пошук або штрих-код..." class="w-full rounded-xl border border-slate-200 bg-white py-2.5 pl-10 pr-3 text-base text-slate-800 shadow-sm outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-100 sm:text-sm" />
+          <input id="searchInput" type="text" placeholder="Пошук за назвою або категорією..." class="w-full rounded-xl border border-slate-200 bg-white py-2.5 pl-10 pr-3 text-base text-slate-800 shadow-sm outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-100 sm:text-sm" />
         </div>
         <div class="inline-flex shrink-0 rounded-xl border border-slate-200 bg-white p-1 shadow-sm">
           <button id="viewCardsBtn" type="button" class="rounded-lg bg-brand-700 px-3 py-1.5 text-xs font-semibold text-white">Картки</button>
@@ -191,7 +191,6 @@
               <tr>
                 <th class="px-3 py-3 sm:px-4 sm:py-3.5">Найменування товару</th>
                 <th class="hidden px-4 py-3.5 md:table-cell">Фасування</th>
-                <th class="hidden px-4 py-3.5 lg:table-cell">Штрих-код</th>
                 <th class="hidden px-4 py-3.5 text-center md:table-cell">Шт/упак</th>
                 <th class="px-2.5 py-3 text-right sm:px-4 sm:py-3.5">Ціна, грн</th>
                 <th class="hidden px-4 py-3.5 text-right md:table-cell">Сума упаковки</th>
@@ -408,8 +407,8 @@
         "name": "Засіб для видалення жиру, нагару та кіптяви",
         "image": "./images/product-3.webp",
         "sizes": [
-          { "label": "500 мл", "price": "34.50", "packQty": 8, "barcode": "4820110620341" },
-          { "label": "5 л", "price": "230.00", "packQty": 1, "barcode": "4820110620570" }
+          { "label": "500 мл", "price": "34.50", "packQty": 8 },
+          { "label": "5 л", "price": "230.00", "packQty": 1 }
         ],
         "description": "Видаляє застарілий жир, кіптяву та нагар з кухонних плит, духовок, грилів, витяжок, фритюрниць та кухонного начиння. Не застосовувати для алюмінієвих, емальованих, скляних та лакофарбових поверхонь.",
         "categoryKey": "degreaser",
@@ -420,8 +419,8 @@
         "name": "Засіб для ванних кімнат, душових кабін та кранів",
         "image": "./images/product-2.webp",
         "sizes": [
-          { "label": "500 мл (з розпилювачем)", "price": "35.90", "packQty": 18, "barcode": "" },
-          { "label": "5 л", "price": "210.00", "packQty": 1, "barcode": "" }
+          { "label": "500 мл (з розпилювачем)", "price": "35.90", "packQty": 18 },
+          { "label": "5 л", "price": "210.00", "packQty": 1 }
         ],
         "description": "Очищає від вапняного та мильного нальоту, іржі й водного каменю акрилові, емальовані, керамічні, хромовані та скляні поверхні.",
         "categoryKey": "bath",
@@ -432,8 +431,8 @@
         "name": "Гель для миття унітазів «Каченя»",
         "image": "./images/product-1.webp",
         "sizes": [
-          { "label": "750 мл", "price": "48.80", "packQty": 16, "barcode": "4820110620426" },
-          { "label": "5 л", "price": "239.00", "packQty": 1, "barcode": "" }
+          { "label": "750 мл", "price": "48.80", "packQty": 16 },
+          { "label": "5 л", "price": "239.00", "packQty": 1 }
         ],
         "description": "Гелеподібний засіб для очищення унітазів, раковин та керамічних поверхонь. Ефективно усуває іржу, вапняний наліт і неприємний запах.",
         "categoryKey": "bath",
@@ -444,8 +443,8 @@
         "name": "Засіб для очищення труб та сифонів",
         "image": "./images/product-15.webp",
         "sizes": [
-          { "label": "1 л", "price": "54.40", "packQty": 10, "barcode": "4820110620334" },
-          { "label": "5 л", "price": "230.00", "packQty": 1, "barcode": "4820110620563" }
+          { "label": "1 л", "price": "54.40", "packQty": 10 },
+          { "label": "5 л", "price": "230.00", "packQty": 1 }
         ],
         "description": "Ефективно розчиняє жирові й білкові відкладення, волосся та залишки їжі в каналізаційних трубах і сифонах, усуває стійкі запахи.",
         "categoryKey": "pipes",
@@ -456,8 +455,8 @@
         "name": "Засіб для миття підлоги та водостійких поверхонь",
         "image": "./images/product-16.webp",
         "sizes": [
-          { "label": "1 л", "price": "61.50", "packQty": 10, "barcode": "4820110620365" },
-          { "label": "5 л", "price": "166.00", "packQty": 1, "barcode": "4820110620556" }
+          { "label": "1 л", "price": "61.50", "packQty": 10 },
+          { "label": "5 л", "price": "166.00", "packQty": 1 }
         ],
         "description": "Для щоденного та генерального миття лінолеуму, мармуру, наливної підлоги, керамічної плитки та інших поверхонь у побуті й професійному клінінгу.",
         "categoryKey": "floors",
@@ -468,9 +467,9 @@
         "name": "Засіб для миття скла та дзеркал",
         "image": "./images/product-7.webp",
         "sizes": [
-          { "label": "500 мл (з розпилювачем)", "price": "35.90", "packQty": 18, "barcode": "" },
-          { "label": "500 мл (без розпилювача)", "price": "30.90", "packQty": 18, "barcode": "" },
-          { "label": "5 л", "price": "162.00", "packQty": 1, "barcode": "" }
+          { "label": "500 мл (з розпилювачем)", "price": "35.90", "packQty": 18 },
+          { "label": "500 мл (без розпилювача)", "price": "30.90", "packQty": 18 },
+          { "label": "5 л", "price": "162.00", "packQty": 1 }
         ],
         "description": "Очищає віконне, вітринне та автомобільне скло, дзеркала, кахель, хромовані та нержавіючі поверхні без смуг і розводів.",
         "categoryKey": "glass",
@@ -481,8 +480,8 @@
         "name": "Засіб для миття посуду «Лимон»",
         "image": "./images/product-8.webp",
         "sizes": [
-          { "label": "1 л", "price": "43.00", "packQty": 10, "barcode": "4820110620198" },
-          { "label": "5 л", "price": "196.00", "packQty": 1, "barcode": "" }
+          { "label": "1 л", "price": "43.00", "packQty": 10 },
+          { "label": "5 л", "price": "196.00", "packQty": 1 }
         ],
         "description": "Густий засіб з ароматом лимона для миття всіх видів посуду, кухонного інвентарю та робочих поверхонь у закладах громадського харчування й побуті.",
         "categoryKey": "dishes",
@@ -493,8 +492,8 @@
         "name": "Засіб для миття посуду «Яблуко»",
         "image": "./images/product-4.webp",
         "sizes": [
-          { "label": "1 л", "price": "43.00", "packQty": 10, "barcode": "4820110620204" },
-          { "label": "5 л", "price": "196.00", "packQty": 1, "barcode": "" }
+          { "label": "1 л", "price": "43.00", "packQty": 10 },
+          { "label": "5 л", "price": "196.00", "packQty": 1 }
         ],
         "description": "Густий засіб із ароматом яблука для миття посуду й кухонного обладнання в побуті, кафе, ресторанах, їдальнях та харчовій галузі.",
         "categoryKey": "dishes",
@@ -505,7 +504,7 @@
         "name": "Засіб для миття посуду «Економ»",
         "image": "",
         "sizes": [
-          { "label": "5 л (економ)", "price": "80.00", "packQty": 1, "barcode": "" }
+          { "label": "5 л (економ)", "price": "80.00", "packQty": 1 }
         ],
         "description": "Серія у каністрі 5 л для закладів громадського харчування, виробничих кухонь та господарських потреб із великим обсягом миття.",
         "categoryKey": "dishes",
@@ -516,7 +515,7 @@
         "name": "Рідке мило м'яке «Жожоба і гліцерин»",
         "image": "./images/product-14.webp",
         "sizes": [
-          { "label": "5 л", "price": "196.00", "packQty": 1, "barcode": "4820110620600" }
+          { "label": "5 л", "price": "196.00", "packQty": 1 }
         ],
         "description": "М'яке рідке мило з маслом жожоба та гліцерином у каністрі 5 л для наливних диспенсерів і дозаторів. Дбайливо очищає шкіру рук та зменшує сухість.",
         "categoryKey": "soap",
@@ -527,7 +526,7 @@
         "name": "Рідке мило «Алое віра і гліцерин»",
         "image": "./images/product-13.webp",
         "sizes": [
-          { "label": "5 л", "price": "196.00", "packQty": 1, "barcode": "4820110620594" }
+          { "label": "5 л", "price": "196.00", "packQty": 1 }
         ],
         "description": "Рідке мило з екстрактом алое віра та гліцерином для щоденного гігієнічного миття рук в офісах, закладах HoReCa, установах та вдома.",
         "categoryKey": "soap",
@@ -538,8 +537,8 @@
         "name": "Рідке мило для рук (з дозатором / Економ)",
         "image": "",
         "sizes": [
-          { "label": "500 мл (4 види, з дозатором)", "price": "35.00", "packQty": 6, "barcode": "" },
-          { "label": "5 л (економ)", "price": "80.00", "packQty": 1, "barcode": "" }
+          { "label": "500 мл (4 види, з дозатором)", "price": "35.00", "packQty": 6 },
+          { "label": "5 л (економ)", "price": "80.00", "packQty": 1 }
         ],
         "description": "Рідке мило для щоденного використання у флаконах 0.5 л зі зручним дозатором (4 аромати в асортименті) або у каністрі 5 л.",
         "categoryKey": "soap",
@@ -607,8 +606,7 @@
       return state.products.filter(p => {
         if (state.activeCategory !== 'all' && p.categoryKey !== state.activeCategory) return false;
         if (!q) return true;
-        const bc = (p.sizes || []).map(s => s.barcode || '').join(' ');
-        return p.name.toLowerCase().includes(q) || (p.description || '').toLowerCase().includes(q) || (p.shortCategory || '').toLowerCase().includes(q) || bc.includes(q);
+        return p.name.toLowerCase().includes(q) || (p.description || '').toLowerCase().includes(q) || (p.shortCategory || '').toLowerCase().includes(q);
       });
     }
 
@@ -641,7 +639,7 @@
             <p class="mt-1.5 line-clamp-2 text-xs leading-relaxed text-slate-500">${esc(p.description)}</p>
             <div class="mt-3.5 space-y-2 sm:mt-4">${(p.sizes || []).map((s, i) => {
               const k = `${p.id}::${i}`, q = state.cart[k] || 0;
-              return `<div class="flex items-center justify-between gap-2 rounded-xl bg-slate-50 px-3 py-2"><div class="min-w-0"><div class="text-xs font-semibold text-slate-800">${esc(s.label)}</div><div class="truncate text-[11px] text-slate-500">${s.packQty || 1} шт/упак${s.barcode ? ' · ' + esc(s.barcode) : ''}</div></div><div class="flex shrink-0 items-center gap-2"><span class="text-sm font-extrabold text-brand-dark tabular-nums">${esc(s.price)} грн</span><button type="button" data-add-cart="${k}" title="Додати упаковку" class="flex h-8 w-8 items-center justify-center rounded-lg border ${q > 0 ? 'border-brand-600 bg-brand-600 text-white' : 'border-slate-200 bg-white text-brand-700 hover:bg-brand-50'} text-xs font-bold sm:h-7 sm:w-7">${q > 0 ? q : '<i class="fa-solid fa-plus"></i>'}</button></div></div>`;
+              return `<div class="flex items-center justify-between gap-2 rounded-xl bg-slate-50 px-3 py-2"><div class="min-w-0"><div class="text-xs font-semibold text-slate-800">${esc(s.label)}</div><div class="truncate text-[11px] text-slate-500">${s.packQty || 1} шт/упак</div></div><div class="flex shrink-0 items-center gap-2"><span class="text-sm font-extrabold text-brand-dark tabular-nums">${esc(s.price)} грн</span><button type="button" data-add-cart="${k}" title="Додати упаковку" class="flex h-8 w-8 items-center justify-center rounded-lg border ${q > 0 ? 'border-brand-600 bg-brand-600 text-white' : 'border-slate-200 bg-white text-brand-700 hover:bg-brand-50'} text-xs font-bold sm:h-7 sm:w-7">${q > 0 ? q : '<i class="fa-solid fa-plus"></i>'}</button></div></div>`;
             }).join('')}</div>
           </div>
         </article>`).join('');
@@ -649,7 +647,7 @@
       const rows = [];
       items.forEach(p => (p.sizes || []).forEach((s, i) => {
         const k = `${p.id}::${i}`, q = state.cart[k] || 0, packTotal = ((parseFloat(s.price) || 0) * (s.packQty || 1)).toFixed(2);
-        rows.push(`<tr class="hover:bg-slate-50/80"><td class="px-3 py-2.5 sm:px-4 sm:py-3"><div class="font-semibold leading-snug text-slate-900">${esc(p.name)}</div><div class="mt-0.5 text-[11px] text-slate-500 md:hidden">${esc(s.label)} · ${s.packQty || 1} шт/упак (${packTotal} грн/уп)</div></td><td class="hidden whitespace-nowrap px-4 py-3 text-slate-600 md:table-cell">${esc(s.label)}</td><td class="hidden whitespace-nowrap px-4 py-3 font-mono text-xs text-slate-500 lg:table-cell">${s.barcode ? esc(s.barcode) : '—'}</td><td class="hidden whitespace-nowrap px-4 py-3 text-center text-slate-600 md:table-cell">${s.packQty || 1}</td><td class="whitespace-nowrap px-2.5 py-2.5 text-right font-extrabold text-brand-dark sm:px-4 sm:py-3">${esc(s.price)}</td><td class="hidden whitespace-nowrap px-4 py-3 text-right text-xs text-slate-500 md:table-cell">${packTotal} грн</td><td class="whitespace-nowrap px-2.5 py-2.5 text-right sm:px-4 sm:py-3"><button type="button" data-add-cart="${k}" class="rounded-lg border ${q > 0 ? 'border-brand-600 bg-brand-600 text-white' : 'border-slate-200 bg-white text-brand-700 hover:bg-brand-50'} px-2.5 py-1.5 text-xs font-bold sm:py-1">${q > 0 ? q + ' уп.' : '+'}</button></td></tr>`);
+        rows.push(`<tr class="hover:bg-slate-50/80"><td class="px-3 py-2.5 sm:px-4 sm:py-3"><div class="font-semibold leading-snug text-slate-900">${esc(p.name)}</div><div class="mt-0.5 text-[11px] text-slate-500 md:hidden">${esc(s.label)} · ${s.packQty || 1} шт/упак (${packTotal} грн/уп)</div></td><td class="hidden whitespace-nowrap px-4 py-3 text-slate-600 md:table-cell">${esc(s.label)}</td><td class="hidden whitespace-nowrap px-4 py-3 text-center text-slate-600 md:table-cell">${s.packQty || 1}</td><td class="whitespace-nowrap px-2.5 py-2.5 text-right font-extrabold text-brand-dark sm:px-4 sm:py-3">${esc(s.price)}</td><td class="hidden whitespace-nowrap px-4 py-3 text-right text-xs text-slate-500 md:table-cell">${packTotal} грн</td><td class="whitespace-nowrap px-2.5 py-2.5 text-right sm:px-4 sm:py-3"><button type="button" data-add-cart="${k}" class="rounded-lg border ${q > 0 ? 'border-brand-600 bg-brand-600 text-white' : 'border-slate-200 bg-white text-brand-700 hover:bg-brand-50'} px-2.5 py-1.5 text-xs font-bold sm:py-1">${q > 0 ? q + ' уп.' : '+'}</button></td></tr>`);
       }));
       document.getElementById('priceTableBody').innerHTML = rows.join('');
       renderCart();
@@ -768,7 +766,6 @@
         const body = [[
           { text: '№', bold: true, fillColor: '#e7f5ff', alignment: 'center' },
           { text: 'Назва товару', bold: true, fillColor: '#e7f5ff' },
-          { text: 'Штрих-код', bold: true, fillColor: '#e7f5ff', alignment: 'center' },
           { text: 'Фасування', bold: true, fillColor: '#e7f5ff', alignment: 'center' },
           { text: 'Шт/упак', bold: true, fillColor: '#e7f5ff', alignment: 'center' },
           { text: 'Ціна з ПДВ\n(1 шт, грн)', bold: true, fillColor: '#e7f5ff', alignment: 'right' },
@@ -780,7 +777,6 @@
           body.push([
             { text: String(idx++), alignment: 'center', color: '#475569' },
             { text: p.name, bold: true },
-            { text: s.barcode || '—', alignment: 'center', color: '#475569' },
             { text: s.label, alignment: 'center' },
             { text: String(pq), alignment: 'center' },
             { text: pr.toFixed(2), bold: true, alignment: 'right', color: '#1864ab' },
@@ -807,7 +803,7 @@
             {
               table: {
                 headerRows: 1,
-                widths: [20, '*', 78, 82, 38, 56, 60],
+                widths: [22, '*', 95, 48, 68, 72],
                 body
               },
               layout: {
@@ -841,7 +837,7 @@
           ['ТОВ «Кодимський Райпостач» · м. Одеса, пров. Вознесенський № 3, 65007'],
           ['Моб./WhatsApp: +380 67 972 05 60 · E-mail: piftm.info@gmail.com'],
           [],
-          ['Код', 'Найменування товару', 'Фасування', 'Штрих-код', 'Шт в упак.', 'Ціна з ПДВ за 1 шт (грн)', 'Вартість упаковки з ПДВ (грн)', 'Замовлення (упак.)', 'Сума замовлення з ПДВ (грн)']
+          ['Код', 'Найменування товару', 'Фасування', 'Шт в упак.', 'Ціна з ПДВ за 1 шт (грн)', 'Вартість упаковки з ПДВ (грн)', 'Замовлення (упак.)', 'Сума замовлення з ПДВ (грн)']
         ];
         const startRow = 6;
         let r = startRow;
@@ -852,30 +848,24 @@
             p.id,
             p.name,
             s.label,
-            s.barcode || '',
             pq,
             pr,
-            { t: 'n', f: `E${r}*F${r}`, v: +(pr * pq).toFixed(2) },
+            { t: 'n', f: `D${r}*E${r}`, v: +(pr * pq).toFixed(2) },
             cartQ > 0 ? cartQ : 0,
-            { t: 'n', f: `G${r}*H${r}`, v: +(pr * pq * cartQ).toFixed(2) }
+            { t: 'n', f: `F${r}*G${r}`, v: +(pr * pq * cartQ).toFixed(2) }
           ]);
           r++;
         }));
         const endRow = r - 1;
         aoa.push([
-          '', 'РАЗОМ ЗА ЗАМОВЛЕННЯМ (З ПДВ):', '', '', '', '', '',
-          { t: 'n', f: `SUM(H${startRow}:H${endRow})` },
-          { t: 'n', f: `SUM(I${startRow}:I${endRow})` }
+          '', 'РАЗОМ ЗА ЗАМОВЛЕННЯМ (З ПДВ):', '', '', '', '',
+          { t: 'n', f: `SUM(G${startRow}:G${endRow})` },
+          { t: 'n', f: `SUM(H${startRow}:H${endRow})` }
         ]);
 
         const ws = XLSX.utils.aoa_to_sheet(aoa);
-        // Force barcode cells (column D) to string format so Excel never shows 4.82E+12
-        for (let rowIdx = startRow; rowIdx <= endRow; rowIdx++) {
-          const cellRef = `D${rowIdx}`;
-          if (ws[cellRef] && ws[cellRef].v) ws[cellRef].t = 's';
-        }
         ws['!cols'] = [
-          { wch: 7 }, { wch: 46 }, { wch: 24 }, { wch: 16 },
+          { wch: 7 }, { wch: 48 }, { wch: 24 },
           { wch: 12 }, { wch: 22 }, { wch: 24 }, { wch: 18 }, { wch: 24 }
         ];
         const wb = XLSX.utils.book_new();
@@ -890,7 +880,6 @@
     function downloadDoc() {
       const rowsHtml = state.products.map(p => {
         const sizes = p.sizes || [];
-        const bcs = sizes.map(s => esc(s.barcode || ' ')).join('<br/>');
         const vols = sizes.map(s => {
           const l = parseLiters(s.label);
           return l !== null ? String(l) : esc(s.label);
@@ -899,7 +888,6 @@
         const prices = sizes.map(s => esc(String(s.price).replace('.', ','))).join('<br/>');
         return `<tr>
           <td style="padding:6px 8px;border:1px solid #000;">${esc(p.name)}</td>
-          <td style="padding:6px 8px;border:1px solid #000;text-align:center;">${bcs}</td>
           <td style="padding:6px 8px;border:1px solid #000;text-align:center;">${vols}</td>
           <td style="padding:6px 8px;border:1px solid #000;text-align:center;">${packs}</td>
           <td style="padding:6px 8px;border:1px solid #000;text-align:right;font-weight:bold;">${prices}</td>
@@ -915,7 +903,6 @@
     <thead>
       <tr style="background:#f1f5f9;font-weight:bold;">
         <th style="padding:6px 8px;border:1px solid #000;text-align:center;">Назва товару</th>
-        <th style="padding:6px 8px;border:1px solid #000;text-align:center;">Штрих код</th>
         <th style="padding:6px 8px;border:1px solid #000;text-align:center;">Номінальн. об'єм, л</th>
         <th style="padding:6px 8px;border:1px solid #000;text-align:center;">Кількість шт. в упак.</th>
         <th style="padding:6px 8px;border:1px solid #000;text-align:center;">Ціна з ПДВ за 1шт., грн.</th>
@@ -934,7 +921,7 @@
     }
 
     function downloadCsv() {
-      const rows = [['Код', 'Категорія', 'Найменування товару', 'Фасування', 'Штрих-код', 'Шт в упаковці', 'Ціна з ПДВ за 1 шт (грн)', 'Сума упаковки з ПДВ (грн)']];
+      const rows = [['Код', 'Категорія', 'Найменування товару', 'Фасування', 'Шт в упаковці', 'Ціна з ПДВ за 1 шт (грн)', 'Сума упаковки з ПДВ (грн)']];
       state.products.forEach(p => (p.sizes || []).forEach(s => {
         const pr = parseFloat(s.price) || 0, pq = s.packQty || 1;
         rows.push([
@@ -942,7 +929,6 @@
           p.shortCategory || '',
           `"${String(p.name).replace(/"/g, '""')}"`,
           `"${String(s.label).replace(/"/g, '""')}"`,
-          s.barcode || '',
           pq,
           pr.toFixed(2),
           (pr * pq).toFixed(2)
@@ -1047,7 +1033,6 @@
           id: p.id,
           name: p.name,
           label: s.label,
-          barcode: s.barcode || '',
           packQty,
           packs: q,
           units,
@@ -1082,7 +1067,6 @@
           { text: '№', bold: true, fillColor: '#e7f5ff', alignment: 'center' },
           { text: 'Найменування товару', bold: true, fillColor: '#e7f5ff' },
           { text: 'Фасування', bold: true, fillColor: '#e7f5ff', alignment: 'center' },
-          { text: 'Штрих-код', bold: true, fillColor: '#e7f5ff', alignment: 'center' },
           { text: 'Упак.', bold: true, fillColor: '#e7f5ff', alignment: 'center' },
           { text: 'Всього шт.', bold: true, fillColor: '#e7f5ff', alignment: 'center' },
           { text: 'Ціна з ПДВ\n(грн/шт)', bold: true, fillColor: '#e7f5ff', alignment: 'right' },
@@ -1094,7 +1078,6 @@
             { text: String(i + 1), alignment: 'center', color: '#475569' },
             { text: it.name, bold: true },
             { text: it.label, alignment: 'center' },
-            { text: it.barcode || '—', alignment: 'center', color: '#475569' },
             { text: `${it.packs} (${it.packQty} шт/уп)`, alignment: 'center', bold: true },
             { text: String(it.units), alignment: 'center' },
             { text: it.unitPrice.toFixed(2), alignment: 'right' },
@@ -1103,7 +1086,7 @@
         });
 
         body.push([
-          { text: 'РАЗОМ ДО СПЛАТИ З ПДВ:', colSpan: 4, bold: true, alignment: 'right', fillColor: '#f8fafc' }, {}, {}, {},
+          { text: 'РАЗОМ ДО СПЛАТИ З ПДВ:', colSpan: 3, bold: true, alignment: 'right', fillColor: '#f8fafc' }, {}, {},
           { text: `${totalPacks} упак.`, bold: true, alignment: 'center', fillColor: '#f8fafc' },
           { text: `${totalUnits} шт.`, bold: true, alignment: 'center', fillColor: '#f8fafc' },
           { text: '', fillColor: '#f8fafc' },
@@ -1133,7 +1116,7 @@
             {
               table: {
                 headerRows: 1,
-                widths: [18, '*', 64, 68, 52, 40, 48, 56],
+                widths: [20, '*', 85, 62, 45, 55, 62],
                 body
               },
               layout: {
@@ -1165,7 +1148,6 @@
         <tr>
           <td style="padding:6px 8px;border:1px solid #000;text-align:center;">${i + 1}</td>
           <td style="padding:6px 8px;border:1px solid #000;">${esc(it.name)}</td>
-          <td style="padding:6px 8px;border:1px solid #000;text-align:center;">${esc(it.barcode || '—')}</td>
           <td style="padding:6px 8px;border:1px solid #000;text-align:center;">${esc(it.label)}</td>
           <td style="padding:6px 8px;border:1px solid #000;text-align:center;">${it.packs} упак. (${it.units} шт.)</td>
           <td style="padding:6px 8px;border:1px solid #000;text-align:right;">${it.unitPrice.toFixed(2)}</td>
@@ -1183,7 +1165,6 @@
       <tr style="background:#f1f5f9;font-weight:bold;">
         <th style="padding:6px;border:1px solid #000;">№</th>
         <th style="padding:6px;border:1px solid #000;">Назва товару</th>
-        <th style="padding:6px;border:1px solid #000;">Штрих-код</th>
         <th style="padding:6px;border:1px solid #000;">Фасування</th>
         <th style="padding:6px;border:1px solid #000;">Кількість</th>
         <th style="padding:6px;border:1px solid #000;">Ціна з ПДВ, грн</th>
@@ -1193,7 +1174,7 @@
     <tbody>
       ${rowsHtml}
       <tr style="font-weight:bold;background:#f8fafc;">
-        <td colspan="4" style="padding:6px 8px;border:1px solid #000;text-align:right;">РАЗОМ З ПДВ:</td>
+        <td colspan="3" style="padding:6px 8px;border:1px solid #000;text-align:right;">РАЗОМ З ПДВ:</td>
         <td style="padding:6px 8px;border:1px solid #000;text-align:center;">${totalPacks} упак. (${totalUnits} шт.)</td>
         <td style="padding:6px 8px;border:1px solid #000;"></td>
         <td style="padding:6px 8px;border:1px solid #000;text-align:right;">${totalSum.toFixed(2)} грн</td>
@@ -1249,7 +1230,7 @@
 
       if (items.length > 0) {
         items.forEach((it, idx) => {
-          payload[`Позиція ${idx + 1}`] = `${it.name} (${it.label}${it.barcode ? ', ш/к ' + it.barcode : ''}) — ${it.packs} упак. (${it.units} шт.) × ${it.unitPrice.toFixed(2)} грн = ${it.lineTotal.toFixed(2)} грн`;
+          payload[`Позиція ${idx + 1}`] = `${it.name} (${it.label}) — ${it.packs} упак. (${it.units} шт.) × ${it.unitPrice.toFixed(2)} грн = ${it.lineTotal.toFixed(2)} грн`;
         });
         payload['Всього упаковок / одиниць'] = `${totalPacks} упак. (${totalUnits} шт.)`;
         payload['РАЗОМ З ПДВ'] = `${totalSum.toFixed(2)} грн`;
@@ -1306,7 +1287,7 @@
       const op = e.target.closest('[data-open-product]');
       if (op) {
         const p = state.products.find(x => x.id === op.dataset.openProduct); if (!p) return;
-        document.getElementById('productModalContent').innerHTML = `<div class="flex flex-col gap-5 sm:flex-row"><div class="flex h-44 w-full shrink-0 items-center justify-center rounded-xl border border-slate-100 bg-white p-4 sm:w-44">${p.image ? `<img src="${esc(p.image)}" alt="${esc(p.name)}" class="max-h-36 max-w-full object-contain" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />` : ''}<div class="${p.image ? 'hidden' : 'flex'} h-24 w-24 items-center justify-center rounded-2xl bg-brand-50 text-brand-dark"><i class="fa-solid ${catIcon(p.categoryKey)} text-3xl"></i></div></div><div><span class="rounded-full bg-brand-50 px-2.5 py-1 text-xs font-bold text-brand-dark">${esc(p.shortCategory)}</span><h3 class="mt-2 text-xl font-extrabold text-slate-900">${esc(p.name)}</h3><p class="mt-2 text-sm text-slate-600">${esc(p.description)}</p></div></div><div class="mt-5 space-y-2.5">${(p.sizes || []).map((s, i) => `<div class="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-slate-200 bg-slate-50 p-3.5"><div><div class="text-sm font-bold">${esc(s.label)}</div><div class="text-xs text-slate-500">Упаковка: ${s.packQty || 1} шт.${s.barcode ? ' · Штрих-код: ' + esc(s.barcode) : ''}</div></div><div class="flex items-center gap-3"><span class="text-lg font-extrabold text-brand-dark tabular-nums">${esc(s.price)} грн</span><button type="button" data-add-cart="${p.id}::${i}" class="rounded-lg bg-brand-700 px-3 py-2 text-xs font-bold text-white hover:bg-brand-dark">+ Упаковка</button></div></div>`).join('')}</div>`;
+        document.getElementById('productModalContent').innerHTML = `<div class="flex flex-col gap-5 sm:flex-row"><div class="flex h-44 w-full shrink-0 items-center justify-center rounded-xl border border-slate-100 bg-white p-4 sm:w-44">${p.image ? `<img src="${esc(p.image)}" alt="${esc(p.name)}" class="max-h-36 max-w-full object-contain" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />` : ''}<div class="${p.image ? 'hidden' : 'flex'} h-24 w-24 items-center justify-center rounded-2xl bg-brand-50 text-brand-dark"><i class="fa-solid ${catIcon(p.categoryKey)} text-3xl"></i></div></div><div><span class="rounded-full bg-brand-50 px-2.5 py-1 text-xs font-bold text-brand-dark">${esc(p.shortCategory)}</span><h3 class="mt-2 text-xl font-extrabold text-slate-900">${esc(p.name)}</h3><p class="mt-2 text-sm text-slate-600">${esc(p.description)}</p></div></div><div class="mt-5 space-y-2.5">${(p.sizes || []).map((s, i) => `<div class="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-slate-200 bg-slate-50 p-3.5"><div><div class="text-sm font-bold">${esc(s.label)}</div><div class="text-xs text-slate-500">Упаковка: ${s.packQty || 1} шт.</div></div><div class="flex items-center gap-3"><span class="text-lg font-extrabold text-brand-dark tabular-nums">${esc(s.price)} грн</span><button type="button" data-add-cart="${p.id}::${i}" class="rounded-lg bg-brand-700 px-3 py-2 text-xs font-bold text-white hover:bg-brand-dark">+ Упаковка</button></div></div>`).join('')}</div>`;
         const m = document.getElementById('productModal'); m.classList.remove('hidden'); m.classList.add('flex'); return;
       }
       const inc = e.target.closest('[data-cart-inc]');
