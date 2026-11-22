@@ -82,9 +82,9 @@
         <a href="#contacts" class="transition hover:text-brand-700">Контакти</a>
       </nav>
       <div class="flex shrink-0 items-center gap-1.5 sm:gap-2">
-        <button id="openCartBtn" type="button" aria-label="Замовлення" class="inline-flex h-9 items-center gap-1.5 rounded-lg border border-slate-200 bg-white px-2.5 text-xs font-semibold text-slate-700 hover:bg-slate-50 sm:px-3">
-          <i class="fa-solid fa-box-open text-brand-600"></i><span class="hidden sm:inline">Замовлення</span>
-          <span id="cartBadge" class="inline-flex h-5 min-w-[20px] items-center justify-center rounded-full bg-brand-600 px-1.5 text-[11px] font-bold text-white tabular-nums">0</span>
+        <button id="openCartBtn" type="button" aria-label="Кошик замовлення" class="inline-flex h-9 items-center gap-1.5 rounded-lg border border-brand-200 bg-brand-50/80 px-2.5 text-xs font-bold text-brand-dark shadow-sm transition hover:bg-brand-100 sm:px-3.5">
+          <i class="fa-solid fa-cart-shopping text-brand-700"></i><span>Кошик</span>
+          <span id="cartBadge" class="inline-flex h-5 min-w-[20px] items-center justify-center rounded-full bg-brand-700 px-1.5 text-[11px] font-extrabold text-white tabular-nums">0</span>
         </button>
         <a href="https://api.whatsapp.com/send?phone=380679720560" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" class="inline-flex h-9 w-9 items-center justify-center gap-1.5 whitespace-nowrap rounded-lg bg-emerald-600 text-xs font-bold text-white shadow-sm hover:bg-emerald-700 md:w-auto md:px-3">
           <i class="fa-brands fa-whatsapp text-base md:text-sm"></i><span class="hidden md:inline">WhatsApp</span>
@@ -303,9 +303,29 @@
     </section>
   </main>
 
-  <footer class="mt-12 border-t border-slate-200 bg-white px-4 py-6 text-center text-xs text-slate-500">
+  <footer class="mt-12 border-t border-slate-200 bg-white px-4 py-6 pb-24 text-center text-xs text-slate-500">
     © 2005–2026 ТМ «ПІФ» · ТОВ «Кодимський Райпостач» (м. Одеса, пров. Вознесенський № 3) · Зроблено в Україні 🇺🇦
   </footer>
+
+  <!-- Sticky Bottom Cart Bar (appears automatically when cart has items) -->
+  <div id="stickyCartBar" class="fixed bottom-0 left-0 right-0 z-40 hidden border-t border-brand-200 bg-white/95 px-3 py-2.5 shadow-[0_-8px_24px_-6px_rgba(15,23,42,0.16)] backdrop-blur sm:px-6 sm:py-3">
+    <div class="mx-auto flex max-w-7xl items-center justify-between gap-3">
+      <div id="stickyCartInfoClick" class="flex min-w-0 flex-1 cursor-pointer items-center gap-2.5 sm:gap-3.5">
+        <div class="relative flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-700 text-white shadow-sm">
+          <i class="fa-solid fa-cart-shopping text-base"></i>
+          <span id="stickyCartBadge" class="absolute -right-1.5 -top-1.5 inline-flex h-5 min-w-[20px] items-center justify-center rounded-full bg-emerald-600 px-1 text-[11px] font-extrabold text-white shadow tabular-nums">0</span>
+        </div>
+        <div class="min-w-0">
+          <div class="text-[11px] font-semibold text-slate-500 sm:text-xs">Ваше замовлення (<span id="stickyCartUnits" class="tabular-nums">0 упак.</span>)</div>
+          <div id="stickyCartTotal" class="truncate text-sm font-extrabold text-slate-900 tabular-nums sm:text-base">0.00 грн з ПДВ</div>
+        </div>
+      </div>
+      <button id="stickyOpenCartBtn" type="button" class="inline-flex shrink-0 items-center gap-2 rounded-xl bg-emerald-600 px-4 py-2.5 text-xs font-extrabold text-white shadow-md transition hover:bg-emerald-700 sm:px-5 sm:py-3 sm:text-sm">
+        <span>Оформити замовлення</span>
+        <i class="fa-solid fa-arrow-right"></i>
+      </button>
+    </div>
+  </div>
 
   <div id="productModal" class="modal-backdrop fixed inset-0 z-50 hidden items-end justify-center p-0 sm:items-center sm:p-4">
     <div class="relative max-h-[90dvh] w-full max-w-2xl overflow-y-auto rounded-t-2xl bg-white p-5 shadow-2xl sm:rounded-2xl sm:p-6">
@@ -337,18 +357,22 @@
 
         <div id="cartOrderStatusBox" class="mt-2 hidden rounded-xl border border-emerald-200 bg-emerald-50 p-2.5 text-xs text-emerald-900"></div>
 
-        <div class="mt-2.5 grid grid-cols-1 gap-1.5 sm:grid-cols-2">
-          <button id="cartDownloadPdfBtn" type="button" class="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-brand-700 px-3.5 py-2.5 text-xs font-extrabold text-white shadow-sm transition hover:bg-brand-dark">
-            <i class="fa-solid fa-file-arrow-down text-sm"></i><span>Завантажити PDF</span>
-          </button>
-          <button id="cartSharePdfBtn" type="button" class="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-emerald-300 bg-emerald-50 px-3.5 py-2.5 text-xs font-extrabold text-emerald-900 shadow-sm transition hover:bg-emerald-100">
-            <i class="fa-solid fa-share-nodes text-emerald-700 text-sm"></i><span>Поділитися PDF-файлом</span>
-          </button>
+        <div class="mt-2.5 rounded-xl border border-brand-200 bg-white p-2.5 shadow-sm">
+          <div class="text-[11px] font-bold text-slate-700">Крок 1. Збережіть бланк замовлення (PDF):</div>
+          <div class="mt-1.5 flex gap-1.5">
+            <button id="cartDownloadPdfBtn" type="button" class="inline-flex flex-1 items-center justify-center gap-2 rounded-xl bg-brand-700 px-3.5 py-2.5 text-xs font-extrabold text-white shadow-sm transition hover:bg-brand-dark">
+              <i class="fa-solid fa-file-arrow-down text-sm"></i><span>Завантажити PDF-заявку</span>
+            </button>
+            <button id="cartSharePdfBtn" type="button" title="Поділитися PDF-файлом (для смартфонів)" class="inline-flex shrink-0 items-center justify-center gap-1.5 rounded-xl border border-brand-200 bg-brand-50 px-3 py-2.5 text-xs font-bold text-brand-dark transition hover:bg-brand-100">
+              <i class="fa-solid fa-share-from-square"></i><span class="hidden sm:inline">Файл</span>
+            </button>
+          </div>
         </div>
 
-        <div class="mt-2.5">
-          <div class="mb-1.5 text-[11px] font-bold uppercase tracking-wider text-slate-500">Надіслати PDF-посилання у відділ продажу:</div>
-          <div class="grid grid-cols-3 gap-1.5">
+        <div class="mt-2 rounded-xl border border-slate-200 bg-white p-2.5 shadow-sm">
+          <div class="text-[11px] font-bold text-slate-700">Крок 2. Надішліть замовлення у відділ продажу:</div>
+          <div class="mt-0.5 text-[11px] text-slate-500">Відкриється чат із готовим списком (туди ж можна прикріпити PDF):</div>
+          <div class="mt-2 grid grid-cols-3 gap-1.5">
             <button id="cartWhatsappBtn" type="button" class="inline-flex items-center justify-center gap-1.5 whitespace-nowrap rounded-xl bg-emerald-600 px-2.5 py-2.5 text-xs font-bold text-white shadow-sm hover:bg-emerald-700"><i class="fa-brands fa-whatsapp text-sm"></i><span>WhatsApp</span></button>
             <button id="cartViberBtn" type="button" class="inline-flex items-center justify-center gap-1.5 whitespace-nowrap rounded-xl bg-[#7360f2] px-2.5 py-2.5 text-xs font-bold text-white shadow-sm hover:bg-[#5f4dee]"><i class="fa-brands fa-viber text-sm"></i><span>Viber</span></button>
             <button id="cartAutoOrderBtn" type="button" class="inline-flex items-center justify-center gap-1.5 whitespace-nowrap rounded-xl bg-brand-600 px-2.5 py-2.5 text-xs font-bold text-white shadow-sm hover:bg-brand-700"><i class="fa-solid fa-envelope text-xs"></i><span>E-mail</span></button>
@@ -356,8 +380,8 @@
         </div>
 
         <div class="mt-2 flex gap-2">
-          <button id="clearCartBtn" type="button" class="rounded-xl border border-slate-200 bg-white px-3 py-1.5 text-[11px] font-semibold text-slate-600 hover:bg-slate-100">Очистити</button>
-          <button id="copyOrderBtn" type="button" class="flex-1 rounded-xl border border-slate-200 bg-white px-3 py-1.5 text-[11px] font-semibold text-slate-700 hover:bg-slate-100"><i class="fa-solid fa-link mr-1"></i>Скопіювати посилання на PDF</button>
+          <button id="clearCartBtn" type="button" class="rounded-xl border border-slate-200 bg-white px-3 py-1.5 text-[11px] font-semibold text-slate-600 hover:bg-slate-100">Очистити кошик</button>
+          <button id="copyOrderBtn" type="button" class="flex-1 rounded-xl border border-slate-200 bg-white px-3 py-1.5 text-[11px] font-semibold text-slate-700 hover:bg-slate-100"><i class="fa-regular fa-copy mr-1"></i>Скопіювати список</button>
         </div>
       </div>
     </div>
@@ -649,7 +673,10 @@
             <p class="mt-1.5 line-clamp-2 text-xs leading-relaxed text-slate-500">${esc(p.description)}</p>
             <div class="mt-3.5 space-y-2 sm:mt-4">${(p.sizes || []).map((s, i) => {
               const k = `${p.id}::${i}`, q = state.cart[k] || 0;
-              return `<div class="flex items-center justify-between gap-2 rounded-xl bg-slate-50 px-3 py-2"><div class="min-w-0"><div class="text-xs font-semibold text-slate-800">${esc(s.label)}</div><div class="truncate text-[11px] text-slate-500">${s.packQty || 1} шт/упак</div></div><div class="flex shrink-0 items-center gap-2"><span class="text-sm font-extrabold text-brand-dark tabular-nums">${esc(s.price)} грн</span><button type="button" data-add-cart="${k}" title="Додати упаковку" class="flex h-8 w-8 items-center justify-center rounded-lg border ${q > 0 ? 'border-brand-600 bg-brand-600 text-white' : 'border-slate-200 bg-white text-brand-700 hover:bg-brand-50'} text-xs font-bold sm:h-7 sm:w-7">${q > 0 ? q : '<i class="fa-solid fa-plus"></i>'}</button></div></div>`;
+              const ctrl = q > 0
+                ? `<div class="inline-flex items-center rounded-lg border border-brand-600 bg-brand-50 p-0.5"><button type="button" data-cart-dec="${k}" class="flex h-7 w-7 items-center justify-center rounded-md bg-white text-xs font-extrabold text-brand-dark shadow-sm hover:bg-slate-100">−</button><button type="button" data-open-cart="1" title="Відкрити кошик" class="px-2 text-xs font-extrabold text-brand-dark tabular-nums">${q} уп.</button><button type="button" data-cart-inc="${k}" class="flex h-7 w-7 items-center justify-center rounded-md bg-brand-700 text-xs font-extrabold text-white shadow-sm hover:bg-brand-dark">+</button></div>`
+                : `<button type="button" data-add-cart="${k}" class="inline-flex h-8 items-center gap-1.5 rounded-lg border border-brand-200 bg-brand-50 px-2.5 text-xs font-bold text-brand-dark transition hover:bg-brand-700 hover:text-white"><i class="fa-solid fa-cart-plus text-[11px]"></i><span>У кошик</span></button>`;
+              return `<div class="flex items-center justify-between gap-2 rounded-xl ${q > 0 ? 'border border-brand-200 bg-brand-50/40' : 'bg-slate-50'} px-3 py-2"><div class="min-w-0"><div class="text-xs font-semibold text-slate-800">${esc(s.label)}</div><div class="truncate text-[11px] text-slate-500">${s.packQty || 1} шт/упак</div></div><div class="flex shrink-0 items-center gap-2"><span class="text-sm font-extrabold text-brand-dark tabular-nums">${esc(s.price)} грн</span>${ctrl}</div></div>`;
             }).join('')}</div>
           </div>
         </article>`).join('');
@@ -692,6 +719,14 @@
       document.getElementById('cartBadge').textContent = packs;
       document.getElementById('cartSummaryUnits').textContent = `${packs} упак. (${units} шт.)`;
       document.getElementById('cartTotalPrice').textContent = `${sum.toFixed(2)} грн`;
+
+      const stickyBar = document.getElementById('stickyCartBar');
+      if (stickyBar) {
+        stickyBar.classList.toggle('hidden', packs === 0);
+        document.getElementById('stickyCartBadge').textContent = packs;
+        document.getElementById('stickyCartUnits').textContent = `${packs} упак. (${units} шт.)`;
+        document.getElementById('stickyCartTotal').textContent = `${sum.toFixed(2)} грн з ПДВ`;
+      }
     }
 
     function getComparableProducts() {
@@ -1189,7 +1224,7 @@
         const statusBox = document.getElementById('cartOrderStatusBox');
         if (statusBox) {
           statusBox.classList.remove('hidden');
-          statusBox.innerHTML = `<div class="font-bold text-emerald-950"><i class="fa-solid fa-circle-check text-emerald-600 mr-1"></i>Файл ${esc(orderId)}.pdf завантажено!</div><div class="mt-0.5 text-[11px] text-emerald-800">Тепер ви можете надіслати PDF-посилання в 1 клік через <strong>WhatsApp, Viber або E-mail</strong> нижче (або перетягнути файл у чат).</div>`;
+          statusBox.innerHTML = `<div class="font-bold text-emerald-950"><i class="fa-solid fa-circle-check text-emerald-600 mr-1"></i>Файл ${esc(orderId)}.pdf завантажено!</div><div class="mt-0.5 text-[11px] text-emerald-800">Тепер натисніть <strong>WhatsApp, Viber або E-mail</strong> у Кроці 2 нижче та прикріпіть завантажений PDF-файл у чат.</div>`;
         }
         showToast(`Заявку ${orderId}.pdf завантажено`);
       } catch (err) {
@@ -1411,11 +1446,15 @@
         return m;
       }
       const orderId = customOrderId || getCartOrderId();
-      const pdfUrl = buildPdfShareUrl(orderId);
-      let msg = `📄 ЗАЯВКА № ${orderId} — ТМ «ПІФ»`;
-      msg += `\nЗамовник: ${cust.name || 'Клієнт'} (${cust.phone || '—'}${cust.city ? ', ' + cust.city : ''})`;
-      msg += `\nРазом: ${totalPacks} упак. (${totalUnits} шт.) на суму ${totalSum.toFixed(2)} грн з ПДВ`;
-      msg += `\n\n👉 Завантажити PDF-заявку в 1 клік:\n${pdfUrl}`;
+      let msg = `Замовлення № ${orderId} — ТМ «ПІФ»`;
+      msg += `\nЗамовник: ${cust.name || 'Клієнт'}\nТелефон: ${cust.phone || '—'}`;
+      if (cust.city) msg += `\nМісто / Доставка: ${cust.city}`;
+      msg += `\n\nТовари:`;
+      items.forEach((it, idx) => {
+        msg += `\n${idx + 1}. ${it.name} (${it.label}) — ${it.packs} упак. (${it.units} шт.) × ${it.unitPrice.toFixed(2)} грн = ${it.lineTotal.toFixed(2)} грн`;
+      });
+      msg += `\n\nВсього: ${totalPacks} упак. (${totalUnits} шт.)`;
+      msg += `\nРазом з ПДВ: ${totalSum.toFixed(2)} грн`;
       return msg;
     }
 
@@ -1462,7 +1501,9 @@
 
     document.addEventListener('click', e => {
       const add = e.target.closest('[data-add-cart]');
-      if (add) { const k = add.dataset.addCart; state.cart[k] = (state.cart[k] || 0) + 1; renderAll(); showToast('Упаковку додано до замовлення'); return; }
+      if (add) { const k = add.dataset.addCart; state.cart[k] = (state.cart[k] || 0) + 1; renderAll(); showToast('Додано у кошик'); return; }
+      const oc = e.target.closest('[data-open-cart]');
+      if (oc) { renderCart(); document.getElementById('cartModal').classList.remove('hidden'); document.getElementById('cartModal').classList.add('flex'); return; }
       const op = e.target.closest('[data-open-product]');
       if (op) {
         const p = state.products.find(x => x.id === op.dataset.openProduct); if (!p) return;
@@ -1485,7 +1526,14 @@
       document.getElementById(id).addEventListener('click', e => { if (e.target.id === id) { e.currentTarget.classList.add('hidden'); e.currentTarget.classList.remove('flex'); } });
     });
     document.getElementById('closeProductModal').addEventListener('click', () => { document.getElementById('productModal').classList.add('hidden'); document.getElementById('productModal').classList.remove('flex'); });
-    document.getElementById('openCartBtn').addEventListener('click', () => { renderCart(); document.getElementById('cartModal').classList.remove('hidden'); document.getElementById('cartModal').classList.add('flex'); });
+    function openCartDrawer() {
+      renderCart();
+      document.getElementById('cartModal').classList.remove('hidden');
+      document.getElementById('cartModal').classList.add('flex');
+    }
+    document.getElementById('openCartBtn').addEventListener('click', openCartDrawer);
+    document.getElementById('stickyOpenCartBtn').addEventListener('click', openCartDrawer);
+    document.getElementById('stickyCartInfoClick').addEventListener('click', openCartDrawer);
     document.getElementById('closeCartModal').addEventListener('click', () => { document.getElementById('cartModal').classList.add('hidden'); document.getElementById('cartModal').classList.remove('flex'); });
     document.getElementById('clearCartBtn').addEventListener('click', () => { state.cart = {}; renderAll(); showToast('Замовлення очищено'); });
 
